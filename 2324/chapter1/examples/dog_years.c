@@ -1,13 +1,14 @@
 #include <cs50.h>
 #include <stdio.h>
 
-
 // Function to convert dog years to human years
-int dogToHumanYears(int dogAge) {
+int dogToHumanYears(int dogAge)
+{
     return dogAge * 7;
 }
 
-int main() {
+int main()
+{
     printf("Please enter your dog's age in dog years: ");
     int dogAge;
     scanf("%d", &dogAge);
@@ -18,7 +19,6 @@ int main() {
 
     return 0;
 }
-
 
 /*
 
