@@ -22,7 +22,7 @@ int main() {
 
 /*
 
-int main() {
+int main()
 
     // Ask the user for their dog's age
     int dogAge;
