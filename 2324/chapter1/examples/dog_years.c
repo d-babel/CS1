@@ -9,7 +9,7 @@ int dogToHumanYears(int dogAge)
 
 int main()
 {
-    printf("Please enter your dog's age in dog years: ");
+    printf("Enter your dog's age in dog years: ");
     int dogAge;
     scanf("%d", &dogAge);
 
