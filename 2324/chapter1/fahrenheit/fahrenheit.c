@@ -3,13 +3,13 @@
 
 int main(void)
 {
-    // Prompt the user for input in Celsius
+    // Ask user to input C
     float celsius = get_float("C: ");
 
-    // Convert Celsius to Fahrenheit using the formula
+    // Convert C to F
     float fahrenheit = ((celsius * 9) / 5) + 32;
 
-    // Display the result with one decimal place
+    // Print F with 1 decimal
     printf("F: %.1f\n", fahrenheit);
 
     return 0;
