@@ -11,6 +11,4 @@ int main(void)
 
     // Print F with 1 decimal
     printf("F: %.1f\n", fahrenheit);
-
-    return 0;
 }
