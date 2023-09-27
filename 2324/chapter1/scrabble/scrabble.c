@@ -41,6 +41,4 @@ int main() {
 
     free(word1);
     free(word2);
-
-    return 0;
 }
