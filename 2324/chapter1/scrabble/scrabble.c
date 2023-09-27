@@ -1,6 +1,6 @@
-#include <stdio.h>
 #include <cs50.h>
 #include <ctype.h>
+#include <stdio.h>
 #include <string.h>
 
 // Point values for each letter (A to Z)
@@ -11,7 +11,8 @@ int compute_score(string word)
 {
     int score = 0;
 
-    for (int i = 0, n = strlen(word); i < n; i++) {
+    for (int i = 0, n = strlen(word); i < n; i++)
+    {
         char c = toupper(word[i]);
 
         // Calculate score
