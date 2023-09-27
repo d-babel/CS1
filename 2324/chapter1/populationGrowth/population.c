@@ -3,7 +3,7 @@
 
 int main(void)
 {
-    // Request the initial population size
+    // Ask initial population size
     int start;
     do
     {
@@ -11,7 +11,7 @@ int main(void)
     }
     while (start < 9);
 
-    // Request the target population size
+    // Ask target population size
     int end;
     do
     {
@@ -21,7 +21,7 @@ int main(void)
 
     int years = 0;
 
-    // Calculate the number of years needed to reach the target population
+    // Calculate number of years to reach target population
     while (start < end)
     {
         int births = start / 3;
@@ -30,6 +30,6 @@ int main(void)
         years++;
     }
 
-    // Output the number of years needed
+    // Output number of years needed
     printf("Years: %i\n", years);
 }
