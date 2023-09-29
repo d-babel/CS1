@@ -7,8 +7,7 @@ int main(void) {
     pos = get_int("Enter a positive number: ");
 
     while (pos < 0) {
-        printf("Please enter a positive number: ");
-        pos = get_int();
+        pos = get_int("Please enter a positive number: ");
     }
 
     printf("The positive number is %i\n", pos);
