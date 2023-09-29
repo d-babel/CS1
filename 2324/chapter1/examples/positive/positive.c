@@ -3,12 +3,10 @@
 
 int main(void) {
     int pos;
-
-    pos = get_int("Enter a positive number: ");
-
-    while (pos < 0) {
-        pos = get_int("Please enter a positive number: ");
+    do {
+        pos = get_int("Enter a positive number: ");
     }
 
-    printf("The positive number is %i\n", pos);
+    while (pos < 1);
+        printf("The positive number is %i\n", pos);
 }
