@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    int daysOfMonth, day; // num of days in month and current day
+    int daysOfMonth, day;                       // num of days in month and current day
     long long initialPennies, totalPennies = 0; // pennies on the first day and total pennies
 
     do
@@ -24,6 +24,6 @@ int main(void)
         totalPennies += initialPennies << day; // double pennies each day
     }
 
-    double totalDollars = totalPennies / 100.0; // convert pennies to dollars
+    double totalDollars = totalPennies / 100.0;    // convert pennies to dollars
     printf("Total amount: $%.2f\n", totalDollars); // print total amount
 }
