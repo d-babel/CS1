@@ -15,9 +15,9 @@ int main(void)
 
     do
     {
-        initialPennies = get_long_long("Enter initial pennies: "); // starting pennies (positive)
+        initialPennies = get_long_long("Enter initial pennies: "); // starting pennies
     }
-    while (initialPennies <= 0);
+    while (initialPennies == 0); // Ensure initial pennies are not zero
 
     for (day = 0; day < daysOfMonth; day++) // loop through days
     {
@@ -25,5 +25,10 @@ int main(void)
     }
 
     double totalDollars = totalPennies / 100.0; // convert pennies to dollars
-    printf("Total amount: $%.2f\n", totalDollars); // print total amount
+
+    if (totalDollars >= 0) {
+        printf("Total amount: $%.2f\n", totalDollars); // print total amount
+    } else {
+        printf("You are %.2f IN DEBT\n", -totalDollars); // print debt message
+    }
 }
