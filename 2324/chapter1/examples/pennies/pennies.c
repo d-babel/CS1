@@ -4,7 +4,7 @@
 
 int main(void)
 {
-    int daysOfMonth, day;                       // num of days in month and current day
+    int daysOfMonth, day; // num of days in month and current day
     long long initialPennies, totalPennies = 0; // pennies on the first day and total pennies
 
     do
@@ -15,9 +15,9 @@ int main(void)
 
     do
     {
-        initialPennies = get_long_long("Enter initial pennies: "); // starting pennies
+        initialPennies = get_long_long("Enter initial pennies: "); // starting pennies (positive)
     }
-    while (initialPennies < 1); // ensure initial pennies are greater than or equal to 1
+    while (initialPennies <= 0);
 
     for (day = 0; day < daysOfMonth; day++) // loop through days
     {
@@ -25,13 +25,5 @@ int main(void)
     }
 
     double totalDollars = totalPennies / 100.0; // convert pennies to dollars
-
-    if (totalDollars >= 0)
-    {
-        printf("Total amount: $%.2f\n", totalDollars); // print total amount
-    }
-    else
-    {
-        printf("You are %.2f IN DEBT\n", -totalDollars); // print debt message
-    }
+    printf("Total amount: $%.2f\n", totalDollars); // print total amount
 }
