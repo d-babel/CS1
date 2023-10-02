@@ -26,5 +26,4 @@ int main(void)
 
     double total_dollars = total_pennies / 100.0; // Convert pennies to dollars
     printf("$%.2f\n", total_dollars);             // Print total amount
-
 }
