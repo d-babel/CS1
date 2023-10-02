@@ -17,7 +17,7 @@ int main(void)
     {
         initialPennies = get_long_long("Enter initial pennies: "); // starting pennies
     }
-    while (initialPennies == 0); // Ensure initial pennies are not zero
+    while (initialPennies == 0); // ensure initial pennies are not zero
 
     for (day = 0; day < daysOfMonth; day++) // loop through days
     {
