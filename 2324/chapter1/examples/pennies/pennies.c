@@ -4,26 +4,26 @@
 
 int main(void)
 {
-    int days_in_month, day; // Days and current day
-    long long pennies_on_first_day, total_pennies = 0; // First-day pennies and total pennies
+    int daysOfMonth, day; // num of days in month and current day
+    long long initialPennies, totalPennies = 0; // pennies on the first day and total pennies
 
     do
     {
-        days_in_month = get_int("Days: "); // Month days (28-31)
+        daysOfMonth = get_int("Enter number of days: "); // month days (28-31)
     }
-    while (days_in_month < 28 || days_in_month > 31);
+    while (daysOfMonth < 28 || daysOfMonth > 31);
 
     do
     {
-        pennies_on_first_day = get_long_long("Pennies: "); // Starting pennies (positive)
+        initialPennies = get_long_long("Enter initial pennies: "); // starting pennies (positive)
     }
-    while (pennies_on_first_day <= 0);
+    while (initialPennies <= 0);
 
-    for (day = 0; day < days_in_month; day++) // Loop through days
+    for (day = 0; day < daysOfMonth; day++) // loop through days
     {
-        total_pennies += pennies_on_first_day << day; // Double pennies each day
+        totalPennies += initialPennies << day; // double pennies each day
     }
 
-    double total_dollars = total_pennies / 100.0; // Convert pennies to dollars
-    printf("$%.2f\n", total_dollars); // Print total amount
+    double totalDollars = totalPennies / 100.0; // convert pennies to dollars
+    printf("Total amount: $%.2f\n", totalDollars); // print total amount
 }
