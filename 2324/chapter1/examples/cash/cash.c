@@ -30,6 +30,4 @@ int main(void)
     }
 
     printf("%d\n", total_coins);
-
-    return 0;
 }
