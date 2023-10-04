@@ -11,22 +11,21 @@ int main(void)
 
     float change_owed;
 
-
-change_owed = get_float("Change owed: "); // Prompt the user for the amount of change owed
+    change_owed = get_float("Change owed: ");
 
     while (change_owed < 0);
 
-    int cents = round(change_owed * 100); // Convert the dollar amount to cents and round it to the nearest cent
-    int total_coins = 0; // Initialize a variable to count the total number of coins needed for change
+    int cents = round(change_owed * 100);
+    int total_coins = 0;
 
-    for (int i = 0; i < NUM_COINS; i++) // Loop through each coin denomination
+    for (int i = 0; i < NUM_COINS; i++)
     {
-        while (cents >= COIN_VALUES[i]) // While the remaining change is greater than or equal to the current coin denomination
+        while (cents >= COIN_VALUES[i])
         {
-            cents -= COIN_VALUES[i]; // Subtract the coin value from the remaining change
-            total_coins++; // Increment the total coin count
+            cents -= COIN_VALUES[i];
+            total_coins++;
         }
     }
 
-    printf("%d\n", total_coins); // Print the total number of coins needed for change
+    printf("%d\n", total_coins);
 }
