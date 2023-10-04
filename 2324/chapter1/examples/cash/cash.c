@@ -2,33 +2,32 @@
 #include <cs50.h>
 #include <math.h>
 
-// Define constants for coin values
-const int QUARTER = 25;
-const int DIME = 10;
-const int NICKEL = 5;
-const int PENNY = 1;
-
 int main(void)
 {
+    const int COIN_VALUES[] = {25, 10, 5, 1}; // Coin values in cents
+    const int NUM_COINS = sizeof(COIN_VALUES) / sizeof(int); // Number of coin denominations
+
     float change_owed;
-    int coins[] = {QUARTER, DIME, NICKEL, PENNY};  // Array to store coin values
-    int total_coins = 0;  // Variable to store the total number of coins
 
     do
     {
-        change_owed = get_float("Change owed: ");  // Get user input for change owed
+        change_owed = get_float("Change owed: ");
     }
-    while (change_owed < 0);  // Ensure input is non-negative
+    while (change_owed < 0);
 
-    int cents = round(change_owed * 100);  // Convert dollars to cents and round
+    int cents = round(change_owed * 100);
+    int total_coins = 0;
 
-    // Calculate minimum number of coins required
-    for (int i = cents; i > 0;)  // Iterate while there is change left
+    for (int i = 0; i < NUM_COINS; i++)
     {
-        for (int j = 0; i >= coins[j]; i -= coins[j++], total_coins++);  // Calculate each coin
+        while (cents >= COIN_VALUES[i])
+        {
+            cents -= COIN_VALUES[i];
+            total_coins++;
+        }
     }
 
-    printf("%d\n", total_coins);  // Print minimum number of coins
+    printf("%d\n", total_coins);
 
     return 0;
 }
