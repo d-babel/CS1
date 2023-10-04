@@ -9,9 +9,8 @@ int main(void)
     const int COIN_VALUES[] = {25, 10, 5, 1};
     const int NUM_COINS = sizeof(COIN_VALUES) / sizeof(int); // Count of avaliable coin denominations
 
-    float change_owed;
 
-    change_owed = get_float("Change owed: ");
+    float change_owed = get_float("Change owed: ");
 
     while (change_owed < 0);
 
