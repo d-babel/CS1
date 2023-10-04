@@ -1,30 +1,21 @@
-// Cash by Drew Babel
-
 #include <stdio.h>
 #include <cs50.h>
 #include <math.h>
 
-int main(void)
-{
-    const int COIN_VALUES[] = {25, 10, 5, 1};
-    const int NUM_COINS = sizeof(COIN_VALUES) / sizeof(int); // Count of avaliable coin denominations
+int main(void) {
+    const int COINS[] = {25, 10, 5, 1};
+    int coins = 0, cents = round(get_float("Change owed: ") * 100);
 
+    while (cents < 0) {
+        cents = round(get_float("Change owed: ") * 100);
+    }
 
-    floatchange_owed = get_float("Change owed: ");
-
-    while (change_owed < 0);
-
-    int cents = round(change_owed * 100);
-    int total_coins = 0;
-
-    for (int i = 0; i < NUM_COINS; i++)
-    {
-        while (cents >= COIN_VALUES[i])
-        {
-            cents -= COIN_VALUES[i];
-            total_coins++;
+    for (int i = 0; i < 4; i++) {
+        while (cents >= COINS[i]) {
+            cents -= COINS[i];
+            coins += 1;
         }
     }
 
-    printf("%d\n", total_coins);
+    printf("%d\n", coins);
 }
