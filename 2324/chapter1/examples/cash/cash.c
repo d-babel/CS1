@@ -9,11 +9,11 @@ int main(void)
     const int COIN_VALUES[] = {25, 10, 5, 1};
     const int NUM_COINS = sizeof(COIN_VALUES) / sizeof(int); // Count of avaliable coin denominations
 
+    float change_owed;
 
-    do
-    {
-        change_owed = get_float("Change owed: "); // Prompt the user for the amount of change owed
-    }
+
+change_owed = get_float("Change owed: "); // Prompt the user for the amount of change owed
+
     while (change_owed < 0);
 
     int cents = round(change_owed * 100); // Convert the dollar amount to cents and round it to the nearest cent
