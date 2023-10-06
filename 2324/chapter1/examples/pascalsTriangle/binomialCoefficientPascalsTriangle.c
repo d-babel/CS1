@@ -1,4 +1,4 @@
-//Pascal's Trangle by Drew Babel
+// Binomial Coefficient Pascal's Trangle by Drew Babel
 
 #include <stdio.h>
 
