@@ -1,36 +1,30 @@
-// Binomial Coefficient Pascal's Trangle by Drew Babel
+// (Binomial Coefficient) Pascals Triangle by Drew Babel
 
 #include <stdio.h>
 
-// calc the factorial of a number
+// calculate the factorial of a number
 unsigned long long factorial(int n) {
     unsigned long long fact = 1;
-    for (int i = 1; i <= n; i++) {
-        fact *= i;
-    }
+    for (int i = 2; i <= n; i++) fact *= i; // multiply by all integers from 2 to n
     return fact;
 }
 
-// calc binomial coefficient C(n, k)
+// calculate binomial coefficient C(n, k)
 unsigned long long binomialCoefficient(int n, int k) {
-    return factorial(n) / (factorial(k) * factorial(n - k));
+    return factorial(n) / (factorial(k) * factorial(n - k)); // formula for binomial coefficient
 }
 
-// print a row of Pascal's triangle
+// print row of Pascal's triangle with formatting
 void printPascalsRow(int row, int numRows) {
-    for (int i = 0; i < numRows - row; i++) {
-        printf("  "); // spaces for formatting
-    }
-    for (int i = 0; i <= row; i++) {
-        printf("%4llu  ", binomialCoefficient(row, i)); // print coefficients
-    }
+    for (int i = 0; i < numRows - row; i++) printf("  "); // leading spaces
+    for (int i = 0; i <= row; i++) printf("%4llu  ", binomialCoefficient(row, i)); // coefficients
     printf("\n");
 }
 
 int main() {
     int numRows;
 
-    // ask user for num of rows
+    // ask user for num of rows for Pascal's triangle
     printf("Enter the number of rows for Pascal's triangle: ");
     scanf("%d", &numRows);
 
