@@ -1,28 +1,30 @@
 // Cash by Drew Babel
 
-#include <stdio.h>
 #include <cs50.h>
 #include <math.h>
+#include <stdio.h>
 
-int main(void) {
+int main(void)
+{
     const int COINS[] = {25, 10, 5, 1};
 
-    // keep track of the number of coins used and the change owed in cents.
-    int coins = 0, cents = round(get_float("Change owed: ") * 100);
+    int coins = 0, cents = round(get_float("Change owed: ") * 100); // keep track of number of coins used and change owed in cents.
 
-    // Ensure that the user inputs a non-negative value for change owed.
-    while (cents < 0) {
+    while (cents < 0)
+    { // check for non-negative value for change owed
         cents = round(get_float("Change owed: ") * 100);
     }
 
-    // Iterate through the array of coin values and calculate the number of each coin needed.
-    for (int i = 0; i < 4; i++) {
-        while (cents >= COINS[i]) {
+    // iterate through coin value array and calc num of each coin needed
+    for (int i = 0; i < 4; i++)
+    {
+        while (cents >= COINS[i])
+        {
             cents -= COINS[i];
             coins += 1;
         }
     }
 
-    // Print the total number of coins used to make the change.
+    // print total coins used
     printf("%d\n", coins);
 }
