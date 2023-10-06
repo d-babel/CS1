@@ -2,15 +2,15 @@
 
 #include <stdio.h>
 
-// calculate the factorial of a number (unsigned used to prevent negatives)
-unsigned long long factorial(int n) {
+// calculate the factorial of a number 
+long long factorial(int n) {
     unsigned long long fact = 1;
     for (int i = 2; i <= n; i++) fact *= i; // multiply by all integers from 2 to n
     return fact;
 }
 
 // calculate binomial coefficient C(n, k)
-unsigned long long binomialCoefficient(int n, int k) {
+long long binomialCoefficient(int n, int k) {
     return factorial(n) / (factorial(k) * factorial(n - k)); // formula for binomial coefficient
 }
 
