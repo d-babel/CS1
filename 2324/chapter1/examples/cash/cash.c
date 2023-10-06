@@ -1,3 +1,5 @@
+//Cash by Drew Babel
+
 #include <stdio.h>
 #include <cs50.h>
 #include <math.h>
