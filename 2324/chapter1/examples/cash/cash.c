@@ -21,7 +21,7 @@ int main(void)
         while (cents >= COINS[i])
         {
             cents -= COINS[i];
-            coins += 1;
+            coins ++;
         }
     }
 
