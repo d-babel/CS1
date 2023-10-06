@@ -30,7 +30,6 @@ int main() {
 
     if (numRows <= 0) {
         printf("Please enter a positive integer.\n");
-        return 1;
     }
 
     // print Pascal's triangle
