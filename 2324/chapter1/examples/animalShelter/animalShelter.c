@@ -1,10 +1,9 @@
-// Animal Shelter by Drew Babel
+
 
 #include <stdio.h>
 
-int main()
-{
-    int n, weeks, total = 0; // Initialize 'total' to zero
+int main() {
+    int n, weeks;
     float a;
     printf("Number of animals: ");
     scanf("%d", &n);
@@ -13,9 +12,15 @@ int main()
     printf("Weeks: ");
     scanf("%d", &weeks);
 
-    for(int i = 1; i <= weeks; i++) {
-        printf("Week %d: %d animals adopted\n", i, (int)(n *= a));
-        total += (int)n;
+    int total = 0;
+    for (int i = 1; i <= weeks; i++) {
+        int adopted = (int)(n * a);
+        printf("Week %d: %d animals adopted\n", i, adopted);
+        total += adopted;
+        n = adopted; // Update the number of animals available for adoption
     }
+
     printf("Total animals adopted after %d weeks: %d\n", weeks, total);
+
+    return 0;
 }
