@@ -4,7 +4,7 @@
 
 int main()
 {
-    int n, weeks, total;
+    int n, weeks, total = 0; // Initialize 'total' to zero
     float a;
     printf("Number of animals: ");
     scanf("%d", &n);
