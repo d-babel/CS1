@@ -27,5 +27,5 @@ int main(void)
 
     // print total coins used
     printf("%d\n", coins);
-}check50 cs50/problems/2019/ap/cash
+}
 
