@@ -21,11 +21,10 @@ int main(void)
         while (cents >= COINS[i])
         {
             cents -= COINS[i];
-            coins ++;
+            coins++;
         }
     }
 
     // print total coins used
     printf("%d\n", coins);
 }
-
