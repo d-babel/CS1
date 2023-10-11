@@ -2,7 +2,7 @@
 
 #include <stdio.h>
 
-// calculate the factorial of a number 
+// calculate the factorial of a number
 long long factorial(int n) {
     unsigned long long fact = 1;
     for (int i = 2; i <= n; i++) fact *= i; // multiply by all integers from 2 to n
@@ -10,7 +10,7 @@ long long factorial(int n) {
 }
 
 // calculate binomial coefficient C(n, k)
-long long binomialCoefficient(int n, int k) {
+long long binomialCoefficient(int k, int n) {
     return factorial(n) / (factorial(k) * factorial(n - k)); // formula for binomial coefficient
 }
 
