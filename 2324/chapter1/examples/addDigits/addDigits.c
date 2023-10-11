@@ -1,38 +1,27 @@
 #include <stdio.h>
-#include <stdbool.h>
 #include <ctype.h>
 
 int main() {
+    char input[100];
     int sum = 0;
-    char input[100]; // use an array to store users input to 100 digits
+    int validInput = 0;
 
-    while (true) {
+    while (!validInput) {
         printf("Enter a number: ");
         if (fgets(input, sizeof(input), stdin) == NULL) {
-            // handle input error
-            printf("Error reading input.\n");
-            return 1;
         }
 
-        int i = 0;
-        bool valid = true; // Assume the input is valid until proven otherwise
+        validInput = 1;
+        sum = 0;
 
-        while (input[i] != '\0' && input[i] != '\n') {
-            if (!isdigit(input[i])) {
-                // If any character is not a digit, it's an invalid input
-                valid = false;
-                break;
+        for (int i = 0; input[i] != '\0'; i++) {
+            if (isdigit(input[i])) {
+                sum += input[i] - '0';
+            } else if (input[i] != '\n') {
+                validInput = 0;
             }
-            sum += input[i] - '0';
-            i++;
-        }
-
-        if (valid) {
-            printf("The sum of the individual digits is: %d\n", sum);
-            break; // Exit the loop if input is valid
-        } else {
-            printf("Invalid input. Please enter a valid number.\n");
-            sum = 0; // Reset the sum for the next input attempt
         }
     }
+
+    printf("Sum of the individual digits: %d\n", sum);
 }
