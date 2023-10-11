@@ -4,12 +4,12 @@
 
 int main() {
     int sum = 0;
-    char input[100]; // Use an array to store the user's input
+    char input[100]; // use an array to store users input to 100 digits
 
     while (true) {
         printf("Enter a number: ");
         if (fgets(input, sizeof(input), stdin) == NULL) {
-            // Handle input error
+            // handle input error
             printf("Error reading input.\n");
             return 1;
         }
