@@ -1,36 +1,43 @@
 #include <stdio.h>
+#include <stdbool.h>
+#include <ctype.h>
 
 int main() {
-    printf("Enter a number: ");
     int sum = 0;
-    char c;
+    char input[100]; // Use an array to store the user's input
 
-    int isValidInput = 1; // Flag to check if the input is valid
+    while (true) {
+        printf("Enter a number: ");
+        if (fgets(input, sizeof(input), stdin) == NULL) {
+            // Handle input error
+            printf("Error reading input.\n");
+            return 1;
+        }
 
-    while ((c = getchar()) != '\n') {  // Check until an empty input
-        if (c == '-') {
-            // handle negative sign
-            if (sum != 0) {
-                // if there are already digits in the sum, the input is invalid
-                isValidInput = 0;
+        int i = 0;
+        bool valid = true; // Assume the input is valid until proven otherwise
+
+        while (input[i] != '\0' && input[i] != '\n') {
+            if (input[i] == '-' && i == 0) {
+                // Negative sign is allowed only at the beginning
+                i++;
+            } else if (isdigit(input[i])) {
+                sum += input[i] - '0';
+                i++;
+            } else {
+                // If any character is not a digit, it's an invalid input
+                valid = false;
                 break;
             }
         }
-        else if (c >= '0' && c <= '9') {
-            // if the character is a digit, convert to an integer, add to sum
-            sum += c - '0';
-        }
-        else {
-            // if character is not digit or negative sign, the input is invalid
-            isValidInput = 0;
-            break;
-        }
-    }
 
-    if (isValidInput) {
-        printf("The sum of the individual digits is: %d\n", sum);
-    } else {
-        printf("Invalid input. Please enter a valid number.\n");
+        if (valid) {
+            printf("The sum of the individual digits is: %d\n", sum);
+            break; // Exit the loop if input is valid
+        } else {
+            printf("Invalid input. Please enter a valid number.\n");
+            sum = 0; // Reset the sum for the next input attempt
+        }
     }
 
     return 0;
