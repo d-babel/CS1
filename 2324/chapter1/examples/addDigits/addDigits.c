@@ -1,5 +1,3 @@
-// addDigits by Drew Babel
-
 #include <stdio.h>
 
 int main() {
@@ -7,13 +5,33 @@ int main() {
     int sum = 0;
     char c;
 
-    while ((c = getchar()) != '\n') {  // Check until an empty input
+    int isValidInput = 1; // Flag to check if the input is valid
 
-        if (c >= '0' && c <= '9') {
+    while ((c = getchar()) != '\n') {  // Check until an empty input
+        if (c == '-') {
+            // handle negative sign
+            if (sum != 0) {
+                // if there are already digits in the sum, the input is invalid
+                isValidInput = 0;
+                break;
+            }
+        }
+        else if (c >= '0' && c <= '9') {
             // if the character is a digit, convert to an integer, add to sum
             sum += c - '0';
         }
+        else {
+            // if character is not digit or negative sign, the input is invalid
+            isValidInput = 0;
+            break;
+        }
     }
 
-    printf("The sum of the individual digits is: %d\n", sum);  
+    if (isValidInput) {
+        printf("The sum of the individual digits is: %d\n", sum);
+    } else {
+        printf("Invalid input. Please enter a valid number.\n");
+    }
+
+    return 0;
 }
