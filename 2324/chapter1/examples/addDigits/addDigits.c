@@ -18,17 +18,13 @@ int main() {
         bool valid = true; // Assume the input is valid until proven otherwise
 
         while (input[i] != '\0' && input[i] != '\n') {
-            if (input[i] == '-' && i == 0) {
-                // Negative sign is allowed only at the beginning
-                i++;
-            } else if (isdigit(input[i])) {
-                sum += input[i] - '0';
-                i++;
-            } else {
+            if (!isdigit(input[i])) {
                 // If any character is not a digit, it's an invalid input
                 valid = false;
                 break;
             }
+            sum += input[i] - '0';
+            i++;
         }
 
         if (valid) {
@@ -39,6 +35,4 @@ int main() {
             sum = 0; // Reset the sum for the next input attempt
         }
     }
-
-    return 0;
 }
