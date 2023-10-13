@@ -16,6 +16,7 @@ int main(void)
         // rightmost digit
         int digit = isbn % 10;
         sum += digit * position;
+
         // move to  next position
         position--;
 
