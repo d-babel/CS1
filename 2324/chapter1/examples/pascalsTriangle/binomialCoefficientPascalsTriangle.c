@@ -17,7 +17,7 @@ long long binomialCoefficient(int k, int n) {
 // print row of Pascal's triangle with formatting
 void printPascalsRow(int row, int numRows) {
     for (int i = 0; i < numRows - row; i++) printf("  "); // leading spaces
-    for (int i = 0; i <= row; i++) printf("%4llu  ", binomialCoefficient(i, row)); // coefficients >?
+    for (int i = 0; i <= row; i++) printf("%4llu  ", binomialCoefficient(row, i)); // coefficients >?
     printf("\n");
 }
 
