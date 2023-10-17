@@ -13,7 +13,7 @@
 #define MASTERCARD_PREFIX_5 55
 
 int main(void) {
-    // Prompt for input
+    // input
     long long card_number;
     do {
         card_number = get_long_long("Enter card number: ");
