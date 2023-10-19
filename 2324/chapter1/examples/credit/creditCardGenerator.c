@@ -81,7 +81,7 @@ int main(void) {
 
     // Generate and print the requested number of credit card numbers
     for (int i = 0; i < num_cards; i++) {
-        long long card_number;
+        long long card_number = 0;
 
         if (strcmp(brand, "AMEX") == 0) {
             card_number = generate_card_number(rand() % 2 ? AMEX_PREFIX_1 : AMEX_PREFIX_2, AMEX_LENGTH);
