@@ -77,8 +77,28 @@ int main(void) {
     }
 
     int num_cards;
-    printf("How many valid credit card numbers do you want? ");
-    scanf("%d", &num_cards);
+    int valid_input = 0;
+    while (!valid_input) {
+        printf("How many valid credit card numbers do you want? ");
+        if (scanf("%d", &num_cards) == 1) {  // Check if the input is a number
+            if (num_cards > 20) {  // If the number is greater than 20, ask for confirmation
+                printf("You're about to print a lot of lines! Are you sure? (yes/no) ");
+                char response[10];
+                scanf("%s", response);
+                to_uppercase(response);
+                if (strcmp(response, "YES") == 0) {
+                    valid_input = 1;
+                } else {
+                    printf("Please enter a number less than or equal to 20.\n");
+                }
+            } else {
+                valid_input = 1;
+            }
+        } else {
+            printf("Invalid input. Please enter a valid number.\n");
+            while (getchar() != '\n');  // Clear the input buffer
+        }
+    }
 
     // Generate and print the requested number of credit card numbers
     for (int i = 0; i < num_cards; i++) {
