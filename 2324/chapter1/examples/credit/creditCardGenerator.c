@@ -167,7 +167,8 @@ int main(void) {
 
         // Print the table row with proper spacing and numbering
             int num_digits = snprintf(NULL, 0, "%d", num_cards);
-            printf("|%*d. |%-*s|%-*lld|\n", num_digits, i + 1, brand_column_width - 3, chosen_brand, card_number_column_width - 2, card_number);
+            int card_num_width = card_number_column_width - num_digits;
+            printf("|%*d. |%-*s|%-*lld|\n", num_digits, i + 1, brand_column_width - 3, chosen_brand, card_num_width, card_number);
         if (i == num_cards - 1) {
             print_horizontal_line(total_width);
         }
