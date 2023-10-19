@@ -56,6 +56,14 @@ long long generate_card_number(int prefix, int length) {
     return base * 10 + final_digit;
 }
 
+// Function to print a horizontal line separator
+void print_horizontal_line(int width) {
+    for (int i = 0; i < width; i++) {
+        printf("-");
+    }
+    printf("\n");
+}
+
 int main(void) {
     srand(time(NULL)); // Seed the random number generator with current time
 
@@ -107,9 +115,15 @@ int main(void) {
         }
     }
 
+    // Calculate the width of the table columns
+    int brand_column_width = 35;
+    int card_number_column_width = 25;
+
     // Generate and print the requested number of credit card numbers
-    printf("%-35s%-25s\n", "Brand", "Card Number");
-    printf("--------------------------------------------------------------\n"); // Line separator
+    print_horizontal_line(brand_column_width + card_number_column_width);
+    printf("|%-*s|%-*s|\n", brand_column_width, "Brand", card_number_column_width, "Card Number");
+    print_horizontal_line(brand_column_width + card_number_column_width);
+
     for (int i = 0; i < num_cards; i++) {
         long long card_number = 0;
         char chosen_brand[BRAND_MAX_LEN];
@@ -143,8 +157,10 @@ int main(void) {
             strcpy(chosen_brand, "MASTERCARD");
         }
 
-        printf("%-35s%lld\n", chosen_brand, card_number);
+        printf("|%-*s|%lld|\n", brand_column_width, chosen_brand, card_number);
     }
+
+    print_horizontal_line(brand_column_width + card_number_column_width);
 
     return 0;
 }
