@@ -27,7 +27,7 @@ int main(void) {
         digit_count++;
     }
 
-    // Calculate checksum
+    // calc checksum
     long long temp = card_number;
     int sum1 = 0;
     int remainder1;
@@ -39,7 +39,7 @@ int main(void) {
         temp = temp / 100;
     }
 
-    // Add the sum to the digits that weren't multiplied by 2
+    // add sum to digits that were not multiplied by 2
     long long temp2 = card_number;
     int sum2 = 0;
     int remainder2;
