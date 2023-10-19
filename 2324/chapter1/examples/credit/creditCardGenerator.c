@@ -168,8 +168,10 @@ int main(void) {
             max_card_length = card_length;
         }
 
-        printf("|%-*s|%2d. %lld%*s|\n", brand_column_width, chosen_brand, i + 1, card_number,
-            card_number_column_width - card_length, "");
+        printf("|%-*s|%-*s|\n", brand_column_width, chosen_brand, card_number_column_width, "");
+
+        // Print the card number outside the table with numbering
+        printf("%2d. %lld\n", i + 1, card_number);
     }
 
     print_horizontal_line(total_width);
