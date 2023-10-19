@@ -93,7 +93,7 @@ int main(void) {
                 char response[10];
                 int valid_response = 0;
                 while (!valid_response) {
-                    printf("You're about to print a lot of lines! Are you sure? (y/n) ");
+                    printf("You're about to print a lot of lines! Are you sure? (y/n/yes/no) ");
                     scanf("%s", response);
                     to_uppercase(response);
                     if (strcmp(response, "YES") == 0 || strcmp(response, "Y") == 0) {
@@ -168,9 +168,11 @@ int main(void) {
             max_card_length = card_length;
         }
 
-        printf("|%-*s|%lld%*s|\n", brand_column_width, chosen_brand, card_number,
+        printf("|%-*s|%2d. %lld%*s|\n", brand_column_width, chosen_brand, i + 1, card_number,
             card_number_column_width - card_length, "");
     }
 
     print_horizontal_line(total_width);
+
+    return 0;
 }
