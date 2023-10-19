@@ -82,14 +82,21 @@ int main(void) {
         printf("How many valid credit card numbers do you want? ");
         if (scanf("%d", &num_cards) == 1) {  // Check if the input is a number
             if (num_cards > 20) {  // If the number is greater than 20, ask for confirmation
-                printf("You're about to print a lot of lines! Are you sure? (yes/no) ");
                 char response[10];
-                scanf("%s", response);
-                to_uppercase(response);
-                if (strcmp(response, "YES") == 0) {
-                    valid_input = 1;
-                } else {
-                    printf("Please enter a number less than or equal to 20.\n");
+                int valid_response = 0;
+                while (!valid_response) {
+                    printf("You're about to print a lot of lines! Are you sure? (y/n/yes/no) ");
+                    scanf("%s", response);
+                    to_uppercase(response);
+                    if (strcmp(response, "YES") == 0 || strcmp(response, "Y") == 0) {
+                        valid_input = 1;
+                        valid_response = 1;
+                    } else if (strcmp(response, "NO") == 0 || strcmp(response, "N") == 0) {
+                        printf("Please enter a number less than or equal to 20.\n");
+                        valid_response = 1;
+                    } else {
+                        printf("Invalid response. Please answer with y, n, yes, or no.\n");
+                    }
                 }
             } else {
                 valid_input = 1;
