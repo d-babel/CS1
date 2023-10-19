@@ -85,13 +85,28 @@ int main(void) {
         long long card_number = 0;
         char chosen_brand[BRAND_MAX_LEN];
 
-        if (strcmp(brand, "AMEX") == 0 || (strcmp(brand, "MIX") == 0 && rand() % 3 == 0)) {
+        if (strcmp(brand, "MIX") == 0) {
+            int brand_choice = rand() % 3;  // Randomly choose between 0, 1, and 2
+            switch (brand_choice) {
+                case 0:
+                    strcpy(brand, "AMEX");
+                    break;
+                case 1:
+                    strcpy(brand, "VISA");
+                    break;
+                case 2:
+                    strcpy(brand, "MASTERCARD");
+                    break;
+            }
+        }
+
+        if (strcmp(brand, "AMEX") == 0) {
             card_number = generate_card_number(rand() % 2 ? AMEX_PREFIX_1 : AMEX_PREFIX_2, AMEX_LENGTH);
             strcpy(chosen_brand, "AMEX");
-        } else if (strcmp(brand, "VISA") == 0 || (strcmp(brand, "MIX") == 0 && rand() % 3 == 1)) {
+        } else if (strcmp(brand, "VISA") == 0) {
             card_number = generate_card_number(VISA_PREFIX, rand() % 2 ? VISA_LENGTH_1 : VISA_LENGTH_2);
             strcpy(chosen_brand, "VISA");
-        } else if (strcmp(brand, "MASTERCARD") == 0 || (strcmp(brand, "MIX") == 0 && rand() % 3 == 2)) {
+        } else if (strcmp(brand, "MASTERCARD") == 0) {
             int prefixes[MASTERCARD_PREFIXES_COUNT] = MASTERCARD_PREFIXES;
             card_number = generate_card_number(prefixes[rand() % MASTERCARD_PREFIXES_COUNT], MASTERCARD_LENGTH);
             strcpy(chosen_brand, "MASTERCARD");
