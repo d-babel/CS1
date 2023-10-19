@@ -122,7 +122,20 @@ int main(void) {
     // Calculate the total width of the table (including borders)
     int total_width = brand_column_width + card_number_column_width + 4; // 4 for the borders (2 on each side)
 
-    // Print the table header and horizontal line
+    // Calculate the maximum number of digits in card numbers
+    int max_card_digits = 1;
+    for (int i = 0; i < num_cards; i++) {
+        long long card_number = generate_card_number(VISA_PREFIX, VISA_LENGTH_2);
+        int card_length = snprintf(NULL, 0, "%lld", card_number);
+        if (card_length > max_card_digits) {
+            max_card_digits = card_length;
+        }
+    }
+
+    // Calculate the number of spaces needed for the numbering
+    int numbering_spaces = snprintf(NULL, 0, "%d", num_cards);
+
+    // Print the top part of the table with spaces for numbering
     printf("\n");
     print_horizontal_line(total_width);
     printf("|%-*s|%-*s|\n", brand_column_width, "Brand", card_number_column_width, "Card Number");
@@ -162,11 +175,15 @@ int main(void) {
             strcpy(chosen_brand, "MASTERCARD");
         }
 
-        // Check the length of the card number and update max_card_length if needed
+        // Check the length of the card number and update max_card_digits if needed
         int card_length = snprintf(NULL, 0, "%lld", card_number);
+        if (card_length > max_card_digits) {
+            max_card_digits = card_length;
+        }
 
         // Print the table row with proper spacing and numbering
-        printf("%2d.|%-*s|%-*lld|\n", i + 1, brand_column_width, chosen_brand, card_number_column_width, card_number);
+        printf("|%-*s|%-*lld|\n", brand_column_width, chosen_brand, card_number_column_width, card_number);
+
         if (i == num_cards - 1) {
             print_horizontal_line(total_width);
         }
