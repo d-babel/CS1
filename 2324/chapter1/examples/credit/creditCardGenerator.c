@@ -58,10 +58,11 @@ long long generate_card_number(int prefix, int length) {
 
 // Function to print a horizontal line separator
 void print_horizontal_line(int width) {
-    for (int i = 0; i < width; i++) {
+    printf("|");
+    for (int i = 0; i < width - 2; i++) {
         printf("-");
     }
-    printf("\n");
+    printf("|\n");
 }
 
 int main(void) {
@@ -116,14 +117,13 @@ int main(void) {
     }
 
     // Calculate the width of the table columns
-    int brand_column_width = 35;
+    int brand_column_width = 33;
     int card_number_column_width = 25;
 
     // Calculate the total width of the table (including borders)
     int total_width = brand_column_width + card_number_column_width + 3; // 3 for the borders (2 on the right and 1 on the left)
 
     // Print the table header and horizontal line
-    printf("\n");
     print_horizontal_line(total_width);
     printf("|%-*s|%-*s|\n", brand_column_width, "Brand", card_number_column_width, "Card Number");
     print_horizontal_line(total_width);
@@ -166,7 +166,7 @@ int main(void) {
         int card_length = snprintf(NULL, 0, "%lld", card_number);
 
         // Print the table row with proper spacing and numbering
-        printf("%2d.|%-*s|%-*lld|\n", i + 1, brand_column_width, chosen_brand, card_number_column_width, card_number);
+        printf("|%2d. |%-*s|%-*lld|\n", i + 1, brand_column_width - 4, chosen_brand, card_number_column_width, card_number);
         if (i == num_cards - 1) {
             print_horizontal_line(total_width);
         }
