@@ -120,7 +120,7 @@ int main(void) {
     int card_number_column_width = 25;
 
     // Calculate the total width of the table (including borders)
-    int total_width = brand_column_width + card_number_column_width + 4; // 4 for the borders (2 on each side)
+    int total_width = brand_column_width + card_number_column_width + 3; // 3 for the borders (2 on the right and 1 on the left)
 
     // Print the table header and horizontal line
     printf("\n");
@@ -171,4 +171,6 @@ int main(void) {
             print_horizontal_line(total_width);
         }
     }
+
+    return 0;
 }
