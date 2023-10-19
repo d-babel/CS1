@@ -122,13 +122,12 @@ int main(void) {
     // Calculate the total width of the table (including borders)
     int total_width = brand_column_width + card_number_column_width + 4; // 4 for the borders (2 on each side)
 
-    // Calculate the number of spaces needed to make the right-most line straight down
-    int spaces_needed = total_width - (brand_column_width + card_number_column_width);
-
     // Generate and print the requested number of credit card numbers
     print_horizontal_line(total_width);
     printf("|%-*s|%-*s|\n", brand_column_width, "Brand", card_number_column_width, "Card Number");
     print_horizontal_line(total_width);
+
+    int max_card_length = 0;  // Initialize the maximum card number length to 0
 
     for (int i = 0; i < num_cards; i++) {
         long long card_number = 0;
@@ -163,7 +162,14 @@ int main(void) {
             strcpy(chosen_brand, "MASTERCARD");
         }
 
-        printf("|%-*s|%lld%*s|\n", brand_column_width, chosen_brand, card_number, spaces_needed, "");
+        // Check the length of the card number and update max_card_length if needed
+        int card_length = snprintf(NULL, 0, "%lld", card_number);
+        if (card_length > max_card_length) {
+            max_card_length = card_length;
+        }
+
+        printf("|%-*s|%lld%*s|\n", brand_column_width, chosen_brand, card_number,
+            card_number_column_width - card_length, "");
     }
 
     print_horizontal_line(total_width);
