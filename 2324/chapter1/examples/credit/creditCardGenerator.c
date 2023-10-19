@@ -82,16 +82,20 @@ int main(void) {
     // Generate and print the requested number of credit card numbers
     for (int i = 0; i < num_cards; i++) {
         long long card_number = 0;
+        char chosen_brand[BRAND_MAX_LEN];
 
-        if (strcmp(brand, "AMEX") == 0) {
+        if (strcmp(brand, "AMEX") == 0 || (strcmp(brand, "MIX") == 0 && rand() % 3 == 0)) {
             card_number = generate_card_number(rand() % 2 ? AMEX_PREFIX_1 : AMEX_PREFIX_2, AMEX_LENGTH);
-        } else if (strcmp(brand, "VISA") == 0) {
+            strcpy(chosen_brand, "AMEX");
+        } else if (strcmp(brand, "VISA") == 0 || (strcmp(brand, "MIX") == 0 && rand() % 3 == 1)) {
             card_number = generate_card_number(VISA_PREFIX, rand() % 2 ? VISA_LENGTH_1 : VISA_LENGTH_2);
-        } else if (strcmp(brand, "MASTERCARD") == 0) {
+            strcpy(chosen_brand, "VISA");
+        } else if (strcmp(brand, "MASTERCARD") == 0 || (strcmp(brand, "MIX") == 0 && rand() % 3 == 2)) {
             int prefixes[MASTERCARD_PREFIXES_COUNT] = MASTERCARD_PREFIXES;
             card_number = generate_card_number(prefixes[rand() % MASTERCARD_PREFIXES_COUNT], MASTERCARD_LENGTH);
+            strcpy(chosen_brand, "MASTERCARD");
         }
 
-        printf("Generated Card Number: %lld\n", card_number);
+        printf("Generated Card Number (%s): %lld\n", chosen_brand, card_number);
     }
-}
+    }
