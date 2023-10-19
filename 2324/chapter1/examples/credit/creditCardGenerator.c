@@ -64,11 +64,12 @@ int main(void) {
 
     // Keep asking the user until a valid brand is entered
     while (!valid_brand) {
-        printf("Which brand do you want (AMEX, VISA, MASTERCARD)? ");
+        printf("Which brand do you want (AMEX, VISA, MASTERCARD, MIX)? ");
         scanf("%s", brand);
         to_uppercase(brand); // Convert user input to uppercase to handle different cases
 
-        if (strcmp(brand, "AMEX") == 0 || strcmp(brand, "VISA") == 0 || strcmp(brand, "MASTERCARD") == 0) {
+        if (strcmp(brand, "AMEX") == 0 || strcmp(brand, "VISA") == 0 ||
+            strcmp(brand, "MASTERCARD") == 0 || strcmp(brand, "MIX") == 0) {
             valid_brand = 1; // set the flag to true if valid brand is entered
         } else {
             printf("Invalid brand choice. Please try again.\n");
@@ -98,4 +99,6 @@ int main(void) {
 
         printf("Generated Card Number (%s): %lld\n", chosen_brand, card_number);
     }
-    }
+
+    return 0;
+}
