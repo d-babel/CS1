@@ -93,7 +93,7 @@ int main(void) {
                 char response[10];
                 int valid_response = 0;
                 while (!valid_response) {
-                    printf("You're about to print a lot of lines! Are you sure? (y/n/yes/no) ");
+                    printf("You're about to print a lot of lines! Are you sure? (y/n) ");
                     scanf("%s", response);
                     to_uppercase(response);
                     if (strcmp(response, "YES") == 0 || strcmp(response, "Y") == 0) {
@@ -173,6 +173,4 @@ int main(void) {
     }
 
     print_horizontal_line(total_width);
-
-    return 0;
 }
