@@ -115,6 +115,44 @@ int main(void) {
         }
     }
 
+    // Generate and print the requested number of credit card numbers
+    for (int i = 0; i < num_cards; i++) {
+        long long card_number = 0;
+        char chosen_brand[BRAND_MAX_LEN];
+        char current_brand[BRAND_MAX_LEN];  // Create a new variable to store the current brand for this iteration
+        strcpy(current_brand, brand);       // Initialize it with the user's choice
+
+        if (strcmp(current_brand, "MIX") == 0) {
+            int brand_choice = rand() % 3;  // Randomly choose between 0, 1, and 2
+            switch (brand_choice) {
+                case 0:
+                    strcpy(current_brand, "AMEX");
+                    break;
+                case 1:
+                    strcpy(current_brand, "VISA");
+                    break;
+                case 2:
+                    strcpy(current_brand, "MASTERCARD");
+                    break;
+            }
+        }
+
+        if (strcmp(current_brand, "AMEX") == 0) {
+            card_number = generate_card_number(rand() % 2 ? AMEX_PREFIX_1 : AMEX_PREFIX_2, AMEX_LENGTH);
+            strcpy(chosen_brand, "AMEX");
+        } else if (strcmp(current_brand, "VISA") == 0) {
+            card_number = generate_card_number(VISA_PREFIX, rand() % 2 ? VISA_LENGTH_1 : VISA_LENGTH_2);
+            strcpy(chosen_brand, "VISA");
+        } else if (strcmp(current_brand, "MASTERCARD") == 0) {
+            int prefixes[MASTERCARD_PREFIXES_COUNT] = MASTERCARD_PREFIXES;
+            card_number = generate_card_number(prefixes[rand() % MASTERCARD_PREFIXES_COUNT], MASTERCARD_LENGTH);
+            strcpy(chosen_brand, "MASTERCARD");
+        }
+
+        // Print the card number outside of the table with numbering
+        printf("%2d. %lld\n", i + 1, card_number);
+    }
+
     // Calculate the width of the table columns
     int brand_column_width = 35;
     int card_number_column_width = 25;
@@ -122,13 +160,13 @@ int main(void) {
     // Calculate the total width of the table (including borders)
     int total_width = brand_column_width + card_number_column_width + 4; // 4 for the borders (2 on each side)
 
-    // Generate and print the requested number of credit card numbers
+    // Print the table header and horizontal line
+    printf("\n");
     print_horizontal_line(total_width);
     printf("|%-*s|%-*s|\n", brand_column_width, "Brand", card_number_column_width, "Card Number");
     print_horizontal_line(total_width);
 
-    int max_card_length = 0;  // Initialize the maximum card number length to 0
-
+    // Print the table rows with proper spacing
     for (int i = 0; i < num_cards; i++) {
         long long card_number = 0;
         char chosen_brand[BRAND_MAX_LEN];
@@ -164,17 +202,14 @@ int main(void) {
 
         // Check the length of the card number and update max_card_length if needed
         int card_length = snprintf(NULL, 0, "%lld", card_number);
-        if (card_length > max_card_length) {
-            max_card_length = card_length;
-        }
 
+        // Print the table row with proper spacing
         printf("|%-*s|%-*s|\n", brand_column_width, chosen_brand, card_number_column_width, "");
 
-        // Print the card number outside the table with numbering
-        printf("%2d. %lld\n", i + 1, card_number);
+        if (i == num_cards - 1) {
+            print_horizontal_line(total_width);
+        }
     }
-
-    print_horizontal_line(total_width);
 
     return 0;
 }
