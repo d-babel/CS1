@@ -108,6 +108,7 @@ int main(void) {
     }
 
     // Generate and print the requested number of credit card numbers
+    printf("%-35s%-25s\n", "Brand", "Card Number");
     for (int i = 0; i < num_cards; i++) {
         long long card_number = 0;
         char chosen_brand[BRAND_MAX_LEN];
@@ -141,7 +142,7 @@ int main(void) {
             strcpy(chosen_brand, "MASTERCARD");
         }
 
-        printf("Generated Card Number (%s): %lld\n", chosen_brand, card_number);
+        printf("%-35s%lld\n", chosen_brand, card_number);
     }
 
     return 0;
