@@ -78,7 +78,7 @@ int main(void) {
 
         if (strcmp(brand, "AMEX") == 0 || strcmp(brand, "VISA") == 0 ||
             strcmp(brand, "MASTERCARD") == 0 || strcmp(brand, "MIX") == 0) {
-            valid_brand = 1; // set the flag to true if valid brand is entered
+            valid_brand = 1; // set the flag to true if a valid brand is entered
         } else {
             printf("Invalid brand choice. Please try again.\n");
         }
@@ -119,10 +119,16 @@ int main(void) {
     int brand_column_width = 35;
     int card_number_column_width = 25;
 
+    // Calculate the total width of the table (including borders)
+    int total_width = brand_column_width + card_number_column_width + 4; // 4 for the borders (2 on each side)
+
+    // Calculate the number of spaces needed to make the right-most line straight down
+    int spaces_needed = total_width - (brand_column_width + card_number_column_width);
+
     // Generate and print the requested number of credit card numbers
-    print_horizontal_line(brand_column_width + card_number_column_width);
+    print_horizontal_line(total_width);
     printf("|%-*s|%-*s|\n", brand_column_width, "Brand", card_number_column_width, "Card Number");
-    print_horizontal_line(brand_column_width + card_number_column_width);
+    print_horizontal_line(total_width);
 
     for (int i = 0; i < num_cards; i++) {
         long long card_number = 0;
@@ -157,10 +163,10 @@ int main(void) {
             strcpy(chosen_brand, "MASTERCARD");
         }
 
-        printf("|%-*s|%lld|\n", brand_column_width, chosen_brand, card_number);
+        printf("|%-*s|%lld%*s|\n", brand_column_width, chosen_brand, card_number, spaces_needed, "");
     }
 
-    print_horizontal_line(brand_column_width + card_number_column_width);
+    print_horizontal_line(total_width);
 
     return 0;
 }
