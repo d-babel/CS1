@@ -109,6 +109,7 @@ int main(void) {
 
     // Generate and print the requested number of credit card numbers
     printf("%-35s%-25s\n", "Brand", "Card Number");
+    printf("--------------------------------------------------------------\n"); // Line separator
     for (int i = 0; i < num_cards; i++) {
         long long card_number = 0;
         char chosen_brand[BRAND_MAX_LEN];
