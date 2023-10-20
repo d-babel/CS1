@@ -17,3 +17,8 @@ int main(void)
     }
     printf("The sum is %i\n",sum);
 }
+
+
+// set breakpoint by adding a red "stopsign" type button to the left of the number of lines
+// then debug50 buggy
+// controls for debugging on top of screen
