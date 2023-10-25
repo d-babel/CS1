@@ -12,7 +12,7 @@ int main(void)
     int height = get_int("Height:");
 
 
-    for (int j = height; j > i; j--){
+    for (int j = height; j < 0; j--){
     // spaces
       for (int j = height; j < height -i; j++)
       {
