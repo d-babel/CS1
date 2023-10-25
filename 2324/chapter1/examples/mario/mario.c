@@ -2,6 +2,7 @@
 
 // NOTES:
 //   put into functions
+//      undelcared vars
 
 #include <cs50.h>
 #include <stdio.h>
