@@ -22,15 +22,23 @@ int main(void)
     for (int i = 1; i < height; i++)
     {
         // spaces
-        for (int j = height; j < height - i; j++)
+        for (int j = 0; j < height - i; j++)
         {
             printf(" ");
         }
 
-        // hashtags for l
-        for (int j = 0; j < i; j++)
+        // hashtags
+        for (int j = 0; j < 2 * i + 2; j++)
         {
-            printf("#");
+            // spaces between pyramids
+            if (j == i || j == i + 1)
+            {
+                printf("  ");
+            }
+            else
+            {
+                printf("#");
+            }
         }
         printf("\n");
     }
