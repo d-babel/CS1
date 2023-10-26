@@ -28,7 +28,7 @@ int main(void)
         }
 
         // hashtags
-        for (int j = 0; j < 2 * i + 2; j++)
+        for (int j = 0; j < 2 * i + 1; j++)
         {
             // spaces between pyramids
             if (j == i)
