@@ -53,7 +53,7 @@ void print_spaces(int count)
 {
     for (int j = 0; j < count; j++)
     {
-        printf("  ");
+        printf(" ");
     }
 }
 
@@ -63,7 +63,7 @@ void print_hashtags](int count, int middle_space)
     {
         if (j == middle_space)
         {
-            print("  ");
+            printf("  ");
         }
         else
         {
