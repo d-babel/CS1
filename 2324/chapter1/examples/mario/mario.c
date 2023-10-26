@@ -6,6 +6,9 @@
 
 #include <cs50.h>
 #include <stdio.h>
+#define MIN_HEIGHT 1
+#define MAX_HEIGHT 8
+#define SPACE_BETWEEN_PYRAMIDS 2
 
 int main(void)
 {
@@ -17,7 +20,7 @@ int main(void)
     {
         height = get_int("Height:");
     }
-    while (height < 1 || height > 8);
+    while (height < MIN_HEIGHT || height > MAX_HEIGHT);
     // print pyramid
     for (int i = 1; i <= height; i++)
     {
