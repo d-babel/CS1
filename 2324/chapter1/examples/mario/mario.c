@@ -85,7 +85,7 @@ int main(void)
         while (height < MIN_HEIGHT || height > MAX_HEIGHT);
             for (int i = 1; i <= height; i++)
             {
-                //output
+                //output using functions instead
                 print_spaces(height - i);
                 print_hashtags(2 * i + 1, i);
                 printf("\n");
