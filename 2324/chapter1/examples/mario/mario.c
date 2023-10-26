@@ -31,7 +31,7 @@ int main(void)
         for (int j = 0; j < 2 * i + 2; j++)
         {
             // spaces between pyramids
-            if (j == i || j == i + 1)
+            if (j == i)
             {
                 printf("  ");
             }
