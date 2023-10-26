@@ -9,16 +9,25 @@
 
 int main(void)
 {
-    // input
-    int height = get_int("Height:");
 
+    int height;
 
-    for (int j = height; j < 0; j--){
+    //input and check if between 1-8 inclusive
+    do
+    {
+        height = get_int("Height:");
+    }
+    while (height < 1 || height > 8);
+    //print pyramid
+    for (int i = 1; i < height; i++){
+
     // spaces
       for (int j = height; j < height -i; j++)
       {
           printf(" ");
       }
+
+    //hashtags for l
       for (int j = 0; j < i; j++)
       {
           printf("#");
