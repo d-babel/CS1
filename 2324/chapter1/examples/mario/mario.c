@@ -19,7 +19,7 @@ int main(void)
     }
     while (height < 1 || height > 8);
     // print pyramid
-    for (int i = 1; i < height; i++)
+    for (int i = 1; i <= height; i++)
     {
         // spaces
         for (int j = 0; j < height - i; j++)
