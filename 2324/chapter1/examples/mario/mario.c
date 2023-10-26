@@ -8,7 +8,7 @@
 #include <stdio.h>
 #define MIN_HEIGHT 1
 #define MAX_HEIGHT 8
-#define SPACE_BETWEEN_PYRAMIDS 2
+#define SPACE_BETWEEN_PYRAMIDS "  " //two spaces
 
 int main(void)
 {
@@ -27,7 +27,7 @@ int main(void)
         // spaces
         for (int j = 0; j < height - i; j++)
         {
-            printf(" ");
+            printf("%s", SPACE_BETWEEN_PYRAMIDS);
         }
 
         // hashtags
