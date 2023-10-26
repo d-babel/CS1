@@ -48,7 +48,7 @@
 //     }
 // }
 
-
+//spaces
 void print_spaces(int count)
 {
     for (int j = 0; j < count; j++)
@@ -57,7 +57,8 @@ void print_spaces(int count)
     }
 }
 
-void print_hashtags](int count, int middle_space)
+//hashtags
+void print_hashtags(int count, int middle_space)
 {
     for (int j = 0; j < count; j++)
     {
@@ -67,7 +68,7 @@ void print_hashtags](int count, int middle_space)
         }
         else
         {
-            print("#");
+            printf("#");
         }
     }
 }
@@ -79,13 +80,14 @@ int main(void)
     //input
     do
     {
-        height = get_int("Height:);
+        height = get_int("Height:");
         }
         while (height < MIN_HEIGHT || height > MAX_HEIGHT);
             for (int i = 1; i <= height; i++)
             {
+                //output
                 print_spaces(height - i);
                 print_hashtags(2 * i + 1, i);
-                print("\n");
+                printf("\n");
             }
 }
