@@ -4,7 +4,7 @@
 #include <stdio.h>
 
 void drawDiamonds(int n){
-    int spaces = n / 2 - 1; //initial spacing pattern according to length
+    int spaces = n / 2; //initial spacing pattern according to length
     int direction = -1; // -1 for decreasing, 1 for increasing
 
 
