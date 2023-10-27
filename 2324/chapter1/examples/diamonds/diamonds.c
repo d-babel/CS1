@@ -39,10 +39,6 @@ int main(void)
     do {
         int n = get_int("Size? "); //input
     }
-    while (n < 1 ){
-        
-    }
-
-
-
+    while (n < 1 );
+        drawDiamonds(n);
 }
