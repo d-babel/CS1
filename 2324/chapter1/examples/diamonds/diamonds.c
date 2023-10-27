@@ -36,7 +36,13 @@ int main(void)
 {
     int n; // var for drawDiamonds
 
-    int size = get_int("Size? "); //input
-    
+    do {
+        int n = get_int("Size? "); //input
+    }
+    while (n < 1 ){
+        
+    }
+
+
 
 }
