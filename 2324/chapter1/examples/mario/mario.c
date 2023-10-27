@@ -1,8 +1,5 @@
 // Mario by Drew Babel
 
-// NOTES:
-//   put into functions
-
 #include <cs50.h>
 #include <stdio.h>
 #define MIN_HEIGHT 1
