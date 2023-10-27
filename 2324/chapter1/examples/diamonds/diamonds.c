@@ -19,6 +19,7 @@ int drawDiamonds(int n){
         {
             printf(" ");
         }
+        for(int j = 0; j)
     }
 }
 
