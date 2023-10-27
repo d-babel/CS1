@@ -3,9 +3,6 @@
 #include <cs50.h>
 #include <stdio.h>
 
-//input
-int size = get_int("Size? ");
-
 int drawDiamonds(int n){
     int spaces = n / 2 - 1; //initial spacing pattern according to length
     int direction = -1 // -1 for decreading, 1 for increadsing
@@ -37,7 +34,9 @@ int drawDiamonds(int n){
 
 int main(void)
 {
-    int n;
-    int
+    int n; // var for drawDiamonds
+
+    int size = get_int("Size? "); //input
+    
 
 }
