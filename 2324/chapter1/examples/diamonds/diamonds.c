@@ -1,5 +1,7 @@
 // Diamonds by Drew Babel
 
+
+//NOTES: STILL HAS 1 STAR OFF ON BOTH TOP AND BOTTOM PROBLEM
 #include <cs50.h>
 #include <stdio.h>
 
@@ -22,20 +24,13 @@ void drawDiamonds(int n){
             }
 
         }
-
-        if(n % 2 == 0 && i == 0)
-        {
-            printf("\n");
-        }
-
-
         printf("\n");
 
         if(spaces == 0 && direction == -1){
         direction = 1;
         if (n % 2 == 0)
         {
-            direction = 0;
+            i--;
         }
         }
         spaces += direction;
