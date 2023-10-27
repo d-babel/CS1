@@ -22,10 +22,21 @@ void drawDiamonds(int n){
             }
 
         }
+
+        if(n % 2 == 0 && i == 0)
+        {
+            printf("\n");
+        }
+
+
         printf("\n");
 
-        if(spaces ==0){
+        if(spaces == 0 && direction == -1){
         direction = 1;
+        if (n % 2 == 0)
+        {
+            direction = 0;
+        }
         }
         spaces += direction;
 
