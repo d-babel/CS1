@@ -45,46 +45,46 @@
 //     }
 // }
 
-//spaces
-void print_spaces(int count)
-{
-    for (int j = 0; j < count; j++)
-    {
-        printf(" ");
-    }
-}
+// //spaces
+// void print_spaces(int count)
+// {
+//     for (int j = 0; j < count; j++)
+//     {
+//         printf(" ");
+//     }
+// }
 
-//hashtags
-void print_hashtags(int count, int middle_space)
-{
-    for (int j = 0; j < count; j++)
-    {
-        if (j == middle_space)
-        {
-            printf("  ");
-        }
-        else
-        {
-            printf("#");
-        }
-    }
-}
+// //hashtags
+// void print_hashtags(int count, int middle_space)
+// {
+//     for (int j = 0; j < count; j++)
+//     {
+//         if (j == middle_space)
+//         {
+//             printf("  ");
+//         }
+//         else
+//         {
+//             printf("#");
+//         }
+//     }
+// }
 
-int main(void)
-{
-    int height;
+// int main(void)
+// {
+//     int height;
 
-    //input
-    do
-    {
-        height = get_int("Height:");
-        }
-        while (height < MIN_HEIGHT || height > MAX_HEIGHT);
-            for (int i = 1; i <= height; i++)
-            {
-                //output using functions instead
-                print_spaces(height - i);
-                print_hashtags(2 * i + 1, i);
-                printf("\n");
-            }
-}
+//     //input
+//     do
+//     {
+//         height = get_int("Height:");
+//         }
+//         while (height < MIN_HEIGHT || height > MAX_HEIGHT);
+//             for (int i = 1; i <= height; i++)
+//             {
+//                 //output using functions instead
+//                 print_spaces(height - i);
+//                 print_hashtags(2 * i + 1, i);
+//                 printf("\n");
+//             }
+// }
