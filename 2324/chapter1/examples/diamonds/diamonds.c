@@ -7,8 +7,8 @@
 int size = get_int("Size? ");
 
 int drawDiamonds(int n){
-    int spaces = n / 2 - 1;
-    int direction = -1
+    int spaces = n / 2 - 1; //initial spacing pattern according to length
+    int direction = -1 // -1 for decreading, 1 for increadsing
 
 
     // spaces start at (1/2)(size)-1, then get -1 every time until spaces = 0, then adds every time until back to (1/2)(size)-1
