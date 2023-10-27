@@ -38,5 +38,6 @@ int drawDiamonds(int n){
 int main(void)
 {
     int n;
+    int
 
 }
