@@ -3,7 +3,7 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int drawDiamonds(int n){
+void drawDiamonds(int n){
     int spaces = n / 2 - 1; //initial spacing pattern according to length
     int direction = -1; // -1 for decreasing, 1 for increasing
 
