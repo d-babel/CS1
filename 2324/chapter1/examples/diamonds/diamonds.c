@@ -7,7 +7,9 @@
 
 void drawDiamonds(int n){
     //upper half
-    for(int i = 1; i <= n; i++)
+    int upper_half_rows = (n % 2 == 0) ? n / 2: (n + 1) / 2;
+
+    for(int i = 1; i <= upper_half_rows; i++)
     {
         //spaces
         for(int j = 1; j <= n - i; j++)
