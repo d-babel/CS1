@@ -1,17 +1,49 @@
 // Diamonds by Drew Babel
 
+
+//NOTES: STILL HAS 1 STAR OFF ON BOTH TOP AND BOTTOM PROBLEM FOR ODDS
 #include <cs50.h>
 #include <stdio.h>
 
 void drawDiamonds(int n){
+    // int spaces = n / 2; //initial spacing pattern according to length
+    // int direction = -1; // -1 for decreasing, 1 for increasing
+
+    // spaces start at (1/2)(size)-1, then get -1 every time until spaces = 0, then adds every time until back to (1/2)(size)-1
+
+    // for(int i = 1; i <= (n % 2 == 0 ? 2 * n : 2 * n - 1); i++) // if even, n*2, otherwise (when its odd), *2 -1
+    // {
+    //     for(int j = 0; j < n; j++)
+    //     {
+    //         if(j < spaces || j >= n - spaces - 1)
+    //         {
+    //             printf(" ");
+    //         } else {
+    //             printf("*");
+    //         }
+
+    //     }
+    //     printf("\n");
+
+    //     if(spaces == 0 && direction == -1){
+    //     direction = 1;
+    //     if (n % 2 == 0)
+    //     {
+    //         i--;
+    //     }
+    //     }
+    //     spaces += direction;
+
+    // }
+
 
     // odd
-    for (size % 2 != 0)
+    for (n % 2 != 0)
     {
         //top half
-        for (int i = 1; i <= (size +1) / 2; i++)
+        for (int i = 1; i <= (n +1) / 2; i++)
         {
-            for (int j = 0; j < size - i - 1; j++)
+            for (int j = 0; j < n - i - 1; j++)
             {
                 printf(" "):
             }
@@ -27,7 +59,7 @@ void drawDiamonds(int n){
         }
 
         //bottom half
-        for (int i = (size -1) / 2; i >= 1; i--)
+        for (int i = (n -1) / 2; i >= 1; i--)
         {
             for (int j = 0; j < 2 * i - 1; j++)
             {
@@ -48,9 +80,9 @@ void drawDiamonds(int n){
     }
     else
     {
-        for (int i = 1; i <= (size / 2) ; i++)
+        for (int i = 1; i <= (n / 2) ; i++)
         {
-            for (int j = 0; j < size - i - 1; j++)
+            for (int j = 0; j < n - i - 1; j++)
             {
                 printf(" "):
             }
@@ -66,9 +98,9 @@ void drawDiamonds(int n){
         }
 
         //bottom half
-        for (int i = (size / 2); i >= 1; i--)
+        for (int i = (n / 2); i >= 1; i--)
         {
-            for (int j = 0; j < size - i; j++)
+            for (int j = 0; j < n - i; j++)
             {
                 printf(" ");
             }
