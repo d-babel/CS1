@@ -6,36 +6,75 @@
 #include <stdio.h>
 
 void drawDiamonds(int n){
-    int spaces = n / 2; //initial spacing pattern according to length
-    int direction = -1; // -1 for decreasing, 1 for increasing
-
-
-    // spaces start at (1/2)(size)-1, then get -1 every time until spaces = 0, then adds every time until back to (1/2)(size)-1
-
-    for(int i = 1; i <= (n % 2 == 0 ? 2 * n : 2 * n - 1); i++) // if even, n*2, otherwise (when its odd), *2 -1
+    //upper half
+    for(int i = 1; i <= n; i++)
     {
-        for(int j = 0; j < n; j++)
+        //spaces
+        for(int j = 1; j <= n - i; j++)
         {
-            if(j < spaces|| j >= n - spaces)
-            {
-                printf(" ");
-            } else {
-                printf("*");
-            }
-
+            printf(" ");
         }
+
+        // stars
+        for(int j = 1; j <= 2 * i - 1; j++)
+        {
+            printf("*");
+        }
+
         printf("\n");
 
-        if(spaces == 0 && direction == -1){
-        direction = 1;
-        if (n % 2 == 0)
+        //if n is even & its middle row, print same row twice
+        if(n % 2 == 0 && i == n / 2)
         {
-            i--;
+            printf("\n");
         }
-        }
-        spaces += direction;
-
     }
+    printf("\n");
+
+
+    //lower half
+    for(int i = (n % 2 == 0 ? n / 2 : n / 2 + 1); i < n; i++)
+    {
+        //spaces
+        for(int j = 1; j <= i; j ++)
+        {
+            printf(" ");
+        }
+
+        //stars
+        for(int j = 1; j <= 2 * (n - i) - 1; j++)
+        {
+            printf("*");
+        }
+    }
+
+
+//     // spaces start at (1/2)(size)-1, then get -1 every time until spaces = 0, then adds every time until back to (1/2)(size)-1
+
+//     for(int i = 1; i <= (n % 2 == 0 ? 2 * n : 2 * n - 1); i++) // if even, n*2, otherwise (when its odd), *2 -1
+//     {
+//         for(int j = 0; j < n; j++)
+//         {
+//             if(j < spaces|| j >= n - spaces)
+//             {
+//                 printf(" ");
+//             } else {
+//                 printf("*");
+//             }
+
+//         }
+//         printf("\n");
+
+//         if(spaces == 0 && direction == -1){
+//         direction = 1;
+//         if (n % 2 == 0)
+//         {
+//             i--;
+//         }
+//         }
+//         spaces += direction;
+
+//     }
 }
 
 int main(void)
@@ -43,8 +82,8 @@ int main(void)
     int n; // var for drawDiamonds
 
     do {
-        n = get_int("Size? "); //input
+        n = get_int("Size? (1-20)"); //input
     }
-    while (n < 1 );
+    while (n < 1 || n > 20);
         drawDiamonds(n);
 }
