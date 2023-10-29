@@ -15,7 +15,7 @@ void drawDiamonds(int n){
     {
         for(int j = 0; j < n; j++)
         {
-            if(j < spaces || j >= n - spaces +)
+            if(j < spaces || j >= n - spaces + 1)
             {
                 printf(" ");
             } else {
