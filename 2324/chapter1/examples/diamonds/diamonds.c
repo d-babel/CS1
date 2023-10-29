@@ -6,73 +6,32 @@
 #include <stdio.h>
 
 void drawDiamonds(int n){
-    //upper half
-    int upper_half_rows = (n % 2 == 0) ? n / 2: (n + 1) / 2;
+    // spaces start at (1/2)(size)-1, then get -1 every time until spaces = 0, then adds every time until back to (1/2)(size)-1
 
-    for(int i = 1; i <= upper_half_rows; i++)
+    for(int i = 1; i <= (n % 2 == 0 ? 2 * n : 2 * n - 1); i++) // if even, n*2, otherwise (when its odd), *2 -1
     {
-        //spaces
-        for(int j = 1; j <= n - i; j++)
+        for(int j = 0; j < n; j++)
         {
-            printf(" ");
-        }
+            if(j < spaces|| j >= n - spaces)
+            {
+                printf(" ");
+            } else {
+                printf("*");
+            }
 
-        // stars
-        for(int j = 1; j <= 2 * i - 1; j++)
-        {
-            printf("*");
         }
-
         printf("\n");
 
-
-    //lower half
-    int lower_half_rows = n / 2;
-
-    for(int i = 1; i <= lower_half_rows; i++)
-    {
-        //spaces
-        for(int j = 1; j <= i; j ++)
+        if(spaces == 0 && direction == -1){
+        direction = 1;
+        if (n % 2 == 0)
         {
-            printf(" ");
+            i--;
         }
+        }
+        spaces += direction;
 
-        //stars
-        for(int j = 1; j <= 2 * (n - i) - 1; j++)
-        {
-            printf("*");
-        }
     }
-
-    printf("\n");
-
-
-//     // spaces start at (1/2)(size)-1, then get -1 every time until spaces = 0, then adds every time until back to (1/2)(size)-1
-
-//     for(int i = 1; i <= (n % 2 == 0 ? 2 * n : 2 * n - 1); i++) // if even, n*2, otherwise (when its odd), *2 -1
-//     {
-//         for(int j = 0; j < n; j++)
-//         {
-//             if(j < spaces|| j >= n - spaces)
-//             {
-//                 printf(" ");
-//             } else {
-//                 printf("*");
-//             }
-
-//         }
-//         printf("\n");
-
-//         if(spaces == 0 && direction == -1){
-//         direction = 1;
-//         if (n % 2 == 0)
-//         {
-//             i--;
-//         }
-//         }
-//         spaces += direction;
-
-//     }
 }
 
 int main(void)
