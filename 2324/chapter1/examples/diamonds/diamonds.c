@@ -42,7 +42,6 @@ void drawDiamonds(int n){
                 } else {
                     printf(" ");
                 }
-                printf("\n");
             }
             printf("\n");
         }
@@ -50,9 +49,9 @@ void drawDiamonds(int n){
     }
     else
     {
-        for (int i = 1; i <= (n / 2) ; i++)
+        for (int i = 1; i <= (n / 2); i++)
         {
-            for (int j = 0; j < n - i - 1; j++)
+            for (int j = 0; j < n - i; j++)
             {
                 printf(" ");
             }
