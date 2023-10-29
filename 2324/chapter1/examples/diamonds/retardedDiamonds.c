@@ -1,86 +1,130 @@
+// Diamonds by Drew Babel
+
+
+//NOTES: STILL HAS 1 STAR OFF ON BOTH TOP AND BOTTOM PROBLEM FOR ODDS
 #include <cs50.h>
 #include <stdio.h>
 
-int main(void)
-{
-    // Prompt user for diamond size using the get_int function from the CS50 library
-    int size = get_int("size? ");
+void drawDiamonds(int n){
+    // int spaces = n / 2; //initial spacing pattern according to length
+    // int direction = -1; // -1 for decreasing, 1 for increasing
 
-    // For odd-sized diamonds
-    if (size % 2 != 0)
+    // spaces start at (1/2)(size)-1, then get -1 every time until spaces = 0, then adds every time until back to (1/2)(size)-1
+
+    // for(int i = 1; i <= (n % 2 == 0 ? 2 * n : 2 * n - 1); i++) // if even, n*2, otherwise (when its odd), *2 -1
+    // {
+    //     for(int j = 0; j < n; j++)
+    //     {
+    //         if(j < spaces || j >= n - spaces - 1)
+    //         {
+    //             printf(" ");
+    //         } else {
+    //             printf("*");
+    //         }
+
+    //     }
+    //     printf("\n");
+
+    //     if(spaces == 0 && direction == -1){
+    //     direction = 1;
+    //     if (n % 2 == 0)
+    //     {
+    //         i--;
+    //     }
+    //     }
+    //     spaces += direction;
+
+    // }
+
+
+    // odd
+    if (n % 2 != 0)
     {
-        // Print top half of the diamond
-        for (int i = 1; i <= (size + 1) / 2; i++)
+        //top half
+        for (int i = 1; i <= (n +1) / 2; i++)
         {
-            for (int j = 0; j < size - i; j++)
+            for (int j = 0; j < n - i - 1; j++)
             {
                 printf(" ");
             }
             for (int j = 0; j < 2 * i - 1; j++)
             {
-                if (j % 2 == 0)
+                if (j % 2 == 0) {
                     printf("*");
-                else
+                } else {
                     printf(" ");
+                }
             }
             printf("\n");
         }
 
-        // Print bottom half of the diamond
-        for (int i = (size - 1) / 2; i >= 1; i--)
+        //bottom half
+        for (int i = (n -1) / 2; i >= 1; i--)
         {
-            for (int j = 0; j < size - i; j++)
+            for (int j = 0; j < n - i; j++)
             {
                 printf(" ");
             }
             for (int j = 0; j < 2 * i - 1; j++)
             {
-                if (j % 2 == 0)
+                if (j % 2 == 0){
                     printf("*");
-                else
+                } else {
                     printf(" ");
+                }
+                prinf("\n");
             }
             printf("\n");
         }
+
     }
-
-    // For even-sized diamonds
     else
     {
-        // Print top half of the diamond
-        for (int i = 1; i <= size / 2; i++)
+        for (int i = 1; i <= (n / 2) ; i++)
         {
-            for (int j = 0; j < size - i; j++)
+            for (int j = 0; j < n - i - 1; j++)
             {
                 printf(" ");
             }
             for (int j = 0; j < 2 * i - 1; j++)
             {
-                if (j % 2 == 0)
+                if (j % 2 == 0) {
                     printf("*");
-                else
+                } else {
                     printf(" ");
+                }
             }
             printf("\n");
         }
 
-        // Print bottom half of the diamond (including double middle for even sizes)
-        for (int i = size / 2; i >= 1; i--)
+        //bottom half
+        for (int i = (n / 2); i >= 1; i--)
         {
-            for (int j = 0; j < size - i; j++)
+            for (int j = 0; j < n - i; j++)
             {
                 printf(" ");
             }
             for (int j = 0; j < 2 * i - 1; j++)
             {
-                if (j % 2 == 0)
+                if (j % 2 == 0){
                     printf("*");
-                else
+                } else {
                     printf(" ");
+                }
+
             }
-            printf("\n");
+            printf"\n");
         }
     }
+}
 
-    return 0;
+int main(void)
+{
+    int n; // var for drawDiamonds
+
+    do {
+        n = get_int("Size? (1-20)"); //input
+    }
+    while (n < 1 || n > 20);
+        drawDiamonds(n);
 }
