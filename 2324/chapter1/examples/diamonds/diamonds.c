@@ -38,14 +38,14 @@ void drawDiamonds(int n){
 
 
     // odd
-    for (n % 2 != 0)
+    if (n % 2 != 0)
     {
         //top half
         for (int i = 1; i <= (n +1) / 2; i++)
         {
             for (int j = 0; j < n - i - 1; j++)
             {
-                printf(" "):
+                printf(" ");
             }
             for (int j = 0; j < 2 * i - 1; j++)
             {
@@ -72,7 +72,7 @@ void drawDiamonds(int n){
                 } else {
                     printf(" ");
                 }
-                print("\n");
+                prinf("\n");
             }
             printf("\n");
         }
@@ -84,7 +84,7 @@ void drawDiamonds(int n){
         {
             for (int j = 0; j < n - i - 1; j++)
             {
-                printf(" "):
+                printf(" ");
             }
             for (int j = 0; j < 2 * i - 1; j++)
             {
@@ -113,7 +113,7 @@ void drawDiamonds(int n){
                 }
 
             }
-            print("\n");
+            printf"\n");
     }
 }
 
