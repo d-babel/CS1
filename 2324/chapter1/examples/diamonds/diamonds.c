@@ -98,9 +98,9 @@ void drawDiamonds(int n){
         }
 
         //bottom half
-        for (int i = (size -1) / 2; i >= 1; i--)
+        for (int i = (size / 2); i >= 1; i--)
         {
-            for (int j = 0; j < 2 * i - 1; j++)
+            for (int j = 0; j < size - i; j++)
             {
                 printf(" ");
             }
@@ -111,9 +111,9 @@ void drawDiamonds(int n){
                 } else {
                     printf(" ");
                 }
-                print("\n");
+
             }
-            printf("\n");
+            print("\n");
     }
 }
 
