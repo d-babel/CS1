@@ -76,7 +76,44 @@ void drawDiamonds(int n){
             }
             printf("\n");
         }
-        
+
+    }
+    else
+    {
+        for (int i = 1; i <= (size / 2) ; i++)
+        {
+            for (int j = 0; j < size - i - 1; j++)
+            {
+                printf(" "):
+            }
+            for (int j = 0; j < 2 * i - 1; j++)
+            {
+                if (j % 2 == 0) {
+                    printf("*");
+                } else {
+                    printf(" ");
+                }
+            }
+            printf("\n");
+        }
+
+        //bottom half
+        for (int i = (size -1) / 2; i >= 1; i--)
+        {
+            for (int j = 0; j < 2 * i - 1; j++)
+            {
+                printf(" ");
+            }
+            for (int j = 0; j < 2 * i - 1; j++)
+            {
+                if (j % 2 == 0){
+                    printf("*");
+                } else {
+                    printf(" ");
+                }
+                print("\n");
+            }
+            printf("\n");
     }
 }
 
