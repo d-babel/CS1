@@ -25,17 +25,11 @@ void drawDiamonds(int n){
 
         printf("\n");
 
-        //if n is even & its middle row, print same row twice
-        if(n % 2 == 0 && i == n / 2)
-        {
-            printf("\n");
-        }
-    }
-    printf("\n");
-
 
     //lower half
-    for(int i = (n % 2 == 0 ? n / 2 : n / 2 + 1); i < n; i++)
+    int lower_half_rows = n / 2;
+
+    for(int i = 1; i <= lower_half_rows; i++)
     {
         //spaces
         for(int j = 1; j <= i; j ++)
