@@ -13,7 +13,7 @@ void drawDiamonds(int n){
 
     for(int i = 1; i <= (n % 2 == 0 ? 2 * n : 2 * n - 1); i++) // if even, n*2, otherwise (when its odd), *2 -1
     {
-        // for(int j = 0; j < n; j++)
+        for(int j = 0; j < n; j++)
         // {
         //     if(j < spaces || j >= n - spaces + 1)
         //     {
@@ -28,15 +28,11 @@ void drawDiamonds(int n){
                 printf(" ");
             } else {
                 printf("*");
-            }
-            else
-            {
+            } else {
                 if(j < spaces || j > n - spaces - 1)
                 {
                     printf(" ");
-                }
-                else
-                {
+                } else {
                     printf("*");
                 }
             }
