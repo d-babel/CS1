@@ -74,8 +74,9 @@ void drawDiamonds(int n){
                 }
                 print("\n");
             }
-            printf("")
+            printf("\n");
         }
+        
     }
 }
 
