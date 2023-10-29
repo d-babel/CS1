@@ -33,6 +33,10 @@ void drawDiamonds(int n){
             i--;
         }
         }
+        else if(spaces == (n+1) /2 -1 && direction == 1 && n % 2 == 0)
+        {
+            direction = -1;
+        }
         spaces += direction;
 
     }
