@@ -50,9 +50,12 @@ void drawDiamonds(int n){
             for (int j = 0; j < 2 * i - 1; j++)
             {
                 if (j % 2 == 0) {
-                    printf()
+                    printf("*");
+                } else {
+                    printf(" ");
                 }
             }
+            printf("\n");
         }
     }
 }
