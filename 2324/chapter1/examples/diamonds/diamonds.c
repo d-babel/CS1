@@ -1,7 +1,7 @@
 // Diamonds by Drew Babel
 
 
-//NOTES: STILL HAS 1 STAR OFF ON BOTH TOP AND BOTTOM PROBLEM
+//NOTES: STILL HAS 1 STAR OFF ON BOTH TOP AND BOTTOM PROBLEM FOR ODDS
 #include <cs50.h>
 #include <stdio.h>
 
