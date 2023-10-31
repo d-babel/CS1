@@ -5,6 +5,9 @@
 #include <cs50.h>
 #include <stdio.h>
 
+//#include <unistd.h>
+//int usleep(__useconds_t useconds);
+
 void drawDiamonds(int n){
 
     // odd
