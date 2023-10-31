@@ -1,10 +1,20 @@
 // Calculator by Drew Babel
 
 #include <cs50.h>
-#include <cs50.h>
+#include <stdio.h>
+
+
+//math opperators
+int addition(int num1, int num2);
+int subtraction(int num1, int num2);
+int multiplication(int num1, int num2);
+int division(int num1, int num2);
 
 int main(void)
 {
+    //ask user for selected operator
+    
+
     //ask user for two numbers
     int num1 = get_int("Enter a number:");
     int num2 = get_int("Enter another number:");
@@ -20,7 +30,8 @@ int main(void)
 
 int addition(int num1, int num2)
 {
-    return num1 + num2;
+    int output = num1 + num2;
+    return output;
 }
 
 int subtraction(num1, num2)
