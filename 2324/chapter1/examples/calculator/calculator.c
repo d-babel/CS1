@@ -18,22 +18,22 @@ int main(void)
 }
 
 
-int addition(num1, num2);
+int addition(int num1, int num2)
 {
     return num1 + num2;
 }
 
-int subtraction(num1, num2);
+int subtraction(num1, num2)
 {
     return num1 - num2;
 }
 
-int multiplication(num1, num2);
+int multiplication(num1, num2)
 {
     return num1 * num2;
 }
 
-int division(num1, num2);
+int division(num1, num2)
 {
     return num1 / num2;
 }
