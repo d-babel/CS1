@@ -16,7 +16,7 @@ void drawDiamonds(int n){
         //top half
         for (int i = 1; i <= (n + 1) / 2; i++)
         {
-            for (int j = 0; j < (n - 1)/2 - i; j++)
+            for (int j = 0; j <= (n - 1)/2 - i; j++)
             {
                 printf(" ");
             }
