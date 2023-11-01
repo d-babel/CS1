@@ -95,7 +95,7 @@ int main(void)
     int n; // var for drawDiamonds
 
     do {
-        n = get_int("Size:"); //input
+        n = get_int("Size: "); //input
     }
     while (n < 1 || n > 20);
         drawDiamonds(n);
