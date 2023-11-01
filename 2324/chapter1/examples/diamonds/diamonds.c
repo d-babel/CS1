@@ -1,54 +1,72 @@
 // Diamonds by Drew Babel
 
-
-//NOTES: STILL HAS 1 STAR OFF ON BOTH TOP AND BOTTOM PROBLEM FOR ODDS
 #include <cs50.h>
 #include <stdio.h>
 
 //#include <unistd.h>
-//int usleep(__useconds_t useconds);
+// int usleep(__useconds_t useconds);
 
-void drawDiamonds(int n){
+void drawDiamonds(int n);
+
+int main(void)
+{
+    int n; // var for drawDiamonds
+
+    do
+    {
+        n = get_int("Size: "); // input
+    }
+    while (n < 1 || n > 20);
+    drawDiamonds(n);
+}
+
+void drawDiamonds(int n)
+{
 
     // odd
     if (n % 2 != 0)
     {
-        //top half
+        // top half
         for (int i = 1; i <= (n + 1) / 2; i++)
         {
-            for (int j = 0; j <= (n - 1)/2 - i; j++)
+            for (int j = 0; j <= (n - 1) / 2 - i; j++)
             {
                 printf(" ");
             }
             for (int j = 0; j < 2 * i - 1; j++)
             {
-                if (j % 2 == 0) {
+                if (j % 2 == 0)
+                {
                     printf("*");
-                } else {
+                }
+                else
+                {
                     printf(" ");
                 }
             }
             printf("\n");
         }
 
-        //bottom half
+        // bottom half
         for (int i = (n - 1) / 2; i >= 1; i--)
         {
-            for (int j = 0; j < (n - 1)/2 - i + 1; j++)
+            for (int j = 0; j < (n - 1) / 2 - i + 1; j++)
             {
                 printf(" ");
             }
             for (int j = 0; j < 2 * i - 1; j++)
             {
-                if (j % 2 == 0){
+                if (j % 2 == 0)
+                {
                     printf("*");
-                } else {
+                }
+                else
+                {
                     printf(" ");
                 }
             }
             printf("\n");
         }
-
     }
     else
     {
@@ -60,16 +78,19 @@ void drawDiamonds(int n){
             }
             for (int j = 0; j < 2 * i - 1; j++)
             {
-                if (j % 2 == 0) {
+                if (j % 2 == 0)
+                {
                     printf("*");
-                } else {
+                }
+                else
+                {
                     printf(" ");
                 }
             }
             printf("\n");
         }
 
-        //bottom half
+        // bottom half
         for (int i = (n / 2); i >= 1; i--)
         {
             for (int j = 0; j < n / 2 - i; j++)
@@ -78,25 +99,16 @@ void drawDiamonds(int n){
             }
             for (int j = 0; j < 2 * i - 1; j++)
             {
-                if (j % 2 == 0){
+                if (j % 2 == 0)
+                {
                     printf("*");
-                } else {
+                }
+                else
+                {
                     printf(" ");
                 }
-
             }
             printf("\n");
         }
     }
-}
-
-int main(void)
-{
-    int n; // var for drawDiamonds
-
-    do {
-        n = get_int("Size: "); //input
-    }
-    while (n < 1 || n > 20);
-        drawDiamonds(n);
 }
