@@ -9,7 +9,7 @@ int main(int argc, string argv[])
         printf("usage: ./farhenheit <celcius>\n");
     }
     // Get celsius from user
-    float celsius = get_float("C: ");
+    float celsius = argv[1];
 
     // Convert to fahrenheit; no float errors b/c celsius is a float
     float fahrenheit = (celsius * 9) / 5 + 32;
