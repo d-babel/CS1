@@ -3,6 +3,7 @@
 #include <cs50.h>
 #include <math.h>
 #include <stdio.h>
+#include <stdlib.h> //required for
 
 // Defined constants
 #define MAX_DAYS 31
@@ -10,8 +11,13 @@
 
 int main(int argc, string argv[])
 {
+    if (argc != 3) {
+        printf("Usage: ./pennies <days> <pennies>\n")
+    }
+
+
     // Get a number of days in [28, 31]
-    int days;
+    int days = atoi(argv[1]);
     do
     {
         days = get_int("Days in month: ");
