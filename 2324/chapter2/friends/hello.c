@@ -3,9 +3,13 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int main(void)
+int main(int argc, string argv[])
 {
-    // Collect a string from the user, then print their name
-    string name = get_string("Your name: ");
-    printf("Hello, %s!\n", name);
+
+    if (argc != 2)
+    {
+        printf("usage: ./hello <name>\n");
+    }
+
+    printf("Hello, %s!\n", argv[1]);
 }

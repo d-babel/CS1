@@ -3,8 +3,11 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int main(void)
+int main(int argc, string argv[])
 {
+    if(argc != 2) {
+        printf("usage: ./farhenheit <celcius>\n");
+    }
     // Get celsius from user
     float celsius = get_float("C: ");
 
