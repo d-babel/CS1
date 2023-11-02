@@ -11,7 +11,8 @@
 
 int main(int argc, string argv[])
 {
-    if (argc != 3) {
+    if (argc != 3)
+    {
         printf("Usage: ./pennies <days> <pennies>\n");
         return 1;
     }
@@ -20,12 +21,14 @@ int main(int argc, string argv[])
     int days = atoi(argv[1]);
     int pennies = atoi(argv[2]);
 
-    if (days < MIN_DAYS || days > MAX_DAYS) {
+    if (days < MIN_DAYS || days > MAX_DAYS)
+    {
         printf("Days must be between %d and %d (inclusive)\n", MIN_DAYS, MAX_DAYS);
         return 1;
     }
 
-    if (pennies <= 0){
+    if (pennies <= 0)
+    {
         printf("Pennies must be greater than 0\n");
         return 1;
     }
