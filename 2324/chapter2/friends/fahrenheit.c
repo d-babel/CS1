@@ -8,6 +8,7 @@ int main(int argc, char *argv[])
 {
     if(argc != 2) {
         printf("usage: ./farhenheit <celcius>\n");
+        return 1;
     }
     // Get celsius from user
     float celsius = atof(argv[1]); // atof parses the string arugment and returns its value as a float
