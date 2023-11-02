@@ -18,6 +18,7 @@ int main(int argc, string argv[])
 
     // Get a number of days in [28, 31]
     int days = atoi(argv[1]);
+    
     do
     {
         days = get_int("Days in month: ");
