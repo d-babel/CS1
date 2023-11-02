@@ -13,6 +13,7 @@ int main(int argc, string argv[])
 {
     if (argc != 3) {
         printf("Usage: ./pennies <days> <pennies>\n");
+        return 1;
     }
 
     // antoi --> Convert the first argument from string to int
@@ -21,10 +22,12 @@ int main(int argc, string argv[])
 
     if (days < MIN_DAYS || days > MAX_DAYS) {
         printf("Days must be between %d and %d (inclusive)\n", MIN_DAYS, MAX_DAYS);
+        return 1;
     }
 
     if (pennies <= 0){
         printf("Pennies must be greater than 0\n");
+        return 1;
     }
 
     // Relatively few pennies required to get out of bounds of int
