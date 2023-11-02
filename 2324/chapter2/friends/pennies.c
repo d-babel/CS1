@@ -8,7 +8,7 @@
 #define MAX_DAYS 31
 #define MIN_DAYS 28
 
-int main(void)
+int main(int argc, string argv[])
 {
     // Get a number of days in [28, 31]
     int days;
