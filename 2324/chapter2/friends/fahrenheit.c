@@ -3,13 +3,13 @@
 #include <cs50.h>
 #include <stdio.h>
 
-int main(int argc, string argv[])
+int main(int argc, char *argv[])
 {
     if(argc != 2) {
         printf("usage: ./farhenheit <celcius>\n");
     }
     // Get celsius from user
-    float celsius = argv[1];
+    float celsius = atof(argv[1]); // atof parses the string arugment and returns its value as a float
 
     // Convert to fahrenheit; no float errors b/c celsius is a float
     float fahrenheit = (celsius * 9) / 5 + 32;
