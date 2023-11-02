@@ -12,26 +12,20 @@
 int main(int argc, string argv[])
 {
     if (argc != 3) {
-        printf("Usage: ./pennies <days> <pennies>\n")
+        printf("Usage: ./pennies <days> <pennies>\n");
     }
 
+    // antoi --> Convert the first argument from string to int
+    int days = atoi(argv[1]);
+    int pennies = atoi(argv[2]);
 
-    // Get a number of days in [28, 31]
-    int days = atoi(argv[1]); // Convert the first argument from string to int
-
-    do
-    {
-        days = get_int("Days in month: ");
+    if (days < MIN_DAYS || days > MAX_DAYS) {
+        printf("Days must be between %d and %d (inclusive)\n", MIN_DAYS, MAX_DAYS);
     }
-    while (days < MIN_DAYS || days > MAX_DAYS);
 
-    // Get a number of pennies in [0, inf)
-    int pennies;
-    do
-    {
-        pennies = get_int("Pennies on first day: ");
+    if (pennies <= 0){
+        printf("Pennies must be greater than 0\n");
     }
-    while (pennies <= 0);
 
     // Relatively few pennies required to get out of bounds of int
     long long total = pennies;
