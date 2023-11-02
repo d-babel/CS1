@@ -2,6 +2,7 @@
 
 #include <cs50.h>
 #include <stdio.h>
+#include <stdlib.h> //needed for atof in line 13
 
 int main(int argc, char *argv[])
 {
