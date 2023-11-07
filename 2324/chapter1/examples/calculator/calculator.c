@@ -11,11 +11,11 @@ int mod(int argc, string argv[]);
 int main(void)
 {
     //input
-    
+
 
     if(argv[3] = '*') //multiplication
     {
-
+        argv[2]
     }
     else if(argv[3] = '/') //division
     {
