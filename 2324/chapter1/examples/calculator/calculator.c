@@ -1,4 +1,4 @@
-// Calculator by Drew Babel
+// Calc by Drew Babel
 
 #include <cs50.h>
 #include <stdio.h>
@@ -37,5 +37,12 @@ int main(void)
 
 int mod(num1, num2)
 {
+    //ex:
+    // q = (int) (10.7 / 3.28);
+    // q = (int) 3.262195;
+    // q = 3
+    // mod = 10.7 - (3.28 * 3);
+    // mod = 10.7 - 9.84
+    // mod = 0.86
 
 }
