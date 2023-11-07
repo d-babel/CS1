@@ -7,13 +7,21 @@
 //mod opperator --> Usage: ./calc [num1] [operator] [num2]
 //index:                      0      1        2       3
 
-int mod(int argc, string argv[]);
+double mod(double num1, double num2);
 
 
 int main(void)
 {
-    //input
-    
+    //check
+    if (argc != 4)
+    {
+        printf("Usage: ./calc [num1] [operator] [num2]");
+    }
+
+    double num1
+    double num2
+    double operator
+
 
     if(argv[3] = '*') //multiplication
     {
