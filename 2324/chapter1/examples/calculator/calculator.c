@@ -11,7 +11,7 @@ int mod(int argc, string argv[]);
 int main(void)
 {
     //input
-
+    
 
     if(argv[3] = '*') //multiplication
     {
@@ -29,7 +29,7 @@ int main(void)
     {
 
     }
-    else // mod
+    else // modulus
     mod();
 
     }
