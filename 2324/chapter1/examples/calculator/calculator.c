@@ -10,6 +10,9 @@ int mod(int argc, string argv[]);
 
 int main(void)
 {
+    //input
+    
+
     if(argv[3] = '*')
     {
 
@@ -32,7 +35,7 @@ int main(void)
     }
 }
 
-int mod(int argc, string argv[])
+int mod(num1, num2)
 {
 
 }
