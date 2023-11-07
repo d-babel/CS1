@@ -5,6 +5,8 @@
 
 
 //mod opperator --> Usage: ./calc [num1] [operator] [num2]
+//index:                      0      1        2       3
+
 int mod(int argc, string argv[]);
 
 
