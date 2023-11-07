@@ -24,25 +24,45 @@ int main(void)
     char operator argv[2][0]; //assign the first character of the third  command line argument (index: 2) as the operator --> needed as you cant firectly assign string to char
 
 
-    if(argv[3] = '*') //multiplication
-    {
-       printf(argv[2]+argv[3]);
-    }
-    else if(argv[3] = '/') //division
-    {
+    // if(argv[3] = '*') //multiplication
+    // {
+    //    printf(argv[2]+argv[3]);
+    // }
+    // else if(argv[3] = '/') //division
+    // {
 
-    }
-    else if(argv[3] = '+') //addition
+    // }
+    // else if(argv[3] = '+') //addition
+    // {
+
+    // }
+    // else if(argv[3] = '-') //subtraction
+    // {
+
+    // }
+    // else // modulus
+    // mod();
+
+    // }
+
+    switch (operator) //better version of if else statments above
     {
-
-    }
-    else if(argv[3] = '-') //subtraction
-    {
-
-    }
-    else // modulus
-    mod();
-
+        case '*': //multiplication
+            printf("");
+            break;
+        case '*': //division
+            //check if num2 == 0 as you can not divide by 0
+            printf("");
+            break;
+        case '*': //addition
+            printf("");
+            break;
+        case '*': //subtraction
+            printf("");
+            break;
+        case '*': //modulus
+            printf("");
+            break;
     }
 }
 
