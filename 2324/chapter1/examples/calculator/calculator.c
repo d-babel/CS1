@@ -2,6 +2,7 @@
 
 #include <cs50.h>
 #include <stdio.h>
+#include <stdlib.h>
 
 
 //mod opperator --> Usage: ./calc [num1] [operator] [num2]
@@ -18,9 +19,9 @@ int main(void)
         printf("Usage: ./calc [num1] [operator] [num2]");
     }
 
-    double num1
-    double num2
-    double operator
+    double num1 atof(argv[1]);
+    double num2 atof(argv[3]);
+    char operator
 
 
     if(argv[3] = '*') //multiplication
