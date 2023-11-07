@@ -17,7 +17,7 @@ int main(void)
 
     if(argv[3] = '*') //multiplication
     {
-        argv[2]
+       printf(argv[2]+argv[3]);
     }
     else if(argv[3] = '/') //division
     {
