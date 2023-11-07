@@ -4,8 +4,9 @@
 #include <stdio.h>
 
 
-//math opperators
-int addition(int num1, int num2);
+//math opperators --> USE ARGC & ARGV --> Usage: ./calc [num1] [operator] [num2]
+int checkOperator(int argc, string argv[]);
+int addition(int argc, string argv[]);
 int subtraction(int num1, int num2);
 int multiplication(int num1, int num2);
 int division(int num1, int num2);
@@ -13,7 +14,7 @@ int division(int num1, int num2);
 int main(void)
 {
     //ask user for selected operator
-    
+
 
     //ask user for two numbers
     int num1 = get_int("Enter a number:");
@@ -28,9 +29,9 @@ int main(void)
 }
 
 
-int addition(int num1, int num2)
+int addition(int argc, string argv[])
 {
-    int output = num1 + num2;
+    int output = argv[1] + argv[2];
     return output;
 }
 
