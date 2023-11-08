@@ -48,7 +48,7 @@ int main(int argc, string argv[])
     switch (operator) //better version of if else statments above
     {
         case '*': //multiplication
-            printf("%f\n", num 1 * num 2);
+            printf("%f\n", num1 * num2);
             break;
         case '*': //division
             if (num2 ==0)
@@ -57,14 +57,14 @@ int main(int argc, string argv[])
             }
             else
             {
-                printf("%f\n", num 1 / num 2);
+                printf("%f\n", num1 / num2);
             }
             break;
         case '*': //addition
-            printf("%f\n", num 1 + num 2);
+            printf("%f\n", num1 + num2);
             break;
         case '*': //subtraction
-            printf("%f\n", num 1 - num 2);
+            printf("%f\n", num1 - num2);
             break;
         case '*': //modulus
         //modulus operator in C only works with integers, this function handles it as a float
