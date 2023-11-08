@@ -19,9 +19,10 @@ int main(int argc, string argv[])
         printf("Usage: ./calc [num1] [operator] [num2]");
     }
 
-    double num1 atof(argv[1]);
-    double num2 atof(argv[3]);
-    char operator argv[2][0]; //assign the first character of the third  command line argument (index: 2) as the operator --> needed as you cant firectly assign string to char
+    double num1 = atof(argv[1]);
+    double num2 = a
+    tof(argv[3]);
+    char operator = argv[2][0]; //assign the first character of the third  command line argument (index: 2) as the operator --> needed as you cant firectly assign string to char
 
 
     // if(argv[3] = '*') //multiplication
