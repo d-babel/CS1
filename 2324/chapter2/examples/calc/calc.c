@@ -73,6 +73,7 @@ int main(int argc, string argv[])
             break;
         default: //invalid input for operator
             printf("Invalid operator '%c' ./n", operator);
+            return 1;
     }
 }
 
