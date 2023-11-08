@@ -18,7 +18,7 @@ int main(int argc, string argv[]) {
 
     switch (operator) {
         case 'x':
-            printf("%f\n", num1 * num2);
+            printf("%f\n", num2 * num1);
             break;
         case '/':
             if (num2 == 0) {
