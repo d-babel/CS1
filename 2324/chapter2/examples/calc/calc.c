@@ -11,7 +11,7 @@
 double mod(double num1, double num2);
 
 
-int main(void)
+int main(int argc, string argv[])
 {
     //check
     if (argc != 4)
