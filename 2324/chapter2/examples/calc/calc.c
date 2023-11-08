@@ -48,7 +48,7 @@ int main(int argc, string argv[])
 
     switch (operator) //better version of if else statments above
     {
-        case '*': //multiplication
+        case 'x': //multiplication
             printf("%f\n", num1 * num2);
             break;
         case '/': //division
