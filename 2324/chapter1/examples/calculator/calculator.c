@@ -51,8 +51,14 @@ int main(void)
             printf("%f\n", num 1 * num 2);
             break;
         case '*': //division
-            //check if num2 == 0 as you can not divide by 0
-            printf("%f\n", num 1 / num 2);
+            if (num2 ==0)
+            {
+                printf("Cannot divide by zero\n"); //divide by zero check
+            }
+            else
+            {
+                printf("%f\n", num 1 / num 2);
+            }
             break;
         case '*': //addition
             printf("%f\n", num 1 + num 2);
@@ -61,13 +67,27 @@ int main(void)
             printf("%f\n", num 1 - num 2);
             break;
         case '*': //modulus
-            printf("");
+        //modulus operator in C only works with integers, this function handles it as a float
+            printf("%f\n", mod(num1, num2));
             break;
+        default: //invalid input for operator
+            printf("Invalid operator '%c' ./n", operator);
     }
 }
 
 int mod(num1, num2)
 {
+    if (num2 == 0){
+        printf("Error: Division by zero in modulus operator not possible");
+    }
+    else
+    {
+        //compute modulus for floating point numbers
+        int quotient = (int)(num1 / num2);
+        double mod = num1 (num2 * quotient);
+        return mod;
+    }
+
     //ex:
     // q = (int) (10.7 / 3.28);
     // q = (int) 3.262195;
