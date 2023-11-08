@@ -48,17 +48,17 @@ int main(void)
     switch (operator) //better version of if else statments above
     {
         case '*': //multiplication
-            printf("");
+            printf("%f\n", num 1 * num 2);
             break;
         case '*': //division
             //check if num2 == 0 as you can not divide by 0
-            printf("");
+            printf("%f\n", num 1 / num 2);
             break;
         case '*': //addition
-            printf("");
+            printf("%f\n", num 1 + num 2);
             break;
         case '*': //subtraction
-            printf("");
+            printf("%f\n", num 1 - num 2);
             break;
         case '*': //modulus
             printf("");
