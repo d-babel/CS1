@@ -71,7 +71,7 @@ int main(int argc, string argv[])
             printf("%f\n", mod(num1, num2));
             break;
         default: //invalid input for operator
-            printf("Invalid operator '%c' ./n", operator);
+            printf("Invalid operator %c' ./n", operator);
     }
 }
 
