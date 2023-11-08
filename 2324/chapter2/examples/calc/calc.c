@@ -89,12 +89,4 @@ float mod(float num1, float num2)
         double mod = num1 - (num2 * quotient);
         return mod;
     }
-
-    // ex:
-    //  q = (int) (10.7 / 3.28);
-    //  q = (int) 3.262195;
-    //  q = 3
-    //  mod = 10.7 - (3.28 * 3);
-    //  mod = 10.7 - 9.84
-    //  mod = 0.86
-2324/chapter2/examples/calc/betterCalc.c}
+}
