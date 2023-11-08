@@ -50,7 +50,7 @@ int main(int argc, string argv[])
         case '*': //multiplication
             printf("%f\n", num1 * num2);
             break;
-        case '*': //division
+        case '/': //division
             if (num2 ==0)
             {
                 printf("Cannot divide by zero\n"); //divide by zero check
@@ -60,13 +60,13 @@ int main(int argc, string argv[])
                 printf("%f\n", num1 / num2);
             }
             break;
-        case '*': //addition
+        case '+': //addition
             printf("%f\n", num1 + num2);
             break;
-        case '*': //subtraction
+        case '-': //subtraction
             printf("%f\n", num1 - num2);
             break;
-        case '*': //modulus
+        case '%': //modulus
         //modulus operator in C only works with integers, this function handles it as a float
             printf("%f\n", mod(num1, num2));
             break;
