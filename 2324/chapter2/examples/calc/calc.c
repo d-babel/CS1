@@ -4,16 +4,14 @@
 #include <stdio.h>
 #include <stdlib.h>
 
+// mod opperator --> Usage: ./calc [num1] [operator] [num2]
+// index:                      0      1        2       3
 
-//mod opperator --> Usage: ./calc [num1] [operator] [num2]
-//index:                      0      1        2       3
-
-float mod(double num1, double num2);
-
+float mod(float num1, float num2);
 
 int main(int argc, string argv[])
 {
-    //check
+    // check
     if (argc != 4)
     {
         printf("Usage: ./calc [num1] [operator] [num2]");
@@ -22,8 +20,8 @@ int main(int argc, string argv[])
 
     float num1 = atof(argv[1]);
     float num2 = atof(argv[3]);
-    char operator = argv[2][0]; //assign the first character of the third  command line argument (index: 2) as the operator --> needed as you cant firectly assign string to char
-
+    char operator= argv[2][0]; // assign the first character of the third  command line argument (index: 2) as the operator -->
+                               // needed as you cant firectly assign string to char
 
     // if(argv[3] = '*') //multiplication
     // {
@@ -46,32 +44,32 @@ int main(int argc, string argv[])
 
     // }
 
-    switch (operator) //better version of if else statments above
+    switch (operator) // better version of if else statments above
     {
-        case 'x': //multiplication
+        case 'x': // multiplication
             printf("%f\n", num1 * num2);
             break;
-        case '/': //division
-            if (num2 ==0)
+        case '/': // division
+            if (num2 == 0)
             {
-                printf("Cannot divide by zero\n"); //divide by zero check
+                printf("Cannot divide by zero\n"); // divide by zero check
             }
             else
             {
                 printf("%f\n", num1 / num2);
             }
             break;
-        case '+': //addition
+        case '+': // addition
             printf("%f\n", num1 + num2);
             break;
-        case '-': //subtraction
+        case '-': // subtraction
             printf("%f\n", num1 - num2);
             break;
-        case '%': //modulus
-        //modulus operator in C only works with integers, this function handles it as a float
+        case '%': // modulus
+            // modulus operator in C only works with integers, this function handles it as a float
             printf("%f\n", mod(num1, num2));
             break;
-        default: //invalid input for operator
+        default: // invalid input for operator
             printf("Invalid operator '%c' ./n", operator);
             return 1;
     }
@@ -79,24 +77,24 @@ int main(int argc, string argv[])
 
 float mod(float num1, float num2)
 {
-    if (num2 == 0){
+    if (num2 == 0)
+    {
         printf("Error: Division by zero in modulus operator not possible");
         return 0;
     }
     else
     {
-        //compute modulus for floating point numbers
-        int quotient = (int)(num1 / num2);
+        // compute modulus for floating point numbers
+        int quotient = (int) (num1 / num2);
         double mod = num1 - (num2 * quotient);
         return mod;
     }
 
-    //ex:
-    // q = (int) (10.7 / 3.28);
-    // q = (int) 3.262195;
-    // q = 3
-    // mod = 10.7 - (3.28 * 3);
-    // mod = 10.7 - 9.84
-    // mod = 0.86
-
-}
+    // ex:
+    //  q = (int) (10.7 / 3.28);
+    //  q = (int) 3.262195;
+    //  q = 3
+    //  mod = 10.7 - (3.28 * 3);
+    //  mod = 10.7 - 9.84
+    //  mod = 0.86
+2324/chapter2/examples/calc/betterCalc.c}
