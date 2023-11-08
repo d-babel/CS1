@@ -84,7 +84,7 @@ double mod(double num1, double num2)
     {
         //compute modulus for floating point numbers
         int quotient = (int)(num1 / num2);
-        double mod = num1 (num2 * quotient);
+        double mod = num1 - (num2 * quotient);
         return mod;
     }
 
