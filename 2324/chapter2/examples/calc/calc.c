@@ -79,8 +79,10 @@ double mod(double num1, double num2)
 {
     if (num2 == 0){
         printf("Error: Division by zero in modulus operator not possible");
+        return 0;
     }
-
+    else
+    {
         //compute modulus for floating point numbers
         int quotient = (int)(num1 / num2);
         double mod = num1 - (num2 * quotient);
