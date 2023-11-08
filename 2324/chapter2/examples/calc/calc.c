@@ -17,6 +17,7 @@ int main(int argc, string argv[])
     if (argc != 4)
     {
         printf("Usage: ./calc [num1] [operator] [num2]");
+        return 1;
     }
 
     double num1 = atof(argv[1]);
@@ -71,7 +72,7 @@ int main(int argc, string argv[])
             printf("%f\n", mod(num1, num2));
             break;
         default: //invalid input for operator
-            printf("Invalid operator %c' ./n", operator);
+            printf("Invalid operator '%c' ./n", operator);
     }
 }
 
