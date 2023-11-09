@@ -15,7 +15,7 @@ int main(int argc, string argv[])
     if (argc != 4)
     {
         printf("Usage: ./calc [num1] [operator] [num2]");
-        return 1;
+        // return 1;
     }
 
     double num1 = atof(argv[1]);
