@@ -4,9 +4,15 @@
 #include <math.h>
 #include <stdio.h>
 
+//DEFINE MAGIC NUMBERS FOR READABILITY
+#define QUARTER 25
+#define DIME 10
+#define NICKEL 5
+#define PENNY 1
+
 int main(void)
 {
-    const int COINS[] = {25, 10, 5, 1};
+    const int COINS[] = {QUARTER, DIME, NICKEL, PENNY};
 
     int coins = 0, cents = round(get_float("Change owed: ") * 100); // keep track of number of coins used and change owed in cents.
 
