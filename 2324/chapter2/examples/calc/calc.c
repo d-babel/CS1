@@ -7,7 +7,7 @@
 // mod opperator --> Usage: ./calc [num1] [operator] [num2]
 // index:                      0      1        2       3
 
-double mod(double num1, double num2);
+float mod(float num1, float num2);
 
 int main(int argc, string argv[])
 {
@@ -75,7 +75,7 @@ int main(int argc, string argv[])
     }
 }
 
-double mod(double num1, double  num2)
+float mod(float num1, float num2)
 {
     if (num2 == 0)
     {
