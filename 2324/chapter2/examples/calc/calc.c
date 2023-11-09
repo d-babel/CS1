@@ -15,11 +15,11 @@ int main(int argc, string argv[])
     if (argc != 4)
     {
         printf("Usage: ./calc [num1] [operator] [num2]");
-        // return 1;
+        return 1;
     }
 
-    double num1 = atof(argv[1]);
-    double num2 = atof(argv[3]);
+    float num1 = atof(argv[1]);
+    float num2 = atof(argv[3]);
     char operator= argv[2][0]; // assign the first character of the third  command line argument (index: 2) as the operator -->
                                // needed as you cant firectly assign string to char
 
