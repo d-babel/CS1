@@ -3,9 +3,23 @@
 #include <cs50.h>
 #include <stdio.h>
 #include <math.h>
-#include 
+#include <string.h>
+#include <ctype.h>
 
 //#define formula? --> ask in office hours
+// define constants for Coleman-Liau index formula
+#define COEFFICIENT_LETTERS_PER_100_WORDS 0.0588
+#define COEFFICIENT_SENTENCES_PER_100_WORDS 0.296
+#define COEFFICIENT_BASE_OFFSET 15.8
+
+// function prototypes
+
+
+
+int main(void)
+{
+    string text = get_string("Text: ");
+}
 
 // user inputs a excerpt from a book
 // DATATYPE text = get_DATATYPE("Text: ");
