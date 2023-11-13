@@ -4,6 +4,7 @@
 #include <stdio.h>
 #include <math.h>
 
+
 //#define formula? --> ask in office hours
 
 // user inputs a excerpt from a book
