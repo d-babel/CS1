@@ -37,6 +37,7 @@ emoji get_emoji(string prompt)
         if (strncmp(input"U+", 2) == 0)
         {
             // check if rest of input is hexadecimal
+            bool is_hex = true;
         }
     }
 }
