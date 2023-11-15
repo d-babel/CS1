@@ -16,7 +16,7 @@ typedef wchar_t emoji;
 // function prototype
 emoji get_emoji(string prompt);
 
-
+x
 int main(void)
 {
     setlocale(LC_ALL, "");
