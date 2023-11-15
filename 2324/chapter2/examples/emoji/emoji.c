@@ -22,6 +22,10 @@
 // needed alias 'emoji' for 'wchar_t' for unicode emoji representation (for readability)
 typedef wchar_t emoji;
 
+// function prototype
+emoji get_emoji(string prompt);
+
+
 int main(void)
 {
     setlocale(LC_ALL, "");
