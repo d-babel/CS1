@@ -38,11 +38,11 @@ int main(void)
 
     // round index to nearest whole num and find grade
     int grade = round(index);
-    if (grade >= 16)
+    if (grade >= 16) //constant
     {
         printf("Grade 16+\n");
     }
-    else if (grade < 1)
+    else if (grade < 1) //constant
     {
         printf("Before Grade 1\n");
     }
