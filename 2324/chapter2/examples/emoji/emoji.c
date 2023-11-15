@@ -24,13 +24,26 @@
 int main(void)
 {
     setlocale(LC_ALL, "");
-    emoji 
+    emoji emojiChar = get_emoji("Code point: ");
+    printf("%lc\n", emojiChar);
+}
+
+emoji get_emoji(string prompt)
+{
+    //loop until break
+    while(true)
+    {
+        //check if input starts w/ "U+"
+        if (strncmp(input"U+", 2) == 0)
+        {
+            // check if rest of input is hexadecimal
+        }
+    }
 }
 
 //input
 
 // emoji function
-    // check if input starts with "U+"
     // check if the rest of the input is hexadecimal
     // convert and return if valid hexadecimal
 
