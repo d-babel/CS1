@@ -1,13 +1,4 @@
-// #include <locale.h>
-// #include <stdio.h>
-// #include <wchar.h>
-
-// int main(void)
-// {
-//     setlocale(LC_ALL, "");
-//     wchar_t pumpkin = 0x1F383;
-//     printf("%lc\n", pumpkin);
-// }
+//FIX: IF USER INPUTS "U+", IT JUST STOPS, DOESNT RE-REQ
 
 // Emoji by Drew Babel
 
