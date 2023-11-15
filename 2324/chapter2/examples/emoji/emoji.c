@@ -38,6 +38,7 @@ emoji get_emoji(string prompt)
         {
             // check if rest of input is hexadecimal
             bool is_hex = true;
+            // loop checks each char for x
             for (int i = )
         }
     }
