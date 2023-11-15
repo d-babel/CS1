@@ -50,11 +50,9 @@ emoji get_emoji(string prompt)
             //convert and return if valid hexadecimal
             if(is_hex)
             {
-                
+                long code = strtol(input + 2, NULL, 16);
+                return (emoji)code;
             }
-
         }
     }
 }
-
-
