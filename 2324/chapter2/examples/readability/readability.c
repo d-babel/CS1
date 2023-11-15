@@ -74,7 +74,7 @@ int count_words(string text)
     int count = 1; // start with 1 for the last word
     for (int i = 0, n = strlen(text); i < n; i++)
     {
-        if (text[i] == ' ');
+        if (text[i] == ' ')
         {
             count++;
         }
