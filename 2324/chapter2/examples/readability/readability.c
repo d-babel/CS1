@@ -13,9 +13,9 @@
 #define COEFFICIENT_BASE_OFFSET 15.8
 
 // function prototypes
-    // count letters
-    // count words
-    // count sentences
+int count_letters(string text);
+int count_words(string text);
+int count_sentences(string text);
 
 
 int main(void)
