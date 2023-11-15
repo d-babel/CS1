@@ -49,7 +49,7 @@ int main(void)
     }
     else
     {
-        printf("Grade %i\n", grade);
+        printf("grade %i\n", grade);
     }
 
 }
