@@ -38,8 +38,9 @@ emoji get_emoji(string prompt)
     //loop until break
     while(true)
     {
+        string input = get_string("%s", prompt);
         //check if input starts w/ "U+"
-        if (strncmp(input"U+", 2) == 0)
+        if (strncmp(input, "U+", 2) == 0)
         {
             // check if rest of input is hexadecimal
             bool is_hex = true;
