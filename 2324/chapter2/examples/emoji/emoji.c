@@ -19,7 +19,8 @@
 #include <string.h>
 #include <wchar.h>
 
-// needed alias 'emoji' for 'wchar_t' for unicode emoji representation
+// needed alias 'emoji' for 'wchar_t' for unicode emoji representation (for readability)
+typedef wchar_t emoji;
 
 int main(void)
 {
