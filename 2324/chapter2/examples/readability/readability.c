@@ -24,7 +24,7 @@ int main(void)
     string text = get_string("Text: ");
 
     //count letters, words, and sentences
-    int letters = count.letters(text);
+    int letters = count_letters(text);
     int words = count_words(text);
     int sentences = count_sentences(text);
 
@@ -60,7 +60,7 @@ int count_letters(string text)
     int count = 0;
     for (int i = 0, n = strlen(text); i < n; i++)
     {
-        if (isalpha(test[i]))
+        if (isalpha(text[i]))
         {
             count++;
         }
@@ -69,7 +69,7 @@ int count_letters(string text)
 }
 
 // function to count words in text
-int count_words(strings text)
+int count_words(string text)
 {
     int count = 1; // start with 1 for the last word
     for (int i = 0, n = strlen(text); i < n; i++)
