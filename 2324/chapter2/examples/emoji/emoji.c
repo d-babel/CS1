@@ -39,14 +39,22 @@ emoji get_emoji(string prompt)
             // check if rest of input is hexadecimal
             bool is_hex = true;
             // loop checks each char for x
-            for (int i = )
+            for (int i = 2; input[i] != '\0'; i++)
+            {
+                if (!isxdigit(input[i]))
+                {
+                    is_hex = false;
+                    break;
+                }
+            }
+            //convert and return if valid hexadecimal
+            if(is_hex)
+            {
+                
+            }
+
         }
     }
 }
 
-//input
-
-// emoji function
-    // check if the rest of the input is hexadecimal
-    // convert and return if valid hexadecimal
 
