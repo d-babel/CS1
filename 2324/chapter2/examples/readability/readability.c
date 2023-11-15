@@ -6,11 +6,14 @@
 #include <stdio.h>
 #include <string.h>
 
-//#define formula? --> ask in office hours
 // define constants for Coleman-Liau index formula
 #define COEFFICIENT_LETTERS_PER_100_WORDS 0.0588
 #define COEFFICIENT_SENTENCES_PER_100_WORDS 0.296
 #define COEFFICIENT_BASE_OFFSET 15.8
+
+// define lowest & highest grades for returned grade level
+#define HIGHEST_GRADE 16
+#define LOWEST_GRADE 1
 
 // function prototypes
 int count_letters(string text);
@@ -38,11 +41,11 @@ int main(void)
 
     // round index to nearest whole num and find grade
     int grade = round(index);
-    if (grade >= 16) //constant
+    if (grade >= HIGHEST_GRADE)
     {
         printf("Grade 16+\n");
     }
-    else if (grade < 1) //constant
+    else if (grade < LOWEST_GRADE)
     {
         printf("Before Grade 1\n");
     }
