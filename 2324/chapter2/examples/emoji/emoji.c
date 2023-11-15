@@ -19,6 +19,14 @@
 #include <string.h>
 #include <wchar.h>
 
+// needed alias 'emoji' for 'wchar_t' for unicode emoji representation
+
+int main(void)
+{
+    setlocale(LC_ALL, "");
+    emoji 
+}
+
 //input
 
 // emoji function
