@@ -6,6 +6,8 @@
 #include <ctype.h>
 #include <string.h>
 
+#define ALPHABET_COUNT 26
+
 bool is_numerical(string key);
 void encrypt(string plaintext, int key);
 
@@ -62,9 +64,20 @@ bool is_numerical(string key)
 // caesar_encrypt("ABC xyz!", 2) changes the string to "CDE zab!"
 void encrypt(string plaintext, int key)
 {
-    // TODO — Your code here!
+    //iterate over string plaintext
+    for (int i = 0, n = strlen(plaintext); i < n; i++)
+    {
+        //check if current letter = real letter (uppercase & lowercase)
+        if (isalpha(plaintext[i]))
+        {
+            //determine base ascii value ('A' for uppercase, 'a' for lowercase)
+            char base = isupper(plaintext[i]) ? 'A' : 'a';
+            //subtract the base for A-Z or a-z
+            //add key to shift char
+            //use % to wrap around alphabet
+            //then add base back on correct ascii range
+            plaintext[i] = (plaintext[i] - base + key) % ALPHABET_COUNT + base;
+        }
+    }
 
-    //loop strlen(plaintext times)
-    //check isalpha(plaintext[i])
-    //check if upper or lower case to calc correct shifted char
-    //wrap around with plaintext[i] - base + key all % 26 + base
+}
