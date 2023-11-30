@@ -1,9 +1,9 @@
 // Caesar by Drew Babel
 
-#include <stdio.h>
 #include <cs50.h>
-#include <stdlib.h>
 #include <ctype.h>
+#include <stdio.h>
+#include <stdlib.h>
 #include <string.h>
 
 #define ALPHABET_COUNT 26
@@ -27,7 +27,6 @@ int main(int argc, string argv[])
         return 1;
     }
 
-
     // Convert the key to an integer
     int key = atoi(argv[1]);
 
@@ -43,7 +42,6 @@ int main(int argc, string argv[])
     return 0;
 }
 
-
 bool is_numerical(string key)
 {
     for (int i = 0, n = strlen(key); i < n; i++)
@@ -56,7 +54,6 @@ bool is_numerical(string key)
     return true;
 }
 
-
 // Function to perform Caesar cipher encryption on all letters.
 // Each letter should be offset by key, wrapping around from
 // Z to A and from z to a.
@@ -64,20 +61,19 @@ bool is_numerical(string key)
 // caesar_encrypt("ABC xyz!", 2) changes the string to "CDE zab!"
 void encrypt(string plaintext, int key)
 {
-    //iterate over string plaintext
+    // iterate over string plaintext
     for (int i = 0, n = strlen(plaintext); i < n; i++)
     {
-        //check if current letter = real letter (uppercase & lowercase)
+        // check if current letter = real letter (uppercase & lowercase)
         if (isalpha(plaintext[i]))
         {
-            //determine base ascii value ('A' for uppercase, 'a' for lowercase)
+            // determine base ascii value ('A' for uppercase, 'a' for lowercase)
             char base = isupper(plaintext[i]) ? 'A' : 'a';
-            //subtract the base for A-Z or a-z
-            //add key to shift char
-            //use % to wrap around alphabet
-            //then add base back on correct ascii range
+            // subtract the base for A-Z or a-z
+            // add key to shift char
+            // use % to wrap around alphabet
+            // then add base back on correct ascii range
             plaintext[i] = (plaintext[i] - base + key) % ALPHABET_COUNT + base;
         }
     }
-
 }
