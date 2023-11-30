@@ -64,7 +64,7 @@ void encrypt(string plaintext, int key)
 {
     // TODO — Your code here!
 
-    //use taken in encrypt to offset chars
-    //if offset value % [highest ascii value] > 0, set new char value to that
-    //loop thru word strlen times with input[i]
-}
+    //loop strlen(plaintext times)
+    //check isalpha(plaintext[i])
+    //check if upper or lower case to calc correct shifted char
+    //wrap around with plaintext[i] - base + key all % 26 + base
