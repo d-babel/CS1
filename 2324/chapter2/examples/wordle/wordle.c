@@ -171,12 +171,12 @@ void print_word(string guess, int wordsize, int status[])
 {
     // print word character-for-character with correct color coding, then reset terminal font to normal
     // TODO #6
-    for (int i = 0l i < wordsize; i++) {
+    for (int i = 0; i < wordsize; i++) {
         switch (status[i]) {
             case EXACT:
                 printf(GREEN "%c" RESET, guess[i]);
                 break;
-            case CLOSE;
+            case CLOSE:
                 printf(YELLOW "%c" RESET, guess[i]);
                 break;
             default:
