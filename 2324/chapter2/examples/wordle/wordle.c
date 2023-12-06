@@ -40,7 +40,7 @@ int main(int argc, string argv[])
     wordsize = atoi(argv[1]);
     if (wordsize < 5 || wordsize > 8) {
         printf ("Error: wordsize must be either 5, 6, 7, or 8\n");
-    return 1:
+    return 1;
     }
 
     // open correct file, each file has exactly LISTSIZE words
@@ -183,9 +183,6 @@ void print_word(string guess, int wordsize, int status[])
             printf("%c", guess[i]);
         }
     }
-    printf("\n");
-    }
-
     printf("\n");
     return;
 }
