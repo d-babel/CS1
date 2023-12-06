@@ -29,7 +29,7 @@ int main(int argc, string argv[])
     // ensure proper usage
     // TODO #1
     if (argc != 2) {
-        printf("Usage: ./wordle [word_length]\n");
+        printf("Usage: ./wordle wordsize\n");
         return 1;
     }
 
@@ -37,6 +37,10 @@ int main(int argc, string argv[])
 
     // ensure argv[1] is either 5, 6, 7, or 8 and store that value in wordsize instead
     // TODO #2
+    if (wordsize < 5 || wordsize > 8) {
+        printf ("Error: wordsize must be either 5, 6, 7, or 8\n");
+    return 1:
+    }
 
     // open correct file, each file has exactly LISTSIZE words
     char wl_filename[6];
@@ -79,6 +83,9 @@ int main(int argc, string argv[])
 
         // set all elements of status array initially to 0, aka WRONG
         // TODO #4
+        for (int j = 0; j < wordsize; j++) {
+            status[j] = WRONG;
+        }
 
         // Calculate score for the guess
         int score = check_word(guess, wordsize, status, choice);
@@ -109,7 +116,11 @@ string get_guess(int wordsize)
 
     // ensure users actually provide a guess that is the correct length
     // TODO #3
-
+    do {
+        printf("Input a %d-letter word: ", wordsize);
+        guess = get_string("");
+    }
+    while (strlen(guess) != wordsize);
     return guess;
 }
 
@@ -119,6 +130,22 @@ int check_word(string guess, int wordsize, int status[], string choice)
 
     // compare guess to choice and score points as appropriate, storing points in status
     // TODO #5
+    for (int i = 0; i < wordsize; i++) {
+        if (guess[i] == choice[i]){
+            status[i] = EXACT;
+            score += EXACT;
+        }
+        else
+        {
+            for (int j = 0; j < wordsize; j++) {
+                if (guess[i] == choice[j] && status[j] != EXACT) {
+                    status[i] = CLOSE;
+                    score += CLOSE;
+                    break;
+                }
+            }
+        }
+    }
 
     // HINTS
     // iterate over each letter of the guess
