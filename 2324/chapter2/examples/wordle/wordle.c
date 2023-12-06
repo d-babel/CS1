@@ -137,6 +137,11 @@ int check_word(string guess, int wordsize, int status[], string choice)
 
     // compare guess to choice and score points as appropriate, storing points in status
     // TODO #5
+    bool close_matched(wordsize);
+    for (int i = 0; i < wordsize; i++) {
+        close_matched[i] = false;
+    }
+
     for (int i = 0; i < wordsize; i++) {
         if (guess[i] == choice[i]){
             status[i] = EXACT;
@@ -148,6 +153,7 @@ int check_word(string guess, int wordsize, int status[], string choice)
                 if (guess[i] == choice[j] && status[j] != EXACT) {
                     status[i] = CLOSE;
                     score += CLOSE;
+                    close_matched[i] = true;
                     //break; --> breaks out of nested loop
                     break;
 
