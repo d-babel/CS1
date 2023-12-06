@@ -106,6 +106,12 @@ int main(int argc, string argv[])
 
     // Print the game's result
     // TODO #7
+    if (won) {
+        printf("You won!\n");
+        }
+        else {
+            printf("Sorry, the word was '%s'.\n", choice);
+        }
 
     // that's all folks!
     return 0;
