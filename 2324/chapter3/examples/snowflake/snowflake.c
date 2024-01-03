@@ -9,6 +9,7 @@ void draw(void);
 // TODO #1
 // Declare a 2D char array like this:
 // data-type board[size][size]
+char board[DIM][DIM];
 
 int main(void)
 {
@@ -25,6 +26,9 @@ void init(void)
     for (int i = 0; i < DIM; i++)
     {
         // Another nested loop goes here
+        for (int j = 0; j < DIM; j++){
+            board[i][j] = '*';
+        }
     }
 }
 
