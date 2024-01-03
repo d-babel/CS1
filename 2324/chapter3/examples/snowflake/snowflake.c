@@ -29,6 +29,7 @@ void init(void)
         for (int j = 0; j < DIM; j++){
             board[i][j] = '*';
         }
+        printf("\n");
     }
 }
 
