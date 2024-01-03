@@ -40,7 +40,11 @@ void draw(void)
     // Write the code that prints the board.
     for (int i = 0; i < DIM; i++)
     {
-
+        // Another nested loop goes here
+        for (int j = 0; j < DIM; j++){
+            board[i][j] = '*';
+        }
+        printf("\n");
     }
 }
 
