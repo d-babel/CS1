@@ -1,4 +1,4 @@
-Snowflake by Drew Babel
+//cdSnowflake by Drew Babel
 
 // Snowflake Demo
 #include <stdio.h>
