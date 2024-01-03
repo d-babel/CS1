@@ -1,3 +1,5 @@
+Snowflake by Drew Babel
+
 // Snowflake Demo
 #include <stdio.h>
 #define DIM 10
