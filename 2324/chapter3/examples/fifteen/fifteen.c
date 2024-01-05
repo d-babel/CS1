@@ -138,7 +138,7 @@ void greet(void)
 {
     clear();
     printf("WELCOME TO GAME OF FIFTEEN\n");
-    usleep(2000000);
+    usleep(20000);
 }
 
 // Initializes the game's board with tiles numbered 1 through d*d - 1
