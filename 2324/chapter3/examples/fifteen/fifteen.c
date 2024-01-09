@@ -189,8 +189,14 @@ void draw(void)
 // If tile borders empty space, moves tile and returns true, else returns false
 bool move(int tile)
 {
-    // find tile pos
-    
+    // loop thru board
+    for (i = 0; i < d; i++){
+        for (j = 0; j < d; j++){
+            // find tile pos
+            
+        }
+    }
+
 
     // check adjacent blanks
 
