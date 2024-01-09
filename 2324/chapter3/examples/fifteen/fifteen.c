@@ -197,7 +197,7 @@ bool move(int tile)
                 // abs --> calc absolute value
                 if ((abs(blank_row - i) == 1 && blank_col == j) ||
                 (abs(blank_col - j) ==  1 && blank_row == i)) {
-                    
+                    // swap (continue from here)
                 }
             }
         }
