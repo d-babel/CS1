@@ -190,10 +190,13 @@ void draw(void)
 bool move(int tile)
 {
     // find tile pos
+    
 
     // check adjacent blanks
 
+
     // swap if adjacent
+
 
     // return move
     return false;
