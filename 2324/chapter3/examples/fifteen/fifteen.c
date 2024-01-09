@@ -193,7 +193,9 @@ bool move(int tile)
     for (i = 0; i < d; i++){
         for (j = 0; j < d; j++){
             // find tile pos
-            
+            if (board[i][j] == tile) {
+                if (j == blank_row && (j == blank_col + 1 || blank_col - 1))
+            }
         }
     }
 
