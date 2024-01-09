@@ -145,25 +145,68 @@ void greet(void)
 // (i.e., fills 2D array with values but does not actually print them)
 void init(void)
 {
-    // TODO
+    // set tile count (-1 for one less than total spaces on board)
+    int tile = d * d - 1;
+
+    // decrease for each space
+    for (int i = 0; i < d; i++) {
+        for (int j = 0; j < d; j++, tile--) {
+            board[i][j] = tile;
+        }
+    }
+
+    // change dimensions IF EVEN
+    if (d % 2 == 0) {
+        board(d - 1)(d - 3) = 1;
+        board(d - 1)(d - 2) = 2;
+    }
+
+    // set blank square on bottom right (will be used to track blank square)
+    blank_row = d - 1;
+    blank_col = d - 1;
+
 }
 
 // Prints the board in its current state
 void draw(void)
 {
-    // TODO
+    // loop each row and column, then print tile/blank
+    for (int i = 0; i < d; i++){
+        for (int j = 0; j < d; j++){
+            if (board[i][j] == 0) {
+                printf(" _ ");
+            } else {
+                printf("%2d ", board[i][j]);
+            }
+        }
+    }
+
+
+
+    // new line
 }
 
 // If tile borders empty space, moves tile and returns true, else returns false
 bool move(int tile)
 {
-    // TODO
+    // find tile pos
+
+    // check adjacent blanks
+
+    // swap if adjacent
+
+    // return move
     return false;
 }
 
 // Returns true if game is won (i.e., board is in winning configuration), else false
 bool won(void)
 {
-    // TODO
+    // check order
+
+    // check blank pos
+
+    // return win
+
     return false;
 }
