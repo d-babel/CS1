@@ -220,10 +220,15 @@ bool won(void)
         for (int j = 0; j < d; j++){
            // remember, you can not access parts outside the array
            // skip check for last tile (blank tile)
+           // [NOTE] POSSIBLY A WAY TO MAKE MORE EFFICIENT WITHOUT CHECKING EVERY LOOP
            if (i == d - 1 && j == d - 1){
             return true;
            }
-           
+           // check if not correct order
+            if (board[i][j] != tile){
+                return false;
+            }
+            tile++;
         }
     }
 
