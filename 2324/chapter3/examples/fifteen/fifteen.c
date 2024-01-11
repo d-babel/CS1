@@ -190,14 +190,14 @@ void draw(void)
 bool move(int tile)
 {
     // loop thru board
-    for (i = 0; i < d; i++){
-        for (j = 0; j < d; j++){
+    for (int i = 0; i < d; i++){
+        for (int j = 0; j < d; j++){
             // find tile pos
             if (board[i][j] == tile) {
                 // abs --> calc absolute value
                 if ((abs(blank_row - i) == 1 && blank_col == j) ||
                 (abs(blank_col - j) ==  1 && blank_row == i)) {
-                    // swap (continue from here)
+                    // swap blank and tile
                     board[blank_row][blank_col] = tile;
                     board[i][j] = 0;
                     blank_row = i;
@@ -214,9 +214,16 @@ bool move(int tile)
 // Returns true if game is won (i.e., board is in winning configuration), else false
 bool won(void)
 {
+    int tile = 1;
     // check order
+    for (int i = 0; i < d; i++){
+        for (int j = 0; j < d; j++){
+           // check blank pos
+           // remember, you can not access parts outside the array
+           if
+        }
+    }
 
-    // check blank pos
 
     // return win
 
