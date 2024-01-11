@@ -198,19 +198,16 @@ bool move(int tile)
                 if ((abs(blank_row - i) == 1 && blank_col == j) ||
                 (abs(blank_col - j) ==  1 && blank_row == i)) {
                     // swap (continue from here)
+                    board[blank_row][blank_col] = tile;
+                    board[i][j] = 0;
+                    blank_row = i;
+                    black_col = j;
+                    // return t/f to error out non-working moves
+                    return true;
                 }
             }
         }
     }
-
-
-    // check adjacent blanks
-
-
-    // swap if adjacent
-
-
-    // return move
     return false;
 }
 
