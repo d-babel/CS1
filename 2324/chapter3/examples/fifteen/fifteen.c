@@ -218,9 +218,12 @@ bool won(void)
     // check order
     for (int i = 0; i < d; i++){
         for (int j = 0; j < d; j++){
-           // check blank pos
            // remember, you can not access parts outside the array
-           if
+           // skip check for last tile (blank tile)
+           if (i == d - 1 && j == d - 1){
+            return true;
+           }
+           
         }
     }
 
