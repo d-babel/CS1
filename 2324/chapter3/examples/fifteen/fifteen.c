@@ -225,3 +225,7 @@ bool won(void)
 
     return false;
 }
+
+// TESTING WON FUNCTION:
+// ./fifteen 3 < 3x3.txt
+// ./fifteen 4 < 4x4.txt
