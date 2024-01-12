@@ -157,8 +157,8 @@ void init(void)
 
     // change dimensions IF EVEN
     if (d % 2 == 0) {
-        board(d - 1)(d - 3) = 1;
-        board(d - 1)(d - 2) = 2;
+        board[d - 1][d - 3] = 1;
+        board[d - 1][d - 2] = 2;
     }
 
     // set blank square on bottom right (will be used to track blank square)
