@@ -201,7 +201,7 @@ bool move(int tile)
                     board[blank_row][blank_col] = tile;
                     board[i][j] = 0;
                     blank_row = i;
-                    black_col = j;
+                    blank_col = j;
                     // return t/f to error out non-working moves
                     return true;
                 }
