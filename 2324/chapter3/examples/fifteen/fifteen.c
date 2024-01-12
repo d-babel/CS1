@@ -46,8 +46,7 @@ int main(int argc, string argv[])
     d = atoi(argv[1]);
     if (d < DIM_MIN || d > DIM_MAX)
     {
-        printf("Board must be between %i x %i and %i x %i, inclusive.\n",
-               DIM_MIN, DIM_MIN, DIM_MAX, DIM_MAX);
+        printf("Board must be between %i x %i and %i x %i, inclusive.\n", DIM_MIN, DIM_MIN, DIM_MAX, DIM_MAX);
         return 2;
     }
 
@@ -149,14 +148,17 @@ void init(void)
     int tile = d * d - 1;
 
     // decrease for each space
-    for (int i = 0; i < d; i++) {
-        for (int j = 0; j < d; j++, tile--) {
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++, tile--)
+        {
             board[i][j] = tile;
         }
     }
 
     // change dimensions IF EVEN
-    if (d % 2 == 0) {
+    if (d % 2 == 0)
+    {
         board[d - 1][d - 3] = 1;
         board[d - 1][d - 2] = 2;
     }
@@ -164,25 +166,27 @@ void init(void)
     // set blank square on bottom right (will be used to track blank square)
     blank_row = d - 1;
     blank_col = d - 1;
-
 }
 
 // Prints the board in its current state
 void draw(void)
 {
     // loop each row and column, then print tile/blank
-    for (int i = 0; i < d; i++){
-        for (int j = 0; j < d; j++){
-            if (board[i][j] == 0) {
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            if (board[i][j] == 0)
+            {
                 printf(" _ ");
-            } else {
+            }
+            else
+            {
                 printf("%2d ", board[i][j]);
             }
         }
         printf("\n");
     }
-
-
 
     // new line
 }
@@ -191,13 +195,16 @@ void draw(void)
 bool move(int tile)
 {
     // loop thru board
-    for (int i = 0; i < d; i++){
-        for (int j = 0; j < d; j++){
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
             // find tile pos
-            if (board[i][j] == tile) {
+            if (board[i][j] == tile)
+            {
                 // abs --> calc absolute value
-                if ((abs(blank_row - i) == 1 && blank_col == j) ||
-                (abs(blank_col - j) ==  1 && blank_row == i)) {
+                if ((abs(blank_row - i) == 1 && blank_col == j) || (abs(blank_col - j) == 1 && blank_row == i))
+                {
                     // swap blank and tile
                     board[blank_row][blank_col] = tile;
                     board[i][j] = 0;
@@ -217,22 +224,25 @@ bool won(void)
 {
     int tile = 1;
     // check order
-    for (int i = 0; i < d; i++){
-        for (int j = 0; j < d; j++){
-           // remember, you can not access parts outside the array
-           // skip check for last tile (blank tile)
-           // [NOTE] POSSIBLY A WAY TO MAKE MORE EFFICIENT WITHOUT CHECKING EVERY LOOP
-           if (i == d - 1 && j == d - 1){
-            return true;
-           }
-           // check if not correct order
-            if (board[i][j] != tile){
+    for (int i = 0; i < d; i++)
+    {
+        for (int j = 0; j < d; j++)
+        {
+            // remember, you can not access parts outside the array
+            // skip check for last tile (blank tile)
+            // [NOTE] POSSIBLY A WAY TO MAKE MORE EFFICIENT WITHOUT CHECKING EVERY LOOP
+            if (i == d - 1 && j == d - 1)
+            {
+                return true;
+            }
+            // check if not correct order
+            if (board[i][j] != tile)
+            {
                 return false;
             }
             tile++;
         }
     }
-
 
     // return win
 
