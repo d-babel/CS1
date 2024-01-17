@@ -171,7 +171,9 @@ void init(void)
 
     // set blank square on bottom right (will be used to track blank square)
     blank_row = d - 1;
+    steps++;
     blank_col = d - 1;
+    steps++;
 }
 
 // Prints the board in its current state
