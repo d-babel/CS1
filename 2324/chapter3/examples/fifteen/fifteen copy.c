@@ -214,7 +214,7 @@ bool move(int tile)
             // find tile pos
             if (board[i][j] == tile)
             {
-                steps += 5;
+                steps += 7;
                 // abs --> calc absolute value
                 if ((abs(blank_row - i) == 1 && blank_col == j) || (abs(blank_col - j) == 1 && blank_row == i))
                 {
@@ -224,6 +224,7 @@ bool move(int tile)
                     blank_row = i;
                     blank_col = j;
                     // return t/f to error out non-working moves
+                    steps += 5;
                     return true;
                 }
             }
@@ -236,6 +237,7 @@ bool move(int tile)
 bool won(void)
 {
     int tile = 1;
+    steps++;
     // check order
     for (int i = 0; i < d; i++)
     {
@@ -244,6 +246,7 @@ bool won(void)
             // remember, you can not access parts outside the array
             // skip check for last tile (blank tile)
             // [NOTE] POSSIBLY A WAY TO MAKE MORE EFFICIENT WITHOUT CHECKING EVERY LOOP
+            steps +=;
             if (i == d - 1 && j == d - 1)
             {
                 return true;
