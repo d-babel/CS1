@@ -176,7 +176,7 @@ void init(void)
     printf("%i", steps);
 }
 
-int steps = 0;
+steps = 0;
 // Prints the board in its current state
 void draw(void)
 {
@@ -201,7 +201,7 @@ void draw(void)
     printf("%i", steps);
 }
 
-int steps = 0;
+steps = 0;
 // If tile borders empty space, moves tile and returns true, else returns false
 bool move(int tile)
 {
@@ -234,7 +234,7 @@ bool move(int tile)
     return false;
 }
 
-int steps = 0;
+steps = 0;
 // Returns true if game is won (i.e., board is in winning configuration), else false
 bool won(void)
 {
