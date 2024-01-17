@@ -162,6 +162,7 @@ void init(void)
     }
 
     // change dimensions IF EVEN
+    step++;
     if (d % 2 == 0)
     {
         board[d - 1][d - 3] = 1;
