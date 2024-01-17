@@ -187,16 +187,13 @@ void draw(void)
             if (board[i][j] == 0)
             {
                 printf(" _ ");
-                steps++;
             }
             else
             {
                 printf("%2d ", board[i][j]);
-                steps++;
             }
         }
         printf("\n");
-        steps++;
     }
 
     // new line
@@ -224,7 +221,7 @@ bool move(int tile)
                     blank_row = i;
                     blank_col = j;
                     // return t/f to error out non-working moves
-                    steps += 5;
+                    steps += 4;
                     return true;
                 }
             }
@@ -252,11 +249,13 @@ bool won(void)
                 return true;
             }
             // check if not correct order
+            steps++;
             if (board[i][j] != tile)
             {
                 return false;
             }
             tile++;
+            steps++;
         }
     }
 
