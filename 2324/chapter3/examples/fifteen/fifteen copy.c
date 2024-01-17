@@ -173,6 +173,7 @@ void init(void)
     blank_row = d - 1;
     blank_col = d - 1;
     steps += 2;
+    printf("%i", steps);
 }
 
 // Prints the board in its current state
