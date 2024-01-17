@@ -140,12 +140,16 @@ void greet(void)
     usleep(20000);
 }
 
+// steps
+int steps = 0;
+
 // Initializes the game's board with tiles numbered 1 through d*d - 1
 // (i.e., fills 2D array with values but does not actually print them)
 void init(void)
 {
     // set tile count (-1 for one less than total spaces on board)
     int tile = d * d - 1;
+    steps++;
 
     // decrease for each space
     for (int i = 0; i < d; i++)
