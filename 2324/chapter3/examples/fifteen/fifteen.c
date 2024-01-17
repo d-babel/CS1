@@ -1,4 +1,4 @@
-// Implements Game of Fifteen (generalized to d x d) --> by Drew Babel
+ls// Implements Game of Fifteen (generalized to d x d) --> by Drew Babel
 
 #define _XOPEN_SOURCE 500
 
