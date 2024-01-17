@@ -157,6 +157,7 @@ void init(void)
         for (int j = 0; j < d; j++, tile--)
         {
             board[i][j] = tile;
+            steps++;
         }
     }
 
