@@ -171,9 +171,8 @@ void init(void)
 
     // set blank square on bottom right (will be used to track blank square)
     blank_row = d - 1;
-    steps++;
     blank_col = d - 1;
-    steps++;
+    steps += 2;
 }
 
 // Prints the board in its current state
@@ -184,16 +183,20 @@ void draw(void)
     {
         for (int j = 0; j < d; j++)
         {
+            steps++;
             if (board[i][j] == 0)
             {
                 printf(" _ ");
+                steps++;
             }
             else
             {
                 printf("%2d ", board[i][j]);
+                steps++;
             }
         }
         printf("\n");
+        steps++;
     }
 
     // new line
@@ -207,9 +210,11 @@ bool move(int tile)
     {
         for (int j = 0; j < d; j++)
         {
+            steps++;
             // find tile pos
             if (board[i][j] == tile)
             {
+                steps += 5;
                 // abs --> calc absolute value
                 if ((abs(blank_row - i) == 1 && blank_col == j) || (abs(blank_col - j) == 1 && blank_row == i))
                 {
