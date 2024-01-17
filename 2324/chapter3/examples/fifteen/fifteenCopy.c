@@ -1,4 +1,4 @@
-ls// Implements Game of Fifteen (generalized to d x d) --> by Drew Babel
+// Implements Game of Fifteen (generalized to d x d) --> by Drew Babel
 
 #define _XOPEN_SOURCE 500
 
@@ -162,7 +162,7 @@ void init(void)
     }
 
     // change dimensions IF EVEN
-    step++;
+    steps++;
     if (d % 2 == 0)
     {
         board[d - 1][d - 3] = 1;
@@ -176,6 +176,7 @@ void init(void)
     printf("%i", steps);
 }
 
+int steps = 0;
 // Prints the board in its current state
 void draw(void)
 {
@@ -197,9 +198,10 @@ void draw(void)
         printf("\n");
     }
 
-    // new line
+    printf("%i", steps);
 }
 
+int steps = 0;
 // If tile borders empty space, moves tile and returns true, else returns false
 bool move(int tile)
 {
@@ -228,9 +230,11 @@ bool move(int tile)
             }
         }
     }
+    printf("%i", steps);
     return false;
 }
 
+int steps = 0;
 // Returns true if game is won (i.e., board is in winning configuration), else false
 bool won(void)
 {
@@ -259,7 +263,7 @@ bool won(void)
             steps++;
         }
     }
-
+    printf("%i", steps);
     // return win
 
     return false;
