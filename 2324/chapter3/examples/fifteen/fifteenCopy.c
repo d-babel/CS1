@@ -1,5 +1,3 @@
-// Implements Game of Fifteen (generalized to d x d) --> by Drew Babel
-
 #define _XOPEN_SOURCE 500
 
 #include <cs50.h>
@@ -18,7 +16,7 @@ int board[DIM_MAX][DIM_MAX];
 // Dimensions
 int d;
 
-//steps
+// Steps
 int steps = 0;
 
 // Saved locations of the blank tile
@@ -143,9 +141,7 @@ void greet(void)
     usleep(20000);
 }
 
-// steps
-
-
+// Initialize the game board
 void init(void)
 {
     steps = 0; // Reset steps
@@ -164,8 +160,7 @@ void init(void)
     steps++;
     if (d % 2 == 0)
     {
-        board[d - 1][d - 3] = 1;
-        board[d - 1][d - 2] = 2;
+        swap(&board[d - 1][d - 3], &board[d - 1][d - 2]);
     }
 
     blank_row = d - 1;
@@ -174,6 +169,7 @@ void init(void)
     printf("Steps in initialize: %i\n", steps);
 }
 
+// Draw the board
 void draw(void)
 {
     steps = 0; // Reset steps
@@ -197,9 +193,10 @@ void draw(void)
     printf("Steps in draw: %i\n", steps);
 }
 
+// Move a tile
 bool move(int tile)
 {
- // Reset steps
+    steps = 0; // Reset steps
     for (int i = 0; i < d; i++)
     {
         for (int j = 0; j < d; j++)
@@ -210,8 +207,7 @@ bool move(int tile)
                 steps += 4;
                 if ((abs(blank_row - i) == 1 && blank_col == j) || (abs(blank_col - j) == 1 && blank_row == i))
                 {
-                    board[blank_row][blank_col] = tile;
-                    board[i][j] = 0;
+                    swap(&board[blank_row][blank_col], &board[i][j]);
                     blank_row = i;
                     blank_col = j;
                     steps += 4;
@@ -225,9 +221,10 @@ bool move(int tile)
     return false;
 }
 
+// Check if the player has won
 bool won(void)
 {
-// Reset steps
+    steps = 0; // Reset steps
     int tile = 1;
     steps++;
 
@@ -238,8 +235,16 @@ bool won(void)
             steps++;
             if (i == d - 1 && j == d - 1)
             {
-                printf("Steps in won: %i\n", steps);
-                return true;
+                if (board[i][j] == 0)
+                {
+                    printf("Steps in won: %i\n", steps);
+                    return true;
+                }
+                else
+                {
+                    printf("Steps in won: %i\n", steps);
+                    return false;
+                }
             }
 
             steps++;
@@ -257,7 +262,10 @@ bool won(void)
     return false;
 }
 
-
-// TESTING WON FUNCTION:
-// ./fifteen 3 < 3x3.txt
-// ./fifteen 4 < 4x4.txt
+// Swap two integers
+void swap(int *a, int *b)
+{
+    int tmp = *a;
+    *a = *b;
+    *b = tmp;
+}
