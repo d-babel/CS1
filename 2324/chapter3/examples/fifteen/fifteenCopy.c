@@ -146,9 +146,10 @@ void greet(void)
 // steps
 
 
+
 void init(void)
 {
-    steps = 0; // Reset steps
+    int steps = 0; // Local steps counter for init function
     int tile = d * d - 1;
     steps++;
 
@@ -171,12 +172,14 @@ void init(void)
     blank_row = d - 1;
     blank_col = d - 1;
     steps += 2;
+
+    total_steps += steps; // Add steps to total steps
     printf("Steps in initialize: %i\n", steps);
 }
 
 void draw(void)
 {
-    steps = 0; // Reset steps
+    int steps = 0; // Local steps counter for draw function
     for (int i = 0; i < d; i++)
     {
         for (int j = 0; j < d; j++)
@@ -194,12 +197,13 @@ void draw(void)
         printf("\n");
     }
 
+    total_steps += steps; // Add steps to total steps
     printf("Steps in draw: %i\n", steps);
 }
 
 bool move(int tile)
 {
-    steps = 0; // Reset steps
+    int steps = 0; // Local steps counter for move function
     for (int i = 0; i < d; i++)
     {
         for (int j = 0; j < d; j++)
@@ -215,19 +219,23 @@ bool move(int tile)
                     blank_row = i;
                     blank_col = j;
                     steps += 4;
+
+                    total_steps += steps; // Add steps to total steps
                     printf("Steps in move: %i\n", steps);
                     return true;
                 }
             }
         }
     }
+
+    total_steps += steps; // Add steps to total steps
     printf("Steps in move: %i\n", steps);
     return false;
 }
 
 bool won(void)
 {
-    steps = 0; // Reset steps
+    int steps = 0; // Local steps counter for won function
     int tile = 1;
     steps++;
 
@@ -238,6 +246,7 @@ bool won(void)
             steps++;
             if (i == d - 1 && j == d - 1)
             {
+                total_steps += steps; // Add steps to total steps
                 printf("Steps in won: %i\n", steps);
                 return true;
             }
@@ -245,6 +254,7 @@ bool won(void)
             steps++;
             if (board[i][j] != tile)
             {
+                total_steps += steps; // Add steps to total steps
                 printf("Steps in won: %i\n", steps);
                 return false;
             }
@@ -253,6 +263,7 @@ bool won(void)
         }
     }
 
+    total_steps += steps; // Add steps to total steps
     printf("Steps in won: %i\n", steps);
     return false;
 }
