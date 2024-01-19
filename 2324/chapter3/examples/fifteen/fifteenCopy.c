@@ -199,7 +199,7 @@ void draw(void)
 
 bool move(int tile)
 {
-    steps = 0; // Reset steps
+ // Reset steps
     for (int i = 0; i < d; i++)
     {
         for (int j = 0; j < d; j++)
@@ -227,7 +227,7 @@ bool move(int tile)
 
 bool won(void)
 {
-    steps = 0; // Reset steps
+// Reset steps
     int tile = 1;
     steps++;
 
