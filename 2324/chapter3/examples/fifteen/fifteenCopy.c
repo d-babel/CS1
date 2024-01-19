@@ -146,15 +146,12 @@ void greet(void)
 // steps
 
 
-// Initializes the game's board with tiles numbered 1 through d*d - 1
-// (i.e., fills 2D array with values but does not actually print them)
 void init(void)
 {
-    // set tile count (-1 for one less than total spaces on board)
+    steps = 0; // Reset steps
     int tile = d * d - 1;
     steps++;
 
-    // decrease for each space
     for (int i = 0; i < d; i++)
     {
         for (int j = 0; j < d; j++, tile--)
@@ -164,7 +161,6 @@ void init(void)
         }
     }
 
-    // change dimensions IF EVEN
     steps++;
     if (d % 2 == 0)
     {
@@ -172,18 +168,15 @@ void init(void)
         board[d - 1][d - 2] = 2;
     }
 
-    // set blank square on bottom right (will be used to track blank square)
     blank_row = d - 1;
     blank_col = d - 1;
     steps += 2;
-    printf("%i", steps);
+    printf("Steps in init: %i\n", steps);
 }
 
-steps = 0;
-// Prints the board in its current state
 void draw(void)
 {
-    // loop each row and column, then print tile/blank
+    steps = 0; // Reset steps
     for (int i = 0; i < d; i++)
     {
         for (int j = 0; j < d; j++)
@@ -201,76 +194,69 @@ void draw(void)
         printf("\n");
     }
 
-    printf("%i", steps);
+    printf("Steps in draw: %i\n", steps);
 }
 
-steps = 0;
-// If tile borders empty space, moves tile and returns true, else returns false
 bool move(int tile)
 {
-    // loop thru board
+    steps = 0; // Reset steps
     for (int i = 0; i < d; i++)
     {
         for (int j = 0; j < d; j++)
         {
             steps++;
-            // find tile pos
             if (board[i][j] == tile)
             {
                 steps += 4;
-                // abs --> calc absolute value
                 if ((abs(blank_row - i) == 1 && blank_col == j) || (abs(blank_col - j) == 1 && blank_row == i))
                 {
-                    // swap blank and tile
                     board[blank_row][blank_col] = tile;
                     board[i][j] = 0;
                     blank_row = i;
                     blank_col = j;
-                    // return t/f to error out non-working moves
                     steps += 4;
+                    printf("Steps in move: %i\n", steps);
                     return true;
                 }
             }
         }
     }
-    printf("%i", steps);
+    printf("Steps in move: %i\n", steps);
     return false;
 }
 
-steps = 0;
-// Returns true if game is won (i.e., board is in winning configuration), else false
 bool won(void)
 {
+    steps = 0; // Reset steps
     int tile = 1;
     steps++;
-    // check order
+
     for (int i = 0; i < d; i++)
     {
         for (int j = 0; j < d; j++)
         {
-            // remember, you can not access parts outside the array
-            // skip check for last tile (blank tile)
-            // [NOTE] POSSIBLY A WAY TO MAKE MORE EFFICIENT WITHOUT CHECKING EVERY LOOP
-            steps +=;
+            steps++;
             if (i == d - 1 && j == d - 1)
             {
+                printf("Steps in won: %i\n", steps);
                 return true;
             }
-            // check if not correct order
+
             steps++;
             if (board[i][j] != tile)
             {
+                printf("Steps in won: %i\n", steps);
                 return false;
             }
             tile++;
             steps++;
         }
     }
-    printf("%i", steps);
-    // return win
 
+    printf("Steps in won: %i\n", steps);
     return false;
 }
+
 
 // TESTING WON FUNCTION:
 // ./fifteen 3 < 3x3.txt
