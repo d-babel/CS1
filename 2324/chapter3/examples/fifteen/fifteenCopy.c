@@ -171,7 +171,7 @@ void init(void)
     blank_row = d - 1;
     blank_col = d - 1;
     steps += 2;
-    printf("Steps in init: %i\n", steps);
+    printf("Steps in initialize: %i\n", steps);
 }
 
 void draw(void)
