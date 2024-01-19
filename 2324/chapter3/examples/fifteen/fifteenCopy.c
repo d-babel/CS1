@@ -18,6 +18,9 @@ int board[DIM_MAX][DIM_MAX];
 // Dimensions
 int d;
 
+//steps
+int steps = 0;
+
 // Saved locations of the blank tile
 int blank_row;
 int blank_col;
@@ -141,7 +144,7 @@ void greet(void)
 }
 
 // steps
-int steps = 0;
+
 
 // Initializes the game's board with tiles numbered 1 through d*d - 1
 // (i.e., fills 2D array with values but does not actually print them)
