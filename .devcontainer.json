@@ -10,6 +10,7 @@
         "cs50.extension-uninstaller",
         "inferrinizzard.prettier-sql-vscode",
         "mathematic.vscode-pdf",
+        "ms-azuretools.vscode-docker",
         "ms-ceintl.vscode-language-pack-bg",
         "ms-ceintl.vscode-language-pack-cs",
         "ms-ceintl.vscode-language-pack-de",
@@ -48,6 +49,12 @@
           "editor.defaultFormatter": "ms-python.autopep8"
         },
         "breadcrumbs.enabled": false,
+        "cs50.watchPorts": [
+          5000,
+          8080,
+          8082,
+          8787
+        ],
         "diffEditor.diffAlgorithm": "advanced",
         "diffEditor.ignoreTrimWhitespace": false,
         "editor.autoClosingQuotes": "never",
@@ -145,18 +152,12 @@
         "terminal.integrated.gpuAcceleration": "off",
         "terminal.integrated.persistentSessionReviveProcess": "never",
         "terminal.integrated.profiles.linux": {
-          "JavaScript Debug Terminal": null,
-          "bash": {
-            "args": [
-              "--login"
-            ],
-            "icon": "terminal",
-            "path": "bash"
-          }
+          "JavaScript Debug Terminal": null
         },
         "terminal.integrated.sendKeybindingsToShell": true,
         "terminal.integrated.shellIntegration.decorationsEnabled": "never",
         "terminal.integrated.shellIntegration.enabled": true,
+        "terminal.integrated.showExitAlert": false,
         "terminal.integrated.tabs.description": "${task}${separator}${local}",
         "terminal.integrated.tabs.showActiveTerminal": "never",
         "window.autoDetectColorScheme": true,
@@ -211,10 +212,19 @@
     5900,
     6081,
     8080,
-    8082
+    8082,
+    8787
   ],
-  "image": "ghcr.io/cs50/codespace:50a6fcbc6ed4dd9d809aafecc5f30d54662277bd",
+  "image": "ghcr.io/cs50/codespace:2034071453242da195a6eb45db6d5c92daf6acbc",
+  "mounts": [
+    {
+      "source": "/var/run/docker.sock",
+      "target": "/var/run/docker-host.sock",
+      "type": "bind"
+    }
+  ],
   "postCreateCommand": "/opt/cs50/bin/postCreateCommand",
+  "postStartCommand": "/opt/cs50/bin/postStartCommand",
   "remoteEnv": {
     "CS50_GH_USER": "${localEnv:GITHUB_USER}",
     "GH_TOKEN": "${localEnv:CS50_TOKEN}",
