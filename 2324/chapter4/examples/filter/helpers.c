@@ -38,7 +38,7 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
     RGBTRIPLE temp[height][width];
 
     for (int i = 0; i < height; i++){
-        for (int j = 0; j < width; i++){
+        for (int j = 0; j < width; j++){
 
             //vars for sum of pixels
             int sumRed = 0, sumGreen = 0, sumBlue = 0;
