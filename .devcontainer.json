@@ -129,7 +129,7 @@
           {
             "default": true,
             "name": "JavaSE-21",
-            "path": "/opt/jdk-21.0.1"
+            "path": "/opt/jdk"
           }
         ],
         "java.debug.settings.enableRunDebugCodeLens": false,
@@ -215,7 +215,7 @@
     8082,
     8787
   ],
-  "image": "ghcr.io/cs50/codespace:2034071453242da195a6eb45db6d5c92daf6acbc",
+  "image": "ghcr.io/cs50/codespace:5c724ebb96695cf5715b1ff63f8e33c028861624",
   "mounts": [
     {
       "source": "/var/run/docker.sock",
@@ -227,7 +227,6 @@
   "postStartCommand": "/opt/cs50/bin/postStartCommand",
   "remoteEnv": {
     "CS50_GH_USER": "${localEnv:GITHUB_USER}",
-    "GH_TOKEN": "${localEnv:CS50_TOKEN}",
     "LANG": "${localEnv:CS50_LANG}",
     "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
     "TZ": "${localEnv:CS50_TZ}"
