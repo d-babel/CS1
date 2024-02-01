@@ -53,9 +53,17 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     int newRow = i + di;
                     int newCol = j + dj;
 
-                    
+                    //check if neighboring pixels are within image
+                    if (newRow >= 0 && newRow < height && newCol >= 0 && newCol < width){
+                        sumBlue += image[newRow][newCol].rgbtBlue;
+                        sumGreen += image[newRow][newCol].rgbtGreen;
+                        sumRed += image[newRow][newCol].rgbtRed;
+                        count++;
+                    }
                 }
             }
+            
+            //calc avg for each color channel
 
 
         }
