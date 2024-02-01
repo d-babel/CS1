@@ -62,12 +62,17 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
                     }
                 }
             }
-            
-            //calc avg for each color channel
 
+            //calc avg for each color channel
+            temp[i][j].rgbtBlue = round(sumBlue / count);
+            temp[i][j].rgbtGreen = round(sumGreen / count);
+            temp[i][j].rgbtRed = round(sumRed / count);
 
         }
     }
+
+    //copy blured values back in original image
+    
 
         }
     }
