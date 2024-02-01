@@ -35,11 +35,13 @@ void reflect(int height, int width, RGBTRIPLE image[height][width])
 // Blur image
 void blur(int height, int width, RGBTRIPLE image[height][width])
 {
+    RGBTRIPLE temp[height][width];
+
     for (int i = 0; i < height; i++){
         for (int j = 0; j < width; i++){
 
             //vars for sum of pixels
-            int sumRed, int sumGreen, int sumBlue;
+            int sumRed = 0, sumGreen = 0, sumBlue = 0;
             int count = 0;
 
             //interate over neighboring pixels
