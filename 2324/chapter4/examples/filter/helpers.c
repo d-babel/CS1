@@ -83,6 +83,16 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 // Detect edges
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
+    //sobel gx and gy kernels
 
+    //apply gx and gy to each pixel, looped thru pixels
+
+    //check if neighboring pixels are within image
+
+    //calc final color values
+
+    //loop thru and assign temp with image --> converting copy image
+
+    
     return;
 }
