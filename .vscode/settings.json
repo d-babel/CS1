@@ -2,6 +2,7 @@
     "gitdoc.enabled": true,
     "files.associations": {
         "cs50.h": "c",
-        "string.h": "c"
+        "string.h": "c",
+        "neighborsc": "c"
     }
 }
