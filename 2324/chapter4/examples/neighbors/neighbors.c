@@ -46,8 +46,8 @@ int add_neighbors(int r, int c)
     int sum = 0;
 
     //loop over adjacent row/col
-    for(int i = r - 1; i <= r; i++){
-        for(int j = c - 1; j <= r; j++){
+    for(int i = r - 1; i <= r + 1; i++){
+        for(int j = c - 1; j <= r + 1; j++){
             //check if within boundaries
         if (i >= 0 && i < DIM && j >= 0 && j < DIM){
             sum += grid[i][j];
