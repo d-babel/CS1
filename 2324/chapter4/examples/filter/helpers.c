@@ -118,9 +118,9 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
         }
 
         //calc new values thru sum of squared values sqrted
-        int newRed = round(sqrt(sumRedX^2 + sumRedY^2));
-        int newGreen = round(sqrt(sumGreenX^2 + sumRGreenY^2));
-        int newBlue = round(sqrt(sumBlueX^2 + sumBlueY^2));
+        int newRed = round(sqrt(sumRedX * sumRedX + sumRedY * sumRedY));
+        int newGreen = round(sqrt(sumGreenX * sumGreenX + sumRGreenY * sumGreenY));
+        int newBlue = round(sqrt(sumBlueX* sumBlueX + sumBlueY * sumBlueY));
     }
 
     //copy edge values back to original image
