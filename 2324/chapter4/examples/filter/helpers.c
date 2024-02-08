@@ -84,6 +84,9 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     //sobel gx and gy kernels
+    int Gx[3][3] =
+    int Gy[3][3] = 
+
 
     //apply gx and gy to each pixel, looped thru pixels
 
@@ -93,6 +96,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
     //loop thru and assign temp with image --> converting copy image
 
-    
+
     return;
 }
