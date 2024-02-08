@@ -95,7 +95,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
     //apply gx and gy to each pixel, looped thru pixels
     for (int i = 0; i < height; i++){
-        for (int j = 0l j < width; j++){
+        for (int j = 0; j < width; j++){
             int sumRedX = 0, sumGreenX = 0, sumBlueX = 0;
             int sumRedY = 0, sumGreenY = 0, sumBlueY = 0;
 
