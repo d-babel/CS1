@@ -105,22 +105,26 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                     int x = i + di;
                     int y = j + dj;
 
-                    //apply thru compute
-                    sumRedX += image[x][y].rgbtRed * Gx[di + 1][dj + 1];
-                    sumGreenX += image[x][y].rgbtGreen * Gx[di + 1][dj + 1];
-                    sumBlueX += image[x][y].rgbtBlue * Gx[di + 1][dj + 1];
+                    //check if within bounds
+                    if (x >= 0 && x < height && y >= 0 && y < width){
+                        //apply thru compute
+                        sumRedX += image[x][y].rgbtRed * Gx[di + 1][dj + 1];
+                        sumGreenX += image[x][y].rgbtGreen * Gx[di + 1][dj + 1];
+                        sumBlueX += image[x][y].rgbtBlue * Gx[di + 1][dj + 1];
 
-                    sumRedY += image[x][y].rgbtRed * Gy[di + 1][dj + 1];
-                    sumGreenY += image[x][y].rgbtGreen * Gy[di + 1][dj + 1];
-                    sumBlueY += image[x][y].rgbtBlue * Gy[di + 1][dj + 1];
+                        sumRedY += image[x][y].rgbtRed * Gy[di + 1][dj + 1];
+                        sumGreenY += image[x][y].rgbtGreen * Gy[di + 1][dj + 1];
+                        sumBlueY += image[x][y].rgbtBlue * Gy[di + 1][dj + 1];
+                    }
+
                 }
             }
         }
 
         //calc new values thru sum of squared values sqrted
-        int newRed = round(sqrt(sumRedX * sumRedX + sumRedY * sumRedY));
-        int newGreen = round(sqrt(sumGreenX * sumGreenX + sumGreenY * sumGreenY));
-        int newBlue = round(sqrt(sumBlueX* sumBlueX + sumBlueY * sumBlueY));
+        temp[i][j].rgbtRed = round(sqrt(sumRedX * sumRedX + sumRedY * sumRedY));
+        temp[i][j].rgbtGreen = round(sqrt(sumGreenX * sumGreenX + sumGreenY * sumGreenY));
+        temp[i][j].rgbtBlue = round(sqrt(sumBlueX* sumBlueX + sumBlueY * sumBlueY));
     }
 
     //copy edge values back to original image
