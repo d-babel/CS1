@@ -84,8 +84,12 @@ void blur(int height, int width, RGBTRIPLE image[height][width])
 void edges(int height, int width, RGBTRIPLE image[height][width])
 {
     //sobel gx and gy kernels
-    int Gx[3][3] =
-    int Gy[3][3] = 
+    //   Gx: -1 0 1     Gy: -1 -2 -1
+    //       -2 0 2          0  0  0
+    //       -1 0 1          1  2  1
+    //calc for two gradients for each pixel: G = sqrt(Gx^2 + Gy^2)
+    int Gx[3][3] = {}
+    int Gy[3][3] = {}
 
 
     //apply gx and gy to each pixel, looped thru pixels
