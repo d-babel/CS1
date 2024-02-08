@@ -88,18 +88,45 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     //       -2 0 2          0  0  0
     //       -1 0 1          1  2  1
     //calc for two gradients for each pixel: G = sqrt(Gx^2 + Gy^2)
-    int Gx[3][3] = {{-1 0 1}, {-2 0 2}, {-1 0 1 }}
-    int Gy[3][3] = {}
+    int Gx[3][3] = {{-1, 0, 1}, {-2, 0, 2,}, {-1, 0, 1}};
+    int Gy[3][3] = {{-1, -2, -1}, {0, 0, 0}, {1, 2, 1}};
 
+    RGBTRIPLE temp[height][width];
 
     //apply gx and gy to each pixel, looped thru pixels
+    for (int i = 0; i < height; i++){
+        for (int j = 0l j < width; j++){
+            int sumRedX = 0, sumGreenX = 0, sumBlueX = 0;
+            int sumRedY = 0, sumGreenY = 0, sumBlueY = 0;
 
-    //check if neighboring pixels are within image
+            //check if neighboring pixels are within image
+            for (int di = -1; di <= 1; di++){
+                for (int dj = -1; dj <= 1; dj++){
+                    int x = i + di;
+                    int y = j + dj;
 
-    //calc final color values
+                    //apply thru compute
+                    sumRedX += image[x][y].rgbtRed * Gx[di + 1][dj + 1];
+                    sumGreenX += image[x][y].rgbtGreen * Gx[di + 1][dj + 1];
+                    sumBlueX += image[x][y].rgbtBlue * Gx[di + 1][dj + 1];
 
-    //loop thru and assign temp with image --> converting copy image
+                    sumRedY += image[x][y].rgbtRed * Gy[di + 1][dj + 1];
+                    sumGreenY += image[x][y].rgbtGreen * Gy[di + 1][dj + 1];
+                    sumBlueY += image[x][y].rgbtBlue * Gy[di + 1][dj + 1];
+                }
+            }
+        }
 
+        //calc new values thru sum of squared values sqrted
+        int newRed = round(sqrt(sumRedX^2 + sumRedY^2));
+        int newGreen = round(sqrt(sumGreenX^2 + sumRGreenY^2));
+        int newBlue = round(sqrt(sumBlueX^2 + sumBlueY^2));
+    }
 
-    return;
+    //copy edge values back to original image
+    for (int i = 0; i <  height; i++){
+        for (int j = 0; j < width; j++){
+            image[i][j] = temp[i][j]
+        }
+    }
 }
