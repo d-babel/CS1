@@ -88,7 +88,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     //       -2 0 2          0  0  0
     //       -1 0 1          1  2  1
     //calc for two gradients for each pixel: G = sqrt(Gx^2 + Gy^2)
-    int Gx[3][3] = {}
+    int Gx[3][3] = {{-1 0 1}, {-2 0 2}, {-1 0 1 }}
     int Gy[3][3] = {}
 
 
