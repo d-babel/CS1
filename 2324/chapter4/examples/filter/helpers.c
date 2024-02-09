@@ -122,6 +122,8 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
         temp[i][j].rgbtRed = round(sqrt(sumRedX * sumRedX + sumRedY * sumRedY));
         temp[i][j].rgbtGreen = round(sqrt(sumGreenX * sumGreenX + sumGreenY * sumGreenY));
         temp[i][j].rgbtBlue = round(sqrt(sumBlueX* sumBlueX + sumBlueY * sumBlueY));
+
+        
     }
 
     //copy edge values back to original image
