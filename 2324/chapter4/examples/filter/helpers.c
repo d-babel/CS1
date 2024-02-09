@@ -96,8 +96,8 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
     //apply gx and gy to each pixel, looped thru pixels
     for (int i = 0; i < height; i++){
         for (int j = 0; j < width; j++){
-            int sumRedX = 0, sumGreenX = 0, sumBlueX = 0;
-            int sumRedY = 0, sumGreenY = 0, sumBlueY = 0;
+            float sumRedX = 0, sumGreenX = 0, sumBlueX = 0;
+            float sumRedY = 0, sumGreenY = 0, sumBlueY = 0;
 
             //check if neighboring pixels are within image
             for (int di = -1; di <= 1; di++){
@@ -120,9 +120,10 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                 }
             }
             //calc new values thru sum of squared values sqrted
-            temp[i][j].rgbtRed = round(sqrt(sumRedX * sumRedX + sumRedY * sumRedY));
-            temp[i][j].rgbtGreen = round(sqrt(sumGreenX * sumGreenX + sumGreenY * sumGreenY));
-            temp[i][j].rgbtBlue = round(sqrt(sumBlueX* sumBlueX + sumBlueY * sumBlueY));
+            //fmin - determine minimum of two floating-point numbers --> used to restrict rgb values to 255
+            temp[i][j].rgbtRed = fmin(round(sqrt(sumRedX * sumRedX + sumRedY * sumRedY)), 255);
+            temp[i][j].rgbtGreen = fmin(round(sqrt(sumGreenX * sumGreenX + sumGreenY * sumGreenY)), 255);
+            temp[i][j].rgbtBlue = fmin(round(sqrt(sumBlueX* sumBlueX + sumBlueY * sumBlueY)), 255);
         }
     }
 
