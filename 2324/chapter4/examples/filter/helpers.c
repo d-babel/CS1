@@ -114,7 +114,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
                         sumGreenY += image[i + di][j + dj].rgbtGreen * Gy[di + 1][dj + 1];
                         sumBlueY += image[i + di][j + dj].rgbtBlue * Gy[di + 1][dj + 1];
                     }
-
                 }
             }
         }
