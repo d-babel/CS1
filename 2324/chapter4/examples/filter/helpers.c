@@ -102,19 +102,17 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
             //check if neighboring pixels are within image
             for (int di = -1; di <= 1; di++){
                 for (int dj = -1; dj <= 1; dj++){
-                    int x = i + di;
-                    int y = j + dj;
 
                     //check if within bounds
                     if (x >= 0 && x < height && y >= 0 && y < width){
                         //apply thru compute
-                        sumRedX += image[x][y].rgbtRed * Gx[di + 1][dj + 1];
-                        sumGreenX += image[x][y].rgbtGreen * Gx[di + 1][dj + 1];
-                        sumBlueX += image[x][y].rgbtBlue * Gx[di + 1][dj + 1];
+                        sumRedX += image[i + di][j + dj].rgbtRed * Gx[di + 1][dj + 1];
+                        sumGreenX += image[i + di][j + dj].rgbtGreen * Gx[di + 1][dj + 1];
+                        sumBlueX += image[i + di][j + dj].rgbtBlue * Gx[di + 1][dj + 1];
 
-                        sumRedY += image[x][y].rgbtRed * Gy[di + 1][dj + 1];
-                        sumGreenY += image[x][y].rgbtGreen * Gy[di + 1][dj + 1];
-                        sumBlueY += image[x][y].rgbtBlue * Gy[di + 1][dj + 1];
+                        sumRedY += image[i + di][j + dj].rgbtRed * Gy[di + 1][dj + 1];
+                        sumGreenY += image[i + di][j + dj].rgbtGreen * Gy[di + 1][dj + 1];
+                        sumBlueY += image[i + di][j + dj].rgbtBlue * Gy[di + 1][dj + 1];
                     }
 
                 }
