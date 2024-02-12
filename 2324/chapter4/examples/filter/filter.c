@@ -121,7 +121,8 @@ int main(int argc, char *argv[])
             break;
 
         case 'a':
-        
+            artwork(height, width, image);
+            break;
     }
 
     // Write outfile's BITMAPFILEHEADER
