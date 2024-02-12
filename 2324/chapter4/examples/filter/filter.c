@@ -119,6 +119,9 @@ int main(int argc, char *argv[])
         case 'r':
             reflect(height, width, image);
             break;
+
+        case 'a':
+        
     }
 
     // Write outfile's BITMAPFILEHEADER
