@@ -160,4 +160,6 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 void artwork(int height, int width, RGBTRIPLE image[height][width])
 {
   // TODO: Write code that modifies the image
+
+  
 }
