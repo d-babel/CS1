@@ -159,7 +159,42 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
 void artwork(int height, int width, RGBTRIPLE image[height][width])
 {
-  // TODO: Write code that modifies the image
+    int blockSize = 10;
 
-  
+    for (int i = 0; i < height; i += blockSize)
+    {
+        for (int j = 0; j < width; j += blockSize)
+        {
+            int sumRed = 0, sumGreen = 0, sumBlue = 0;
+            int count = 0;
+
+            // calc cum of colors within block
+            for (int di = 0; di < blockSize && i + di < height; di++)
+            {
+                for (int dj = 0; dj < blockSize && j + dj < width; dj++)
+                {
+                    sumRed += image[i + di][j + dj].rgbtRed;
+                    sumGreen += image[i + di][j + dj].rgbtGreen;
+                    sumBlue += image[i + di][j + dj].rgbtBlue;
+                    count++;
+                }
+            }
+
+            // calc avg color for block
+            int avgRed = sumRed / count;
+            int avgGreen = sumGreen / count;
+            int avgBlue = sumBlue / count;
+
+            // asign avg color to each pixel in block
+            for (int di = 0; di < blockSize && i + di < height; di++)
+            {
+                for (int dj = 0; dj < blockSize && j + dj < width; dj++)
+                {
+                    image[i + di][j + dj].rgbtRed = avgRed;
+                    image[i + di][j + dj].rgbtGreen = avgGreen;
+                    image[i + di][j + dj].rgbtBlue = avgBlue;
+                }
+            }
+        }
+    }
 }
