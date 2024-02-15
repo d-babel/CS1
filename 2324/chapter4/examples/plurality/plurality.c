@@ -1,4 +1,4 @@
-//Plurality by Drew Babel
+// Plurality by Drew Babel
 
 #include <cs50.h>
 #include <stdio.h>
@@ -12,8 +12,7 @@ typedef struct
 {
     string name;
     int votes;
-}
-candidate;
+} candidate;
 
 // Array of candidates
 candidate candidates[MAX];
@@ -68,9 +67,11 @@ int main(int argc, string argv[])
 // Update vote totals given a new vote
 bool vote(string name)
 {
-    for (int i = 0; i < candidate_count; i++){
-        //if diff between name = 0, add vote
-        if (strcmp(candidates[i].name, name ) == 0){
+    for (int i = 0; i < candidate_count; i++)
+    {
+        // if diff between name = 0, add vote
+        if (strcmp(candidates[i].name, name) == 0)
+        {
             candidates[i].votes++;
             return true;
         }
@@ -81,19 +82,22 @@ bool vote(string name)
 // Print the winner (or winners) of the election
 void print_winner(void)
 {
-    //find max votes
+    // find max votes
     int maxVotes = 0;
-    for (int i = 0; i < candidate_count; i++){
-        if (candidates[i].votes > maxVotes){
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes > maxVotes)
+        {
             maxVotes = candidates[i].votes;
         }
     }
-    //print name(s) of canddidate(s) with maxVotes
-    for (int i = 0; i < candidate_count; i++){
-        if(candidates[i].votes == maxVotes){
-            printf("%s\n",candidates[i].name);
+    // print name(s) of canddidate(s) with maxVotes
+    for (int i = 0; i < candidate_count; i++)
+    {
+        if (candidates[i].votes == maxVotes)
+        {
+            printf("%s\n", candidates[i].name);
         }
     }
     return;
 }
-
