@@ -159,7 +159,7 @@ void edges(int height, int width, RGBTRIPLE image[height][width])
 
 void artwork(int height, int width, RGBTRIPLE image[height][width])
 {
-    int blockSize = 10;
+    int blockSize = 20;
 
     for (int i = 0; i < height; i += blockSize)
     {
