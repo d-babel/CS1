@@ -71,7 +71,7 @@ bool vote(string name)
     for (int i = 0; i < candidate_count; i++){
         //if diff between name = 0, add vote
         if (strcmp(candidates[i].name, name ) == 0){
-            candidates.votes++;
+            candidates[i].votes++;
             return true;
         }
     }
