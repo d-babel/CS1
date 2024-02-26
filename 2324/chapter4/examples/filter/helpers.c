@@ -164,7 +164,7 @@ void artwork(int height, int width, RGBTRIPLE image[height][width])
     for (int i = 0; i < height; i += blockSize)
     {
         for (int j = 0; j < width; j += blockSize)
-        {
+        {c
             int sumRed = 0, sumGreen = 0, sumBlue = 0;
             int count = 0;
 
