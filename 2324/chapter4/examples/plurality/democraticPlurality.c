@@ -62,7 +62,7 @@ int main(int argc, string argv[])
         }
     }
 
-    // Display candidates sorted by votes using Quick Sort
+    // display candidates sorted by votes
     print_candidates_sorted();
 }
 
@@ -79,7 +79,8 @@ bool vote(string name)
     return false;
 }
 
-// Quick Sort function to sort candidates by vote in descending order
+// quick sort function to sort candidates by vote in descending order
+// https://stackoverflow.com/questions/20835441/my-quicksort-function-and-partition
 void quick_sort(int low, int high)
 {
     if (low < high)
@@ -91,7 +92,8 @@ void quick_sort(int low, int high)
     }
 }
 
-// Partition function used by Quick Sort
+// partition function used by quick sort w changed vars
+// https://stackoverflow.com/questions/20835441/my-quicksort-function-and-partition
 int partition(int low, int high)
 {
     int pivot = candidates[high].votes;
@@ -113,15 +115,17 @@ int partition(int low, int high)
     return (i + 1);
 }
 
-// Modified print function to use Quick Sort
 void print_candidates_sorted(void)
 {
-    // Call Quick Sort on the array of candidates
+    // call quick sort on array of candidates
     quick_sort(0, candidate_count - 1);
 
-    // Print the sorted array of candidates
+    // print  sorted array of candidates
+    printf("\n\n");
+
     for (int i = 0; i < candidate_count; i++)
     {
         printf("%s: %i\n", candidates[i].name, candidates[i].votes);
     }
+    printf("\n");
 }
