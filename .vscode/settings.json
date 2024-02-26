@@ -3,6 +3,7 @@
     "files.associations": {
         "cs50.h": "c",
         "string.h": "c",
-        "neighborsc": "c"
+        "neighborsc": "c",
+        "democraticplurality": "c"
     }
 }
