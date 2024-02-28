@@ -128,7 +128,9 @@ int main(int argc, string argv[])
 bool vote(int voter, int rank, string name)
 {
     // TODO
-    //
+    //loop thru candidates
+    //match name, update preference
+    //return true if matched
     return false;
 }
 
@@ -136,6 +138,9 @@ bool vote(int voter, int rank, string name)
 void tabulate(void)
 {
     // TODO
+    //loop thru voters
+    //find top non-elem candidate
+    //increament candidate votes
     return;
 }
 
@@ -143,6 +148,9 @@ void tabulate(void)
 bool print_winner(void)
 {
     // TODO
+    //loop thru candidates
+    //check if votes > 50%
+    //print winner, return true
     return false;
 }
 
@@ -150,6 +158,9 @@ bool print_winner(void)
 int find_min(void)
 {
     // TODO
+    //min var
+    //loop thru candidates
+    //update min if lower found
     return 0;
 }
 
@@ -157,6 +168,9 @@ int find_min(void)
 bool is_tie(int min)
 {
     // TODO
+    //loop thru candidates
+    //check if all votes == min
+    //return true if tie
     return false;
 }
 
@@ -164,5 +178,7 @@ bool is_tie(int min)
 void eliminate(int min)
 {
     // TODO
+    //loop thru candidates
+    //eliminate if votes == min
     return;
 }
