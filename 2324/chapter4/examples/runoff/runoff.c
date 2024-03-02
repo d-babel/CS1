@@ -1,5 +1,6 @@
 #include <cs50.h>
 #include <stdio.h>
+#include <string.h>
 
 // Max voters and candidates
 #define MAX_VOTERS 100
@@ -14,8 +15,7 @@ typedef struct
     string name;
     int votes;
     bool eliminated;
-}
-candidate;
+} candidate;
 
 // Array of candidates
 candidate candidates[MAX_CANDIDATES];
@@ -127,11 +127,13 @@ int main(int argc, string argv[])
 // Record preference if vote is valid
 bool vote(int voter, int rank, string name)
 {
-    //loop thru candidates
-    for (int i = 0; i < candidate_count; i++){
+    // loop thru candidates
+    for (int i = 0; i < candidate_count; i++)
+    {
         // check if candidate name match given
-        if (strcmp(candidates[i].name, name) == 0){
-            //record
+        if (strcmp(candidates[i].name, name) == 0)
+        {
+            // record
             preferences[voter][rank] = i;
             return true;
         }
@@ -143,14 +145,18 @@ bool vote(int voter, int rank, string name)
 void tabulate(void)
 {
     // TODO
-    for (int i = 0; i < voter_count; i++){
-        for (int j = 0; j < candidate_count; j++
-        int candidateIndex = preferences[i][j];
-        //if candidate not elim, update vote count
-        if (!candidates[candidateIndex].eliminated){
-            candidates[candidateIndex].votes++;
-            //move to next voter after counting vote
-            break;
+    for (int i = 0; i < voter_count; i++)
+    {
+        for (int j = 0; j < candidate_count; j++)
+        {
+            int candidateIndex = preferences[i][j];
+            // if candidate not elim, update vote count
+            if (!candidates[candidateIndex].eliminated)
+            {
+                candidates[candidateIndex].votes++;
+                // move to next voter after counting vote
+                break;
+            }
         }
     }
 }
@@ -159,9 +165,9 @@ void tabulate(void)
 bool print_winner(void)
 {
     // TODO
-    //loop thru candidates
-    //check if votes > 50%
-    //print winner, return true
+    // loop thru candidates
+    // check if votes > 50%
+    // print winner, return true
     return false;
 }
 
@@ -169,9 +175,9 @@ bool print_winner(void)
 int find_min(void)
 {
     // TODO
-    //min var
-    //loop thru candidates
-    //update min if lower found
+    // min var
+    // loop thru candidates
+    // update min if lower found
     return 0;
 }
 
@@ -179,9 +185,9 @@ int find_min(void)
 bool is_tie(int min)
 {
     // TODO
-    //loop thru candidates
-    //check if all votes == min
-    //return true if tie
+    // loop thru candidates
+    // check if all votes == min
+    // return true if tie
     return false;
 }
 
@@ -189,7 +195,7 @@ bool is_tie(int min)
 void eliminate(int min)
 {
     // TODO
-    //loop thru candidates
-    //eliminate if votes == min
+    // loop thru candidates
+    // eliminate if votes == min
     return;
 }
