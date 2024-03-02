@@ -127,10 +127,15 @@ int main(int argc, string argv[])
 // Record preference if vote is valid
 bool vote(int voter, int rank, string name)
 {
-    // TODO
     //loop thru candidates
-    //match name, update preference
-    //return true if matched
+    for (int i = 0; i < candidate_count; i++){
+        // check if candidate name match given
+        if (strcmp(candidates[i].name, name) == 0){
+            //record
+            preferences[voter][rank] = i;
+            return true;
+        }
+    }
     return false;
 }
 
@@ -138,10 +143,16 @@ bool vote(int voter, int rank, string name)
 void tabulate(void)
 {
     // TODO
-    //loop thru voters
-    //find top non-elem candidate
-    //increament candidate votes
-    return;
+    for (int i = 0; i < voter_count; i++){
+        for (int j = 0; j < candidate_count; j++
+        int candidateIndex = preferences[i][j];
+        //if candidate not elim, update vote count
+        if (!candidates[candidateIndex].eliminated){
+            candidates[candidateIndex].votes++;
+            //move to next voter after counting vote
+            break;
+        }
+    }
 }
 
 // Print the winner of the election, if there is one
