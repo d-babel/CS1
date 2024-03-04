@@ -144,7 +144,7 @@ bool vote(int voter, int rank, string name)
 // Tabulate votes for non-eliminated candidates
 void tabulate(void)
 {
-    // TODO
+    // loop thru candidates
     for (int i = 0; i < voter_count; i++)
     {
         for (int j = 0; j < candidate_count; j++)
@@ -164,7 +164,6 @@ void tabulate(void)
 // Print the winner of the election, if there is one
 bool print_winner(void)
 {
-
     // loop thru candidates
     for (int i = 0; i < candidate_count; i++)
     {
@@ -181,8 +180,9 @@ bool print_winner(void)
 // Return the minimum number of votes any remaining candidate has
 int find_min(void)
 {
-    // TODO
-    // min var
+    //
+    int min = voter_count;
+
     // loop thru candidates
     // update min if lower found
     return 0;
@@ -191,7 +191,6 @@ int find_min(void)
 // Return true if the election is tied between all candidates, false otherwise
 bool is_tie(int min)
 {
-    // TODO
     // loop thru candidates
     // check if all votes == min
     // return true if tie
