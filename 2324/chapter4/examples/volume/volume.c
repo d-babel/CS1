@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
     int16_t buffer;
     while (fread(&buffer, sizeof(char), 2, input))
     {
-        //adjust vol
+        // adjust vol
         buffer *= factor;
         fwrite(&buffer, sizeof(char), 2, output);
     }
