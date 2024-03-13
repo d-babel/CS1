@@ -1,3 +1,5 @@
+// Volume by Drew Babel
+
 // Modifies the volume of an audio file
 
 #include <stdint.h>
