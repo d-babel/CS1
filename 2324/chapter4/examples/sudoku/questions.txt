@@ -1,0 +1,18 @@
+Notice that main calls strcmp. What does it mean if strcmp, when passed two strings as arguments, returns 0?
+    It means the two strings are identical. strcmp compares two strings character by character and returns 0 if every character identical to the one in the second string.
+
+How would you rewrite the line below, excerpted from main, using only if and else?
+int max = (strcmp(g.level, "debug") == 0) ? 9 : 1024;
+    int max;
+   if (strcmp(g.level, "debug") == 0) {
+        max = 9;
+    } else {
+        max = 1048
+    }
+
+Under what circumstances might the call to sscanf below, excerpted from main, return 2 instead of 1?
+sscanf(argv[2], " %d %c", &g.number, &c)
+    It would return 2 if arg[2] contains a string that starts with an integer followed by a space followed by a character. sscanf matches and assigns values according to the format specified. So, itwill return 2if ti successfully reads an integer and a character into g.number and c, respectively.
+
+What fields in g represent the coordinates at which the user’s cursor belongs?
+    The fields inthe global struct 'g' that represent the cursors coordinates are 
