@@ -18,7 +18,10 @@ What fields in g represent the coordinates at which the user’s cursor belongs?
     The fields inthe global struct 'g' that represent the cursors coordinates are g.x and g.y for horizontal and vertial position.
 
 5. What function (that we wrote) can you call to make the cursor actually appear at those coordinates? (Hint: we told you a little earlier in the problem set!)
-show_cursor
+    show_cursor
 
 Around what line number in main could you add additional case statements to handle keystrokes besides N, R, and ctrl-L?
+    Additional case statements for keystrokes could be added within the 'switch' statement in the 'main' function.
+
+Most n00b and l33t boards have lots of blanks. How many blanks are in debug #1? Debug #2? Debug #9?
 
