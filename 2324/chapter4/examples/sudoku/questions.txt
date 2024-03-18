@@ -19,3 +19,6 @@ What fields in g represent the coordinates at which the user’s cursor belongs?
 
 5. What function (that we wrote) can you call to make the cursor actually appear at those coordinates? (Hint: we told you a little earlier in the problem set!)
 show_cursor
+
+Around what line number in main could you add additional case statements to handle keystrokes besides N, R, and ctrl-L?
+
