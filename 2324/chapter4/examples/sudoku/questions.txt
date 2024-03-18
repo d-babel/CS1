@@ -24,4 +24,4 @@ Around what line number in main could you add additional case statements to hand
     Additional case statements for keystrokes could be added within the 'switch' statement in the 'main' function.
 
 Most n00b and l33t boards have lots of blanks. How many blanks are in debug #1? Debug #2? Debug #9?
-
+    ?
