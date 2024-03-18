@@ -15,4 +15,7 @@ sscanf(argv[2], " %d %c", &g.number, &c)
     It would return 2 if arg[2] contains a string that starts with an integer followed by a space followed by a character. sscanf matches and assigns values according to the format specified. So, itwill return 2if ti successfully reads an integer and a character into g.number and c, respectively.
 
 What fields in g represent the coordinates at which the user’s cursor belongs?
-    The fields inthe global struct 'g' that represent the cursors coordinates are 
+    The fields inthe global struct 'g' that represent the cursors coordinates are g.x and g.y for horizontal and vertial position.
+
+5. What function (that we wrote) can you call to make the cursor actually appear at those coordinates? (Hint: we told you a little earlier in the problem set!)
+show_cursor
