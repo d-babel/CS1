@@ -208,6 +208,7 @@ int main(int argc, char *argv[])
             case KEY_DC:
                 //reset to blank
                 g.board[g.y][g.x] = 0;
+                break;
         }
         // post processing, redraw board cursor
         draw_numbers();
