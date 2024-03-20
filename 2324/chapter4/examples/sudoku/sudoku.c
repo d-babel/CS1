@@ -186,13 +186,13 @@ int main(int argc, char *argv[])
                 g.y = (g.y == 0) ? 8 : g.y - 1;
                 break;
             case KEY_DOWN:
-                g.y = (g.y == 0) ? 0 : g.y + 1;
+                g.y = (g.y == 8) ? 0 : g.y + 1;
                 break;
             case KEY_RIGHT:
-                g.y = (g.x == 0) ? 0 : g.x + 1;
+                g.x = (g.x == 8) ? 0 : g.x + 1;
                 break;
             case KEY_LEFT:
-                g.y = (g.x == 0) ? 8 : g.x - 1;
+                g.x = (g.x == 0) ? 8 : g.x - 1;
                 break;
         }
 
