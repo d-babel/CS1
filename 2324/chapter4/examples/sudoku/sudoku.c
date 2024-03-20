@@ -194,6 +194,7 @@ int main(int argc, char *argv[])
             case KEY_LEFT:
                 g.x = (g.x == 0) ? 8 : g.x - 1;
                 break;
+            case
         }
 
         // Log input (and board's state) if any was received this iteration
