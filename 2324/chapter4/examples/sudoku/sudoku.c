@@ -180,6 +180,20 @@ int main(int argc, char *argv[])
             case CTRL('l'):
                 redraw_all();
                 break;
+
+            // movement cases w wrap
+            case KEY_UP:
+                g.y = (g.y == 0) ? 8 : g.y - 1;
+                break;
+            case KEY_DOWN:
+                g.y = (g.y == 0) ? 0 : g.y + 1;
+                break;
+            case KEY_RIGHT:
+                g.y = (g.x == 0) ? 0 : g.x + 1;
+                break;
+            case KEY_LEFT:
+                g.y = (g.x == 0) ? 8 : g.x - 1;
+                break;
         }
 
         // Log input (and board's state) if any was received this iteration
