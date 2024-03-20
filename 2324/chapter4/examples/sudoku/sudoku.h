@@ -1,7 +1,7 @@
 // Compile-time options for the game of Sudoku.
 
 // Game's author
-#define AUTHOR "Sally Student"
+#define AUTHOR "Drew Babel"
 
 // Game's title
 #define TITLE "Sudoku"
