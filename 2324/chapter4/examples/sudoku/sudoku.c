@@ -8,6 +8,7 @@
  * on Monday, Aug. 14 2023
  */
 
+#include "sudoku.h"
 #include <ctype.h>
 #include <ncurses.h>
 #include <signal.h>
@@ -15,7 +16,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "sudoku.h"
 #include <time.h>
 
 // Macro for processing control characters
@@ -194,24 +194,24 @@ int main(int argc, char *argv[])
             case KEY_LEFT:
                 g.x = (g.x == 0) ? 8 : g.x - 1;
                 break;
-            case '1'... '9':
-                if (g.initialBoard[g.y][g.x] == 0) {
-                    g.board[g.y][g.x] = ch - '0';
-                    draw_numbers();
-                    show_cursor();
-                }
+
+                //replace num
+            case '1' ... '9':
+                //modify num
+                g.board[g.y][g.x] = ch - '0';
                 break;
 
-                case '0':
-                case '-':
-                case KEY_BACKSPACE:
-                case KEY_DC:
-                    g.board[g.y][g.x] = 0;
-
+            //deletion
+            case '0':
+            case '-':
+            case KEY_BACKSPACE:
+            case KEY_DC:
+                //reset to blank
+                g.board[g.y][g.x] = 0;
         }
-         //post processing, redraw board cursor
-          draw_numbers();
-          show_cursor();
+        // post processing, redraw board cursor
+        draw_numbers();
+        show_cursor();
 
         // Log input (and board's state) if any was received this iteration
         if (ch != ERR)
@@ -233,8 +233,6 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-
-
 // Draw's the game's board
 void draw_grid(void)
 {
@@ -253,7 +251,7 @@ void draw_grid(void)
     }
 
     // Print grid
-    for (int i = 0 ; i < 3 ; ++i)
+    for (int i = 0; i < 3; ++i)
     {
         mvaddstr(g.top + 0 + 4 * i, g.left, "+-------+-------+-------+");
         mvaddstr(g.top + 1 + 4 * i, g.left, "|       |       |       |");
@@ -273,7 +271,6 @@ void draw_grid(void)
         attroff(COLOR_PAIR(PAIR_GRID));
     }
 }
-
 
 // Draws game's borders.
 void draw_borders(void)
@@ -320,7 +317,6 @@ void draw_borders(void)
     }
 }
 
-
 // Draws game's logo (Must be called after draw_grid has been called at least once)
 void draw_logo(void)
 {
@@ -354,8 +350,7 @@ void draw_logo(void)
     }
 }
 
-
-//Draw's game's numbers (Must be called after draw_grid has been called at least once)
+// Draw's game's numbers (Must be called after draw_grid has been called at least once)
 
 void draw_numbers(void)
 {
@@ -384,7 +379,6 @@ void draw_numbers(void)
     }
 }
 
-
 // Designed to handles signals (e.g., SIGWINCH)
 
 void handle_signal(int signum)
@@ -399,7 +393,6 @@ void handle_signal(int signum)
     signal(signum, (void (*)(int)) handle_signal);
 }
 
-
 // Hides banner
 void hide_banner(void)
 {
@@ -413,7 +406,6 @@ void hide_banner(void)
         mvaddch(g.top + 16, i, ' ');
     }
 }
-
 
 // Loads current board from disk, returning true iff successful
 bool load_board(void)
@@ -456,7 +448,6 @@ bool load_board(void)
     return true;
 }
 
-
 // Logs input and board's state to log.txt to facilitate automated tests
 void log_move(int ch)
 {
@@ -484,7 +475,6 @@ void log_move(int ch)
     fclose(fp);
 }
 
-
 // (Re)draws everything on the screen
 void redraw_all(void)
 {
@@ -504,7 +494,6 @@ void redraw_all(void)
     // Show cursor
     show_cursor();
 }
-
 
 // (Re)starts current game, returning true iff succesful
 bool restart_game(void)
@@ -534,14 +523,12 @@ bool restart_game(void)
     return true;
 }
 
-
 // Shows cursor at (g.y, g.x)
 void show_cursor(void)
 {
     // Restore cursor's location
     move(g.top + g.y + 1 + g.y / 3, g.left + 2 + 2 * (g.x + g.x / 3));
 }
-
 
 // Shows a banner (Must be called after show_grid has been called at least once)
 
@@ -563,13 +550,11 @@ void show_banner(char *b)
     }
 }
 
-
 // Shuts down ncurses
 void shutdown(void)
 {
     endwin();
 }
-
 
 // Starts up ncurses and returns true iff successful
 bool startup(void)
