@@ -206,13 +206,12 @@ int main(int argc, char *argv[])
                 case '-':
                 case KEY_BACKSPACE:
                 case KEY_DC:
-                if (g.initialBoard[g.y][g.x] == 0) {
                     g.board[g.y][g.x] = 0;
-                    draw_numbers();
-                    show_cursor();
-                }
 
         }
+         //post processing, redraw board cursor
+          draw_numbers();
+          show_cursor();
 
         // Log input (and board's state) if any was received this iteration
         if (ch != ERR)
@@ -233,6 +232,7 @@ int main(int argc, char *argv[])
     printf("\nkthxbai!\n\n");
     return 0;
 }
+
 
 
 // Draw's the game's board
