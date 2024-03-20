@@ -194,17 +194,9 @@ int main(int argc, char *argv[])
             case KEY_LEFT:
                 g.x = (g.x == 0) ? 8 : g.x - 1;
                 break;
-            case '1':
-            case '2':
-            case '3':
-            case '4':
-            case '5':
-            case '6':
-            case '7':
-            case '8':
-            case '9':
+            case '1'... '9':
                 if (g.initialBoard[g.y][g.x] == 0) {
-                    g.board[g.y][g.x] = ch = '0';
+                    g.board[g.y][g.x] = ch - '0';
                     draw_numbers();
                     show_cursor();
                 }
@@ -214,6 +206,11 @@ int main(int argc, char *argv[])
                 case '-':
                 case KEY_BACKSPACE:
                 case KEY_DC:
+                if (g.initialBoard[g.y][g.x] == 0) {
+                    g.board[g.y][g.x] = 0;
+                    draw_numbers();
+                    show_cursor();
+                }
 
         }
 
