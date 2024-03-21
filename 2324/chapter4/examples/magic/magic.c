@@ -60,10 +60,7 @@ bool is_magic()
     for (int i = 0; i < 4; i++)
     {
         // run thru is_valid
-        if (!is_valid(board[i]))
-        {
-            return false;
-        }
+        if (!is_valid(arr)) return false;
     }
 
     // cols
@@ -74,11 +71,8 @@ bool is_magic()
             // copy over
             arr[j] = board[j][i];
         }
-        // run thru is_valid
-        if (!is_valid(arr))
-        {
-            return false;
-        }
+        // check via is_valid
+        if (!is_valid(arr)) return false;
     }
 
     // diagonals
@@ -86,6 +80,17 @@ bool is_magic()
     {
         arr[i] = board[i][i];
     }
+    // check via is_valid
+    if (!is_valid(arr)) return false;
+
+    //secondary diagonal
+    for (int i = 0; i < 4; i++){
+        arr = board[i][3-i];
+    }
+    // check via is_valid
+    if (!is_valid(arr)) return false;
+
+    //if all checks false, Is magic
     return true;
 
     // corners ?
