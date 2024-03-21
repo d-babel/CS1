@@ -85,6 +85,9 @@ bool is_magic()
         arr[i] = board[i][i];
     }
     return true;
+
+    //corners
+    for (int i = 0; i < 4; )
 }
 
 // Returns true iff the sum of all four numbers in arr matches sum.
@@ -93,14 +96,12 @@ bool is_valid(int arr[])
     // Create an int variable called sum
     int sum = 0;
     // Iterate over arr
-    for(i = 0; i < 4; i++){
+    for(int i = 0; i < 4; i++){
         // For each element in arr add it to sum
         sum += arr[i];
     }
 
     // If sum == MAGIC_SUM return true
-    if (sum == MAGIC_SUM){
-        return true;
-    }
+    return sum == MAGIC_SUM;
     return false;
 }
