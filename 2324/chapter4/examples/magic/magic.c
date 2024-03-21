@@ -75,20 +75,27 @@ bool is_magic()
         if (!is_valid(arr)) return false;
     }
 
-    // diagonals
-    for (int i = 0; i < 4; i++)
-    {
-        arr[i] = board[i][i];
-    }
-    // check via is_valid
-    if (!is_valid(arr)) return false;
-
-    //secondary diagonal
+    int diagonal1[4], diagonal2[4];
     for (int i = 0; i < 4; i++){
-        arr = board[i][3-i];
+        diagonal1[i] = board[i][i];
+        diagonal1[i] = board[i][3-i];
     }
-    // check via is_valid
-    if (!is_valid(arr)) return false;
+    if (!is_valid(diagonal1) || !is_valid(diagonal2) return false;
+
+    // // diagonals
+    // for (int i = 0; i < 4; i++)
+    // {
+    //     arr[i] = board[i][i];
+    // }
+    // // check via is_valid
+    // if (!is_valid(arr)) return false;
+
+    // //secondary diagonal
+    // for (int i = 0; i < 4; i++){
+    //     arr = board[i][3-i];
+    // }
+    // // check via is_valid
+    // if (!is_valid(arr)) return false;
 
     //if all checks false, Is magic
     return true;
