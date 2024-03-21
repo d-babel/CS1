@@ -54,7 +54,7 @@ int main(void)
     }
 }
 
-// Returns true iff all rows, columns, and diagonals are valid.
+// Returns true if all rows, columns, and diagonals are valid.
 bool is_magic()
 {
     //storage
