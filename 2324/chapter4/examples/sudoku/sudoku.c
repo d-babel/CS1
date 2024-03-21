@@ -41,6 +41,10 @@ struct
 
     // The cursor's current location between (0,0) and (8,8)
     int y, x;
+
+    //distinguish between editable v/ non-editable
+    bool initialBoardEditable[9][9];
+    
 } g;
 
 // Prototypes
