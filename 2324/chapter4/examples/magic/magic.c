@@ -88,7 +88,7 @@ bool is_magic()
 
     //corners
     for (int i = 0; i < 4;){
-
+        
     }
 }
 
