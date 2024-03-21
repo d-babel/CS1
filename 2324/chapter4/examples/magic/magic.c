@@ -57,24 +57,33 @@ int main(void)
 // Returns true iff all rows, columns, and diagonals are valid.
 bool is_magic()
 {
+    //storage
+    int arr[4];
 
-
-    // Send each row of board through is_valid
+    // rows
     for (int i = 0; i < 4; i++){
-        // If any row returns false, then return false.
+        //run thru is_valid
         if (!is_valid(board[i])){
             return false;
         }
     }
 
-    // Create a 4-element array of integers
-    int arr[4];
-    // Iterate over board and copy each element
-    for (int i = 0; i < 4)
-    // in a given column into the array. Then validate each column.
+    // cols
+    for (int i = 0; i < 4; i++){
+        for (int j = 0; j < 4; j++){
+            //copy over
+            arr[j] = board[j][i];
+        }
+        //run thru is_valid
+        if (!is_valid(arr)){
+            return false;
+        }
+    }
 
-    // Do the same for the two diagonals.
-    // If we haven't returned false, then return true.
+    //diagonals
+    for (int i = 0; i < 4; i++){
+        arr[i] = board[i][i];
+    }
     return true;
 }
 
@@ -91,7 +100,7 @@ bool is_valid(int arr[])
 
     // If sum == MAGIC_SUM return true
     if (sum == MAGIC_SUM){
-        return true
+        return true;
     }
     return false;
 }
