@@ -87,17 +87,17 @@ bool is_magic()
     return true;
 
     //corners
-    for (int i = 0; i < 4; )
+    for (int i = 0; i < 4;){
+
+    }
 }
 
 // Returns true iff the sum of all four numbers in arr matches sum.
 bool is_valid(int arr[])
 {
-    // Create an int variable called sum
     int sum = 0;
-    // Iterate over arr
+    // run thru arr adding to sum
     for(int i = 0; i < 4; i++){
-        // For each element in arr add it to sum
         sum += arr[i];
     }
 
