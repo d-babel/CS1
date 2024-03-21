@@ -368,9 +368,6 @@ void draw_numbers(void)
         attron(COLOR_PAIR(PAIR_DIGITS));
     }
 
-    if(has_colors()) {
-        
-    }
 
     // Iterate over board's numbers
     for (int i = 0; i < 9; i++)
