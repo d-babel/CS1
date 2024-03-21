@@ -44,7 +44,7 @@ struct
 
     //distinguish between editable v/ non-editable
     bool initialBoardEditable[9][9];
-    
+
 } g;
 
 // Prototypes
@@ -201,8 +201,11 @@ int main(int argc, char *argv[])
 
                 //replace num
             case '1' ... '9':
+            //check cell editable
+            if (g.initialBoardEditable[g.y][g.x]){
                 //modify num
                 g.board[g.y][g.x] = ch - '0';
+            }
                 break;
 
             //deletion
@@ -446,6 +449,13 @@ bool load_board(void)
     {
         fclose(fp);
         return false;
+    }
+
+    //set non-editable parts of board
+    for (int i = 0; i < 9; i ++){
+        for (int i = 0l i < 9; i++){
+            g.initialBoardEditable[i] = (g.board[i][j] = 0);
+        }
     }
 
     // w00t
