@@ -62,44 +62,6 @@ void show_banner(char *b);
 void show_cursor(void);
 void shutdown(void);
 bool startup(void);
-//helper function prototypes
-bool isInRow(int row, int num);
-bool isInCol(int col, int num);
-bool isInBox(int startRow, int startCol, int num);
-bool isPlacementValid(int row, int col, int num);
-
-//implementation of helper functions
-//check row param.
-bool isInRow(int row, int num) {
-    for (int col = 0; col < 9; col++){
-        if (g.board[row][col] == num) return true;
-    }
-    return false;
-}
-
-//check col param.
-bool isInCol(int col, int num) {
-    for (int row = 0; row < 9; row++){
-        if (g.board[row][col] == num) return true;
-    }
-    return false;
-}
-
-//check box param.
-bool isInBox(int startRow, int startCol, int num) {
-    for (int row = 0; row < 3; row++){
-        for (int col = 0; col < 3; col++){
-            if (g.board[row + startRow][col + startCol] == num) return true;
-        }
-    }
-    return false;
-}
-
-//final placement param. check
-bool isPlacementValid(int row, int col, int num){
-    return !isInRow(row, num) && !isInCol(col, num) && !isInBox(row - row % 3, col - col % 3, num);
-}
-
 
 int main(int argc, char *argv[])
 {
@@ -243,14 +205,6 @@ int main(int argc, char *argv[])
             if (g.initialBoardEditable[g.y][g.x]){
                 //modify num
                 g.board[g.y][g.x] = ch - '0';
-            } else if (g.initialBoardEditable[g.y][g.x]){
-                // display error msgs
-                if (isInRow(g.y, ch - '0')){
-                    show_banner("Bad Row.");
-                } else  if (isInRow(g.y, ch - '0')){
-                    show_banner("Bad Row.");
-            } else  if (isInRow(g.y, ch - '0')){
-                    show_banner("Bad Row.");
             }
                 break;
 
@@ -414,15 +368,6 @@ void draw_numbers(void)
         attron(COLOR_PAIR(PAIR_DIGITS));
     }
 
-    if (has_colors()) {
-        start_color();
-        //define color pairs
-        //original nums
-        init_pair(1, COLOR_YELLOW, COLOR_BLACK);
-        //user-entered nums
-        init_pair(2, COLOR_WHITE, COLOR_BLACK);
-
-    }
 
     // Iterate over board's numbers
     for (int i = 0; i < 9; i++)
@@ -431,18 +376,8 @@ void draw_numbers(void)
         {
             // Determine char
             char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
-            if (g.initialBoardEditable[i][j]) {
-                //activate color pair (user-entered nums)
-                attron(COLOR_PAIR(2));
-            } else {
-                //activate color pair (original nums)
-                attron(COLOR_PAIR(1));
-            }
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
             refresh();
-            //deactivating colors respectively
-            attroff(COLOR_PAIR(1));
-            attroff(COLOR_PAIR(2));
         }
     }
 
@@ -519,7 +454,7 @@ bool load_board(void)
 
     //set non-editable parts of board
     for (int i = 0; i < 9; i ++){
-        for (int i = 0; i < 9; i++){
+        for (int i = 0l i < 9; i++){
             g.initialBoardEditable[i] = (g.board[i][j] = 0);
         }
     }
