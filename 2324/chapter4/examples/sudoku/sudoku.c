@@ -372,9 +372,9 @@ void draw_numbers(void)
         start_color();
         //define color pairs
         //original nums
-        init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+        init_pair(1, COLOR_YELLOW, COLOR_BLACK);
         //user-entered nums
-        init_pair(4, COLOR_WHITE, COLOR_BLACK);
+        init_pair(2, COLOR_WHITE, COLOR_BLACK);
 
     }
 
@@ -387,16 +387,16 @@ void draw_numbers(void)
             char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
             if (g.initialBoardEditable[i][j]) {
                 //activate color pair (user-entered nums)
-                attron(COLOR_PAIR(4));
+                attron(COLOR_PAIR(2));
             } else {
                 //activate color pair (original nums)
-                attron(COLOR_PAIR(3));
+                attron(COLOR_PAIR(1)));
             }
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
             refresh();
             //deactivating colors respectively
-            attroff(COLOR_PAIR(3));
-            attroff(COLOR_PAIR(4));
+            attroff(COLOR_PAIR(1));
+            attroff(COLOR_PAIR(2));
         }
     }
 
