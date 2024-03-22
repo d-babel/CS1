@@ -394,6 +394,9 @@ void draw_numbers(void)
             }
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
             refresh();
+            //deactivating colors respectively
+            attroff(COLOR_PAIR(3));
+            attroff(COLOR_PAIR(4));
         }
     }
 
