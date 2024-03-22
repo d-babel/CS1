@@ -243,6 +243,14 @@ int main(int argc, char *argv[])
             if (g.initialBoardEditable[g.y][g.x]){
                 //modify num
                 g.board[g.y][g.x] = ch - '0';
+            } else if {
+                // display error msgs
+                if (isInRow(g.y, ch - '0')){
+                    show_banner("Bad Row.");
+                } else  if (isInRow(g.y, ch - '0')){
+                    show_banner("Bad Row.");
+            } else  if (isInRow(g.y, ch - '0')){
+                    show_banner("Bad Row.");
             }
                 break;
 
