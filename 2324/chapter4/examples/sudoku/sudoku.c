@@ -62,10 +62,44 @@ void show_banner(char *b);
 void show_cursor(void);
 void shutdown(void);
 bool startup(void);
+//helper function prototypes
 bool isInRow(int row, int num);
 bool isInCol(int col, int num);
 bool isInBox(int startRow, int startCol, int num);
 bool isPlacementValid(int row, int col, int num)
+
+//implementation of helper functions
+//check row param.
+bool isInRow(int row, int num) {
+    for (int col = 0; col < 9; col++){
+        if (g.board[row][col] == num) return true;
+    }
+    return false;
+}
+
+//check col param.
+bool isInCol(int col, int num) {
+    for (int row = 0; row < 9; row++){
+        if (g.board[row][col] == num) return true;
+    }
+    return false;
+}
+
+//check box param.
+bool isInBox(int row, int num) {
+    for (int row = 0; row < 9; col++){
+        for (int col = 0; col < 3; col++){
+            if (g.board[row + startRow][col + startCol] == num) return true;
+        }
+    }
+    return false;
+}
+
+//final placement param. check
+bool isPlacementValid(int row, int col, int num){
+    return !isInRow(row, num) && !isInCol(col, num) && !isInBox(row - row % 3, col - col % 3, num);
+}
+
 
 int main(int argc, char *argv[])
 {
