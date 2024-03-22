@@ -87,7 +87,7 @@ bool isInCol(int col, int num) {
 
 //check box param.
 bool isInBox(int startRow, int startCol, int num) {
-    for (int row = 0; row < 9; col++){
+    for (int row = 0; row < 9; row++){
         for (int col = 0; col < 3; col++){
             if (g.board[row + startRow][col + startCol] == num) return true;
         }
