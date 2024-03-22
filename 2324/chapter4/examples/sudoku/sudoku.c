@@ -368,6 +368,14 @@ void draw_numbers(void)
         attron(COLOR_PAIR(PAIR_DIGITS));
     }
 
+    if (has_colors()) {
+        start_color();
+        //original nums
+        init_pair(3, COLOR_YELLOW, COLOR_BLACK);
+        //user-entered nums
+        init_pair(4, COLOR_WHITE, COLOR_BLACK);
+
+    }
 
     // Iterate over board's numbers
     for (int i = 0; i < 9; i++)
@@ -376,6 +384,8 @@ void draw_numbers(void)
         {
             // Determine char
             char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
+            if (g.initialBoardEditable[i][j]) {
+            }
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
             refresh();
         }
