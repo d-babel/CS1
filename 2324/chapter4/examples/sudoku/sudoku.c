@@ -519,7 +519,7 @@ bool load_board(void)
 
     //set non-editable parts of board
     for (int i = 0; i < 9; i ++){
-        for (int i = 0l i < 9; i++){
+        for (int i = 0; i < 9; i++){
             g.initialBoardEditable[i] = (g.board[i][j] = 0);
         }
     }
