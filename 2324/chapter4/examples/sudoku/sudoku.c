@@ -62,6 +62,10 @@ void show_banner(char *b);
 void show_cursor(void);
 void shutdown(void);
 bool startup(void);
+bool isInRow(int row, int num);
+bool isInCol(int col, int num);
+bool isInBox(int startRow, int startCol, int num);
+bool isPlacementValid(int row, int col, int num)
 
 int main(int argc, char *argv[])
 {
