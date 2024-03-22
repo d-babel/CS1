@@ -66,7 +66,7 @@ bool startup(void);
 bool isInRow(int row, int num);
 bool isInCol(int col, int num);
 bool isInBox(int startRow, int startCol, int num);
-bool isPlacementValid(int row, int col, int num)
+bool isPlacementValid(int row, int col, int num);
 
 //implementation of helper functions
 //check row param.
