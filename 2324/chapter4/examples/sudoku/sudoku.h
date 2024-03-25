@@ -24,8 +24,8 @@
 
 // Digits's colors
 #define FG_ORIGINAL_NUM COLOR_YELLOW
-#define FG_DIGITS COLOR_BLUE
-#define BG_DIGITS COLOR_BLACK
+#define FG_DIGITS COLOR_RED
+#define BG_DIGITS COLOR_RED
 
 // Nicknames for pairs of colors
 enum { PAIR_BANNER = 1, PAIR_GRID, PAIR_BORDER, PAIR_LOGO, PAIR_DIGITS };
