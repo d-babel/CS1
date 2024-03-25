@@ -1,6 +1,6 @@
 //PROBLEMS:
 //- CANT GET COLORS TO WORK
-//- "BAD" ERROR MSGS DONT WORK\
+//- "BAD" ERROR MSGS DONT WORK\ --> bad row constant
 
 
 
