@@ -15,8 +15,8 @@
 #define BG_GRID COLOR_BLACK
 
 // Border's colors
-#define FG_BORDER COLOR_WHITE
-#define BG_BORDER COLOR_RED //HIGHLIGHTS EMPTY AS WELL
+#define FG_BORDER COLOR_CYAN
+#define BG_BORDER COLOR_BLACK
 
 // Logo's colors
 #define FG_LOGO COLOR_WHITE
