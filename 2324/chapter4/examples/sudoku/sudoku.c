@@ -28,6 +28,12 @@
 #define PAIR_ORIGINAL_NUM 2
 #define PAIR_USER_NUM 3
 
+//valid moves
+#define VALID_MOVE 0
+#define BAD_ROW 1
+#define BAD_COL 2
+#define BAD_BOX 3
+
 // Wrapper for our game's globals
 struct
 {
@@ -247,24 +253,23 @@ int main(int argc, char *argv[])
 }
 
 bool isValidMove(int row, int col, int num){
-    //check row & col
+    //check row
     for (int i = 0; i < 9; i++){
-        if (g.board[row][i] == num || g.board[i][col] == num) {
-            
-            return false;
-        }
+        if (g.board[row][i] == num) return BAD_ROW;
+    }
+    //check col
+    for (int i = 0; i < 9; i++){
+        if (g.board[i][col] == num) return BAD_COL;
     }
     //check 3x3 box
     int startRow = row - row % 3, startCol = col - col % 3;
     for (int i = 0; i < 3; i ++) {
         for (int j = 0; j < 3; j++) {
-            if (g.board[i + startRow][j + startCol] == num) {
-                return false;
-            }
+            if (g.board[i + startRow][j + startCol] == num) return BAD_BOX;
         }
     }
     //no conflict
-    return true;
+    return VALID_MOVE;
 }
 
 // Draw's the game's board
