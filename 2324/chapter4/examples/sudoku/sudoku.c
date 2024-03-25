@@ -250,6 +250,7 @@ bool isValidMove(int row, int col, int num){
     //check row & col
     for (int i = 0; i < 9; i++){
         if (g.board[row][i] == num || g.board[i][col] == num) {
+            
             return false;
         }
     }
