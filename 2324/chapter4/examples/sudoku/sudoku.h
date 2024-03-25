@@ -23,8 +23,8 @@
 #define BG_LOGO COLOR_BLACK
 
 // Digits's colors
-//#define FG_DIGITS COLOR_YELLOW
-//#define BG_DIGITS COLOR_BLACK
+#define FG_DIGITS COLOR_YELLOW
+#define BG_DIGITS COLOR_BLACK
 
 // Nicknames for pairs of colors
 enum { PAIR_BANNER = 1, PAIR_GRID, PAIR_BORDER, PAIR_LOGO, PAIR_DIGITS };
