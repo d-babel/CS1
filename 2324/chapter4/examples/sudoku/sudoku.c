@@ -219,6 +219,7 @@ int main(int argc, char *argv[])
 
                 //replace num
             case '1' ... '9':
+            hide_banner();
             //check cell editable
             if (g.initialBoardEditable[g.y][g.x]){
                 int moveResult = checkMove(g.y, g.x, ch - '0');
@@ -226,7 +227,6 @@ int main(int argc, char *argv[])
                     case VALID_MOVE:
                     //modify num
                     g.board[g.y][g.x] = ch - '0';
-                    hide_banner();
                     break;
                 case BAD_ROW:
                     show_banner("bad row");
