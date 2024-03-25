@@ -591,7 +591,9 @@ bool startup(void)
             return false;
         }
 
-        init_pair(PAIR_ORIGINAL_NUM, COLOR_CYAN, BG_GRID)
+        //define color pairs
+        init_pair(PAIR_ORIGINAL_NUM, COLOR_CYAN, BG_GRID);
+        init_pair(PAIR_USER_NUM, COLOR_WHITE, BG_GRID);
 
 
         // Initialize pairs of colors
