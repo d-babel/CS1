@@ -72,7 +72,7 @@ void show_banner(char *b);
 void show_cursor(void);
 void shutdown(void);
 bool startup(void);
-bool isValidMove(int row, int col, int num);
+bool checkMove(int row, int col, int num);
 
 int main(int argc, char *argv[])
 {
@@ -226,7 +226,7 @@ int main(int argc, char *argv[])
                 case BAD_COL:
                     show_banner("bad col");
                     break;
-                case BAD_BOX;
+                case BAD_BOX:
                     show_banner("bad box");
                     break;
                 }
@@ -266,7 +266,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-bool isValidMove(int row, int col, int num){
+bool checkMove(int row, int col, int num){
     //check row
     for (int i = 0; i < 9; i++){
         if (g.board[row][i] == num) return BAD_ROW;
