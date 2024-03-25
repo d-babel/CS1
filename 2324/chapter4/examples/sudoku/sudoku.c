@@ -392,7 +392,7 @@ void draw_numbers(void)
             refresh();
 
             //turn off color after drawing
-            attronoff(COLOR_PAIR(PAIR_USER_NUM) | COLOR_PAIR(PAIR_ORIGINAL_NUM));
+            attroff(COLOR_PAIR(PAIR_USER_NUM) | COLOR_PAIR(PAIR_ORIGINAL_NUM));
         }
     }
 
