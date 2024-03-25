@@ -224,6 +224,7 @@ int main(int argc, char *argv[])
             if (g.initialBoardEditable[g.y][g.x]){
                 int moveResult = checkMove(g.y, g.x, ch - '0');
                 switch (moveResult){
+                    hide_banner();
                     case VALID_MOVE:
                     //modify num
                     g.board[g.y][g.x] = ch;
