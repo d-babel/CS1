@@ -226,7 +226,7 @@ int main(int argc, char *argv[])
                 switch (moveResult){
                     case VALID_MOVE:
                     //modify num
-                    g.board[g.y][g.x] = ch - '0';
+                    g.board[g.y][g.x] = ch;
                     break;
                 case BAD_ROW:
                     show_banner("bad row");
