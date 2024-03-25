@@ -378,9 +378,6 @@ void draw_numbers(void)
     {
         for (int j = 0; j < 9; j++)
         {
-            // Determine char
-            char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
-
             //chose color based on cell's editablity
             if (g.initialBoardEditable[i][j]){
                 attron(COLOR_PAIR(PAIR_USER_NUM));
@@ -388,8 +385,10 @@ void draw_numbers(void)
             else {
                 attron(COLOR_PAIR(PAIR_ORIGINAL_NUM));
             }
+
+            // Determine char
+            char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
-            refresh();
 
             //turn off color after drawing
             attroff(COLOR_PAIR(PAIR_USER_NUM) | COLOR_PAIR(PAIR_ORIGINAL_NUM));
@@ -607,8 +606,8 @@ bool startup(void)
         }
 
         //define color pairs
-        init_pair(PAIR_ORIGINAL_NUM, COLOR_CYAN, COLOR_BLACK);
-        init_pair(PAIR_USER_NUM, COLOR_WHITE, COLOR_BLACK);
+        init_pair(PAIR_ORIGINAL_NUM, COLOR_YELLOW, COLOR_BLACK);
+        init_pair(PAIR_USER_NUM, COLOR_BLUE, COLOR_BLACK);
 
 
         // Initialize pairs of colors
