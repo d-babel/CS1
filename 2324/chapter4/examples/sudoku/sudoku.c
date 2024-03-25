@@ -277,17 +277,27 @@ int main(int argc, char *argv[])
 bool checkMove(int row, int col, int num){
     //check row
     for (int i = 0; i < 9; i++){
-        if (g.board[row][i] == num && i != col) return BAD_ROW;
+        if (g.board[row][i] == num && i != col) {
+            printf("the bad row");
+            return BAD_ROW;
+        }
+
     }
     //check col
     for (int i = 0; i < 9; i++){
-        if (g.board[i][col] == num && i != row) return BAD_COL;
+        if (g.board[i][col] == num && i != row) {
+            printf("the bad col");
+            return BAD_COL;
+        }
     }
     //check 3x3 box
     int startRow = row - row % 3, startCol = col - col % 3;
     for (int i = 0; i < 3; i ++) {
         for (int j = 0; j < 3; j++) {
-            if (g.board[i + startRow][j + startCol] == num) return BAD_BOX;
+            if (g.board[i + startRow][j + startCol] == num) {
+            printf("the bad box");
+            return BAD_COL;
+        }
         }
     }
     //no conflict
