@@ -7,16 +7,16 @@
 #define TITLE "Sudoku"
 
 // Banner's colors
-#define FG_BANNER COLOR_WHITE
+#define FG_BANNER COLOR_BLACK
 #define BG_BANNER COLOR_BLACK
 
 // Grid's colors
-#define FG_GRID COLOR_WHITE
+#define FG_GRID COLOR_RED
 #define BG_GRID COLOR_BLACK
 
 // Border's colors
 #define FG_BORDER COLOR_WHITE
-#define BG_BORDER COLOR_BLACK
+#define BG_BORDER COLOR_RED //HIGHLIGHTS EMPTY AS WELL
 
 // Logo's colors
 #define FG_LOGO COLOR_WHITE
