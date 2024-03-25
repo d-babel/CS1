@@ -212,6 +212,7 @@ int main(int argc, char *argv[])
 
                 //replace num
             case '1' ... '9':
+            hide_banner();
             //check cell editable
             if (g.initialBoardEditable[g.y][g.x]){
                 int moveResult = checkMove(g.y, g.x, ch - '0');
@@ -269,11 +270,11 @@ int main(int argc, char *argv[])
 bool checkMove(int row, int col, int num){
     //check row
     for (int i = 0; i < 9; i++){
-        if (g.board[row][i] == num) return BAD_ROW;
+        if (g.board[row][i] == num && i != col) return BAD_ROW;
     }
     //check col
     for (int i = 0; i < 9; i++){
-        if (g.board[i][col] == num) return BAD_COL;
+        if (g.board[i][col] == num && i != row) return BAD_COL;
     }
     //check 3x3 box
     int startRow = row - row % 3, startCol = col - col % 3;
