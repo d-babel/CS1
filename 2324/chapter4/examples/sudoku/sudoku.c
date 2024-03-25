@@ -654,11 +654,6 @@ bool startup(void)
             return false;
         }
 
-        //define color pairs
-        // init_pair(PAIR_ORIGINAL_NUM, FG_DIGITS, BG_DIGITS);
-        // init_pair(PAIR_USER_NUM, FG_ORIGINAL_NUM, BG_DIGITS);
-
-
         // Initialize pairs of colors
         if (init_pair(PAIR_BANNER, FG_BANNER, BG_BANNER) == ERR ||
             init_pair(PAIR_GRID, FG_GRID, BG_GRID) == ERR ||
