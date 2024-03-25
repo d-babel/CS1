@@ -24,6 +24,10 @@
 // Size of each int (in bytes) in *.bin files
 #define INTSIZE 4
 
+//color pairs
+#define PAIR_ORIGINAL_NUM 2
+#define PAIR_USER_NUM 3
+
 // Wrapper for our game's globals
 struct
 {
@@ -376,8 +380,19 @@ void draw_numbers(void)
         {
             // Determine char
             char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
+
+            //chose color based on cell's editablity
+            if (g.initialBoardEditable[i][j]){
+                attron(COLOR_PAIR(PAIR_USER_NUM));
+            }
+            else {
+                attron(COLOR_PAIR(PAIR_ORIGINAL_NUM));
+            }
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
             refresh();
+
+            //turn off color after drawing
+            attronoff(COLOR_PAIR(PAIR_USER_NUM) | COLOR_PAIR(PAIR_ORIGINAL_NUM));
         }
     }
 
@@ -592,8 +607,8 @@ bool startup(void)
         }
 
         //define color pairs
-        init_pair(PAIR_ORIGINAL_NUM, COLOR_CYAN, BG_GRID);
-        init_pair(PAIR_USER_NUM, COLOR_WHITE, BG_GRID);
+        init_pair(PAIR_ORIGINAL_NUM, COLOR_CYAN, COLOR_BLACK);
+        init_pair(PAIR_USER_NUM, COLOR_WHITE, COLOR_BLACK);
 
 
         // Initialize pairs of colors
