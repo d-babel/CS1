@@ -66,6 +66,7 @@ void show_banner(char *b);
 void show_cursor(void);
 void shutdown(void);
 bool startup(void);
+bool isValidMove(int row, int col, int num);
 
 int main(int argc, char *argv[])
 {
@@ -243,6 +244,26 @@ int main(int argc, char *argv[])
     // That's all folks
     printf("\nkthxbai!\n\n");
     return 0;
+}
+
+bool isValidMove(int row, int col, int num){
+    //check row & col
+    for (int i = 0; i < 9; i++){
+        if (g.board[row][i] == num || g.board[i][col] == num) {
+            return false;
+        }
+    }
+    //check 3x3 box
+    int startRow = row - row % 3, startCol = col - col % 3;
+    for (int i = 0; i < 3; i ++) {
+        for (int j = 0; j < 3; j++) {
+            if (g.board[i + startRow][j + startCol] == num) {
+                return false;
+            }
+        }
+    }
+    //no conflict
+    return true;
 }
 
 // Draw's the game's board
