@@ -591,6 +591,9 @@ bool startup(void)
             return false;
         }
 
+        init_pair(PAIR_ORIGINAL_NUM, COLOR_CYAN, BG_GRID)
+
+
         // Initialize pairs of colors
         if (init_pair(PAIR_BANNER, FG_BANNER, BG_BANNER) == ERR ||
             init_pair(PAIR_GRID, FG_GRID, BG_GRID) == ERR ||
