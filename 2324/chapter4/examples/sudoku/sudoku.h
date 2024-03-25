@@ -23,7 +23,8 @@
 #define BG_LOGO COLOR_BLACK
 
 // Digits's colors
-#define FG_DIGITS COLOR_YELLOW
+#define FG_ORIGINAL_NUM COLOR_YELLOW
+#define FG_DIGITS COLOR_BLUE
 #define BG_DIGITS COLOR_BLACK
 
 // Nicknames for pairs of colors

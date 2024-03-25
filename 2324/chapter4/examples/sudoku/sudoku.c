@@ -607,7 +607,7 @@ bool startup(void)
 
         //define color pairs
         init_pair(PAIR_ORIGINAL_NUM, FG_DIGITS, BG_DIGITS);
-        init_pair(PAIR_USER_NUM, COLOR_BLUE, BG_DIGITS);
+        init_pair(PAIR_USER_NUM, FG_ORIGINAL_NUM, BG_DIGITS);
 
 
         // Initialize pairs of colors
