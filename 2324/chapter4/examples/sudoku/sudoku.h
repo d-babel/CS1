@@ -15,7 +15,7 @@
 #define BG_GRID COLOR_BLACK
 
 // Border's colors
-#define FG_BORDER COLOR_CYAN
+#define FG_BORDER COLOR_RED //
 #define BG_BORDER COLOR_BLACK
 
 // Logo's colors
@@ -23,9 +23,11 @@
 #define BG_LOGO COLOR_BLACK
 
 // Digits's colors
-#define FG_ORIGINAL_NUM COLOR_YELLOW
 #define FG_DIGITS COLOR_RED
 #define BG_DIGITS COLOR_RED
+
+//user num colors
+#define FG_USER_NUM COLOR_CYAN
 
 // Nicknames for pairs of colors
 enum { PAIR_BANNER = 1, PAIR_GRID, PAIR_BORDER, PAIR_LOGO, PAIR_DIGITS };
