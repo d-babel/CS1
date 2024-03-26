@@ -433,7 +433,7 @@ void draw_numbers(void)
     {
         for (int j = 0; j < 9; j++)
         {
-            // chose color based on cell's editablity
+            // choose color based on cell's editablity
             if (g.initialBoardEditable[i][j])
             {
                 attron(COLOR_PAIR(PAIR_USER_NUM));
@@ -448,7 +448,7 @@ void draw_numbers(void)
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
 
             // turn off color after drawing
-            attroff(COLOR_PAIR(PAIR_USER_NUM) | COLOR_PAIR(PAIR_DIGITS));
+            attroff(COLOR_PAIR(PAIR_USER_NUM) && COLOR_PAIR(PAIR_DIGITS));
         }
     }
 
