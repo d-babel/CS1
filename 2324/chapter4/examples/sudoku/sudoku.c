@@ -33,6 +33,7 @@
 #define PAIR_USER_NUM 3
 
 // valid moves
+#define VALID_MOVE 0
 #define BAD_ROW 1
 #define BAD_COL 2
 #define BAD_BOX 3

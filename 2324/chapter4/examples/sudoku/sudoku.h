@@ -27,7 +27,7 @@
 #define BG_DIGITS COLOR_BLACK
 
 //user num colors
-#define FG_USER_NUM COLOR_CYAN
+#define FG_USER_NUM COLOR_BLUE
 #define BG_USER_NUM COLOR_BLACK
 
 // Nicknames for pairs of colors
