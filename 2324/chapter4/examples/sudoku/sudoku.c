@@ -343,7 +343,7 @@ void draw_grid(void)
 // Draws game's borders.
 void draw_borders(void)
 {
-    //turn of existing colors
+    //turn off existing colors
     attroff(COLOR_PAIR(PAIR_BANNER));
     attroff(COLOR_PAIR(PAIR_USER_NUM));
     attroff(COLOR_PAIR(PAIR_DIGITS));
