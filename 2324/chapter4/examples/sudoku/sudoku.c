@@ -673,7 +673,7 @@ bool startup(void)
             init_pair(PAIR_BORDER, FG_BORDER, BG_BORDER) == ERR ||
             init_pair(PAIR_LOGO, FG_LOGO, BG_LOGO) == ERR ||
             init_pair(PAIR_DIGITS, FG_DIGITS, BG_DIGITS) == ERR ||
-            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_GRID) == ERR)
+            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_DIGITS) == ERR)
         {
             endwin();
             return false;
