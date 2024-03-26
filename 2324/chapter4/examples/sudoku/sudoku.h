@@ -24,7 +24,7 @@
 
 // Digits's colors
 #define FG_DIGITS COLOR_RED
-#define BG_DIGITS COLOR_RED
+#define BG_DIGITS COLOR_BLACK
 
 //user num colors
 #define FG_USER_NUM COLOR_CYAN

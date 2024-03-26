@@ -415,11 +415,11 @@ void draw_logo(void)
 
 void draw_numbers(void)
 {
-    // Enable color if possible
-    if (has_colors())
-    {
-        attron(COLOR_PAIR(PAIR_DIGITS));
-    }
+    // // Enable color if possible
+    // if (has_colors())
+    // {
+    //     attron(COLOR_PAIR(PAIR_DIGITS));
+    // }
 
 
     // Iterate over board's numbers
@@ -432,7 +432,7 @@ void draw_numbers(void)
                 attron(COLOR_PAIR(PAIR_USER_NUM));
             }
             else {
-                attron(COLOR_PAIR(PAIR_ORIGINAL_NUM));
+                attron(COLOR_PAIR(PAIR_DIGITS));
             }
 
             // Determine char
@@ -440,7 +440,7 @@ void draw_numbers(void)
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
 
             //turn off color after drawing
-            attroff(COLOR_PAIR(PAIR_USER_NUM) | COLOR_PAIR(PAIR_ORIGINAL_NUM));
+            attroff(COLOR_PAIR(PAIR_USER_NUM) | COLOR_PAIR(PAIR_DIGITS));
         }
     }
 
