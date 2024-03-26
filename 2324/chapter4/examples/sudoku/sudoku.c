@@ -1,9 +1,6 @@
-//PROBLEMS:
+// PROBLEMS:
 //- CANT GET COLORS TO WORK
 //- "BAD" ERROR MSGS DONT WORK\ --> bad row constant
-
-
-
 
 /**
  * Sudoku
@@ -31,11 +28,11 @@
 // Size of each int (in bytes) in *.bin files
 #define INTSIZE 4
 
-//color pairs
+// color pairs
 #define PAIR_ORIGINAL_NUM 2
 #define PAIR_USER_NUM 3
 
-//valid moves
+// valid moves
 #define VALID_MOVE 0
 #define BAD_ROW 1
 #define BAD_COL 2
@@ -59,7 +56,7 @@ struct
     // The cursor's current location between (0,0) and (8,8)
     int y, x;
 
-    //distinguish between editable v/ non-editable
+    // distinguish between editable v/ non-editable
     bool initialBoardEditable[9][9];
 
 } g;
@@ -217,36 +214,38 @@ int main(int argc, char *argv[])
                 g.x = (g.x == 0) ? 8 : g.x - 1;
                 break;
 
-                //replace num
+                // replace num
             case '1' ... '9':
-            hide_banner();
-            //check cell editable
-            if (g.initialBoardEditable[g.y][g.x]){
-                int moveResult = checkMove(g.y, g.x, ch - '0');
-                switch (moveResult){
-                    case VALID_MOVE:
-                    //modify num
-                    g.board[g.y][g.x] = ch - '0';
-                    break;
-                case BAD_ROW:
-                    show_banner("bad row");
-                    break;
-                case BAD_COL:
-                    show_banner("bad col");
-                    break;
-                case BAD_BOX:
-                    show_banner("bad box");
-                    break;
+                hide_banner();
+                // check cell editable
+                if (g.initialBoardEditable[g.y][g.x])
+                {
+                    int moveResult = checkMove(g.y, g.x, ch - '0');
+                    switch (moveResult)
+                    {
+                        case VALID_MOVE:
+                            // modify num
+                            g.board[g.y][g.x] = ch - '0';
+                            break;
+                        case BAD_ROW:
+                            show_banner("bad row");
+                            break;
+                        case BAD_COL:
+                            show_banner("bad col");
+                            break;
+                        case BAD_BOX:
+                            show_banner("bad box");
+                            break;
+                    }
                 }
-            }
                 break;
 
-            //deletion
+            // deletion
             case '0':
             case '-':
             case KEY_BACKSPACE:
             case KEY_DC:
-                //reset to blank
+                // reset to blank
                 g.board[g.y][g.x] = 0;
                 break;
         }
@@ -274,23 +273,31 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-bool checkMove(int row, int col, int num){
-    //check row
-    for (int i = 0; i < 9; i++){
-        if (g.board[row][i] == num && i != col) return BAD_ROW;
+bool checkMove(int row, int col, int num)
+{
+    // check row
+    for (int i = 0; i < 9; i++)
+    {
+        if (g.board[row][i] == num && i != col)
+            return BAD_ROW;
     }
-    //check col
-    for (int i = 0; i < 9; i++){
-        if (g.board[i][col] == num && i != row) return BAD_COL;
+    // check col
+    for (int i = 0; i < 9; i++)
+    {
+        if (g.board[i][col] == num && i != row)
+            return BAD_COL;
     }
-    //check 3x3 box
+    // check 3x3 box
     int startRow = row - row % 3, startCol = col - col % 3;
-    for (int i = 0; i < 3; i ++) {
-        for (int j = 0; j < 3; j++) {
-            if (g.board[i + startRow][j + startCol] == num) return BAD_BOX;
+    for (int i = 0; i < 3; i++)
+    {
+        for (int j = 0; j < 3; j++)
+        {
+            if (g.board[i + startRow][j + startCol] == num)
+                return BAD_BOX;
         }
     }
-    //no conflict
+    // no conflict
     return VALID_MOVE;
 }
 
@@ -421,17 +428,18 @@ void draw_numbers(void)
     //     attron(COLOR_PAIR(PAIR_DIGITS));
     // }
 
-
     // Iterate over board's numbers
     for (int i = 0; i < 9; i++)
     {
         for (int j = 0; j < 9; j++)
         {
-            //chose color based on cell's editablity
-            if (g.initialBoardEditable[i][j]){
+            // chose color based on cell's editablity
+            if (g.initialBoardEditable[i][j])
+            {
                 attron(COLOR_PAIR(PAIR_USER_NUM));
             }
-            else {
+            else
+            {
                 attron(COLOR_PAIR(PAIR_DIGITS));
             }
 
@@ -439,7 +447,7 @@ void draw_numbers(void)
             char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
 
-            //turn off color after drawing
+            // turn off color after drawing
             attroff(COLOR_PAIR(PAIR_USER_NUM) | COLOR_PAIR(PAIR_DIGITS));
         }
     }
@@ -515,9 +523,11 @@ bool load_board(void)
         return false;
     }
 
-    //set non-editable parts of board
-    for (int i = 0; i < 9; i ++){
-        for (int j = 0; j < 9; j++){
+    // set non-editable parts of board
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
             g.initialBoardEditable[i][j] = (g.board[i][j] != 0) ? false : true;
         }
     }
@@ -660,7 +670,7 @@ bool startup(void)
             init_pair(PAIR_BORDER, FG_BORDER, BG_BORDER) == ERR ||
             init_pair(PAIR_LOGO, FG_LOGO, BG_LOGO) == ERR ||
             init_pair(PAIR_DIGITS, FG_DIGITS, BG_DIGITS) == ERR ||
-            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_GRID);)
+            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_GRID))
         {
             endwin();
             return false;
