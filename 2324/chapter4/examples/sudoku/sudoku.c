@@ -654,8 +654,7 @@ bool startup(void)
             return false;
         }
 
-        init_pair(PAIR_ORIGINAL_NUM, COLOR_CYAN, COLOR_BLACK);
-        init_pair(PAIR_USER_NUM, COLOR_WHITE, COLOR_BLACK);
+        init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_GRID);
 
         // Initialize pairs of colors
         if (init_pair(PAIR_BANNER, FG_BANNER, BG_BANNER) == ERR ||
