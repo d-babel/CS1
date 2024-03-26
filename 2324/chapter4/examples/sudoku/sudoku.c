@@ -33,10 +33,9 @@
 #define PAIR_USER_NUM 3
 
 // valid moves
-#define VALID_MOVE 0
-#define BAD_ROW 10
-#define BAD_COL 20
-#define BAD_BOX 30
+#define BAD_ROW 1
+#define BAD_COL 2
+#define BAD_BOX 3
 
 // Wrapper for our game's globals
 struct
@@ -298,7 +297,7 @@ bool checkMove(int row, int col, int num)
         }
     }
     // no conflict
-    return VALID_MOVE;
+    return false;
 }
 
 // Draw's the game's board
