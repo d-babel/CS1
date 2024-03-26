@@ -278,13 +278,15 @@ bool checkMove(int row, int col, int num)
     for (int i = 0; i < 9; i++)
     {
         if (g.board[row][i] == num && i != col)
-            return BAD_ROW;
+            show_banner("bad row");
+            return true;
     }
     // check col
     for (int i = 0; i < 9; i++)
     {
         if (g.board[i][col] == num && i != row)
-            return BAD_COL;
+            show_banner("bad col");
+            return true;
     }
     // check 3x3 box
     int startRow = row - row % 3, startCol = col - col % 3;
@@ -293,7 +295,8 @@ bool checkMove(int row, int col, int num)
         for (int j = 0; j < 3; j++)
         {
             if (g.board[i + startRow][j + startCol] == num)
-                return BAD_BOX;
+                show_banner("bad box");
+                return true;
         }
     }
 }
