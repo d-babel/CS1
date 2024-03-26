@@ -297,7 +297,7 @@ bool checkMove(int row, int col, int num)
         }
     }
     // no conflict
-    return false;
+    return true;
 }
 
 // Draw's the game's board
