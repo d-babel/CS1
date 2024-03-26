@@ -448,7 +448,8 @@ void draw_numbers(void)
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
 
             // turn off color after drawing
-            attroff(COLOR_PAIR(PAIR_USER_NUM) && COLOR_PAIR(PAIR_DIGITS));
+            attroff(COLOR_PAIR(PAIR_USER_NUM));
+            attroff(COLOR_PAIR(PAIR_DIGITS));
         }
     }
 
@@ -670,7 +671,7 @@ bool startup(void)
             init_pair(PAIR_BORDER, FG_BORDER, BG_BORDER) == ERR ||
             init_pair(PAIR_LOGO, FG_LOGO, BG_LOGO) == ERR ||
             init_pair(PAIR_DIGITS, FG_DIGITS, BG_DIGITS) == ERR ||
-            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_GRID))
+            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_GRID) == ERR)
         {
             endwin();
             return false;
