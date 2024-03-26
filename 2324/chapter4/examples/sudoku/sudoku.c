@@ -33,9 +33,9 @@
 #define PAIR_USER_NUM 3
 
 // valid moves
-#define BAD_ROW 10
-#define BAD_COL 20
-#define BAD_BOX 30
+#define BAD_ROW 1
+#define BAD_COL 2
+#define BAD_BOX 3
 
 // Wrapper for our game's globals
 struct
@@ -278,13 +278,13 @@ bool checkMove(int row, int col, int num)
     for (int i = 0; i < 9; i++)
     {
         if (g.board[row][i] == num && i != col)
-            return 10;
+            return BAD_ROW;
     }
     // check col
     for (int i = 0; i < 9; i++)
     {
         if (g.board[i][col] == num && i != row)
-            return 20;
+            return BAD_COL;
     }
     // check 3x3 box
     int startRow = row - row % 3, startCol = col - col % 3;
@@ -293,7 +293,7 @@ bool checkMove(int row, int col, int num)
         for (int j = 0; j < 3; j++)
         {
             if (g.board[i + startRow][j + startCol] == num)
-                return 30;
+                return BAD_BOX;
         }
     }
     // no conflict
