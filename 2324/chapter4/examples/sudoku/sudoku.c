@@ -654,14 +654,13 @@ bool startup(void)
             return false;
         }
 
-        init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_GRID);
-
         // Initialize pairs of colors
         if (init_pair(PAIR_BANNER, FG_BANNER, BG_BANNER) == ERR ||
             init_pair(PAIR_GRID, FG_GRID, BG_GRID) == ERR ||
             init_pair(PAIR_BORDER, FG_BORDER, BG_BORDER) == ERR ||
             init_pair(PAIR_LOGO, FG_LOGO, BG_LOGO) == ERR ||
-            init_pair(PAIR_DIGITS, FG_DIGITS, BG_DIGITS) == ERR)
+            init_pair(PAIR_DIGITS, FG_DIGITS, BG_DIGITS) == ERR ||
+            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_GRID);)
         {
             endwin();
             return false;
