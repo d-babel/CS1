@@ -457,6 +457,8 @@ void draw_numbers(void)
     if (has_colors())
     {
         attroff(COLOR_PAIR(PAIR_BANNER));
+        attroff(COLOR_PAIR(PAIR_USER_NUM));
+        attroff(COLOR_PAIR(PAIR_DIGITS));
     }
 }
 
