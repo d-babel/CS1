@@ -223,10 +223,6 @@ int main(int argc, char *argv[])
                     int moveResult = checkMove(g.y, g.x, ch - '0');
                     switch (moveResult)
                     {
-                        case VALID_MOVE:
-                            // modify num
-                            g.board[g.y][g.x] = ch - '0';
-                            break;
                         case BAD_ROW:
                             show_banner("bad row");
                             break;
@@ -236,6 +232,10 @@ int main(int argc, char *argv[])
                         case BAD_BOX:
                             show_banner("bad box");
                             break;
+                        default:
+                        //modify num
+                        g.board[g.y][g.x] = ch - '0';\
+                        break;
                     }
                 }
                 break;
