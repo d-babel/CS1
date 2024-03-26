@@ -427,11 +427,11 @@ void draw_logo(void)
 
 void draw_numbers(void)
 {
-    // // Enable color if possible
-    // if (has_colors())
-    // {
-    //     attron(COLOR_PAIR(PAIR_DIGITS));
-    // }
+    // Enable color if possible
+    if (has_colors())
+    {
+        attron(COLOR_PAIR(PAIR_DIGITS));
+    }
 
     // Iterate over board's numbers
     for (int i = 0; i < 9; i++)
