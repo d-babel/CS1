@@ -233,7 +233,7 @@ int main(int argc, char *argv[])
                             break;
                         default:
                         //modify num
-                        g.board[g.y][g.x] = ch - '0';\
+                        g.board[g.y][g.x] = ch - '0';
                         break;
                     }
                 }
