@@ -34,9 +34,9 @@
 
 // valid moves
 #define VALID_MOVE 0
-#define BAD_ROW 1
-#define BAD_COL 2
-#define BAD_BOX 3
+#define BAD_ROW 10
+#define BAD_COL 20
+#define BAD_BOX 30
 
 // Wrapper for our game's globals
 struct
