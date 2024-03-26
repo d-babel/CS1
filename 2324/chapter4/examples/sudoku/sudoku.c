@@ -343,6 +343,11 @@ void draw_grid(void)
 // Draws game's borders.
 void draw_borders(void)
 {
+    //turn of existing colors
+    attroff(COLOR_PAIR(PAIR_BANNER));
+    attroff(COLOR_PAIR(PAIR_USER_NUM));
+    attroff(COLOR_PAIR(PAIR_DIGITS));
+
     // Get window's dimensions
     int maxy, maxx;
     getmaxyx(stdscr, maxy, maxx);
@@ -673,7 +678,7 @@ bool startup(void)
             init_pair(PAIR_BORDER, FG_BORDER, BG_BORDER) == ERR ||
             init_pair(PAIR_LOGO, FG_LOGO, BG_LOGO) == ERR ||
             init_pair(PAIR_DIGITS, FG_DIGITS, BG_DIGITS) == ERR ||
-            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_DIGITS) == ERR)
+            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_USER_NUM) == ERR)
         {
             endwin();
             return false;

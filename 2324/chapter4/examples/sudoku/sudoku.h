@@ -27,7 +27,8 @@
 #define BG_DIGITS COLOR_BLACK
 
 //user num colors
-#define FG_USER_NUM COLOR_YELLOW
+#define FG_USER_NUM COLOR_CYAN
+#define BG_USER_NUM COLOR_BLACK
 
 // Nicknames for pairs of colors
 enum { PAIR_BANNER = 1, PAIR_GRID, PAIR_BORDER, PAIR_LOGO, PAIR_DIGITS , PAIR_USER_NUM};
