@@ -441,7 +441,7 @@ void draw_numbers(void)
 
             // Determine char
             char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
-            
+
             // choose color based on cell's editablity
             if (g.initialBoardEditable[i][j])
             {
@@ -456,8 +456,9 @@ void draw_numbers(void)
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
 
             // turn off color after drawing
-            attroff(COLOR_PAIR(PAIR_USER_NUM));
             attroff(COLOR_PAIR(PAIR_DIGITS));
+            attroff(COLOR_PAIR(PAIR_USER_NUM));
+
         }
     }
 
