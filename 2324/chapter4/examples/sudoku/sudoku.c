@@ -78,6 +78,7 @@ bool startup(void);
 bool checkRow(int row, int col, int num);
 bool checkCol(int row, int col, int num);
 bool checkBox(int row, int col, int num);
+void checks(void);
 
 int main(int argc, char *argv[])
 {
@@ -221,8 +222,7 @@ int main(int argc, char *argv[])
                 // check cell editable
                 if (g.initialBoardEditable[g.y][g.x])
                 {
-                    if(!checkRow)
-
+                    checks();
                     }
                 }
                     // int moveResult = checkMove(g.y, g.x, ch - '0');
@@ -243,7 +243,7 @@ int main(int argc, char *argv[])
                 //         break;
                 //     }
                 // }
-                // break;
+                break;
 
             // deletion
             case '0':
@@ -297,7 +297,7 @@ bool checkCol(int row, int col, int num){
         }
     return true;
 }
-bool checkRow(int row, int col, int num)
+bool checkBox(int row, int col, int num)
 {
     // check 3x3 box
     int startRow = row - row % 3, startCol = col - col % 3;
@@ -311,6 +311,20 @@ bool checkRow(int row, int col, int num)
     return true;
 }
 
+void checks(void) {
+    if (!checkRow(1)) {
+        show_banner("bad row");
+        return;
+    }
+    if(!checkCol(1)) {
+        show_banner("bad col");
+        return;
+    }
+    if(!checkBox(1)){
+        show_banner("bad box");
+        return;
+    }
+}
 
 // Draw's the game's board
 void draw_grid(void)
