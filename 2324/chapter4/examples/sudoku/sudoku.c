@@ -227,9 +227,9 @@ int main(int argc, char *argv[])
                     show_banner("bad col");
                 } else if(checkBox(g.y, g.x, num)) {
                     show_banner("bad box");
-                } else {
-                    g.board[g.y][g.x] = num;
                 }
+                g.board[g.y][g.x] = num;
+
                 // if (g.initialBoardEditable[g.y][g.x])
                 // {
                 //     int moveResult = checkMove(g.y, g.x, ch - '0');
