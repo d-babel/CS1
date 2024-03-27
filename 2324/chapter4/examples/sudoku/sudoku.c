@@ -220,24 +220,24 @@ int main(int argc, char *argv[])
                 if (g.initialBoardEditable[g.y][g.x])
                 {
                     int moveResult = checkMove(g.y, g.x, ch - '0');
-                    switch (moveResult)
-                    {
-                        case BAD_ROW:
-                            // show_banner("bad row");
-                            break;
-                        case BAD_COL:
-                            // show_banner("bad col");
-                            break;
-                        case BAD_BOX:
-                            // show_banner("bad box");
-                            break;
-                        default:
-                        //modify num
-                        g.board[g.y][g.x] = ch - '0';
-                        break;
-                    }
-                }
-                break;
+                //     switch (moveResult)
+                //     {
+                //         case BAD_ROW:
+                //             show_banner("bad row");
+                //             break;
+                //         case BAD_COL:
+                //             show_banner("bad col");
+                //             break;
+                //         case BAD_BOX:
+                //             show_banner("bad box");
+                //             break;
+                //         default:
+                //         //modify num
+                //         g.board[g.y][g.x] = ch - '0';
+                //         break;
+                //     }
+                // }
+                // break;
 
             // deletion
             case '0':
@@ -279,7 +279,7 @@ bool checkMove(int row, int col, int num)
     {
         if (g.board[row][i] == num && i != col)
              show_banner("bad row");
-             return;
+             return false;
             //return BAD_ROW;
     }
     // check col
@@ -287,7 +287,7 @@ bool checkMove(int row, int col, int num)
     {
         if (g.board[i][col] == num && i != row)
              show_banner("bad col");
-             return;
+             return false;
             //return BAD_COL;
     }
     // check 3x3 box
@@ -298,7 +298,7 @@ bool checkMove(int row, int col, int num)
         {
             if (g.board[i + startRow][j + startCol] == num)
                  show_banner("bad box");
-                 return;
+                 return false;
                 //return BAD_BOX;
         }
     }
