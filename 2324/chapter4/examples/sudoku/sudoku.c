@@ -233,8 +233,6 @@ int main(int argc, char *argv[])
                         case BAD_BOX:
                             show_banner("bad box");
                             break;
-
-                        break;
                     }
                 }
 
