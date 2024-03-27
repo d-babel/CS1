@@ -279,6 +279,7 @@ bool checkMove(int row, int col, int num)
     {
         if (g.board[row][i] == num && i != col)
              show_banner("bad row");
+             return;
             //return BAD_ROW;
     }
     // check col
@@ -286,6 +287,7 @@ bool checkMove(int row, int col, int num)
     {
         if (g.board[i][col] == num && i != row)
              show_banner("bad col");
+             return;
             //return BAD_COL;
     }
     // check 3x3 box
@@ -296,6 +298,7 @@ bool checkMove(int row, int col, int num)
         {
             if (g.board[i + startRow][j + startCol] == num)
                  show_banner("bad box");
+                 return;
                 //return BAD_BOX;
         }
     }
