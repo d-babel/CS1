@@ -1,3 +1,6 @@
+// PROBLEMS:
+//- "BAD" ERROR MSGS DONT WORK\ --> bad row constant
+
 /**
  * Sudoku
  *
@@ -8,6 +11,7 @@
  * on Monday, Aug. 14 2023
  */
 
+#include "sudoku.h"
 #include <ctype.h>
 #include <ncurses.h>
 #include <signal.h>
@@ -15,7 +19,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-#include "sudoku.h"
 #include <time.h>
 
 // Macro for processing control characters
@@ -23,6 +26,15 @@
 
 // Size of each int (in bytes) in *.bin files
 #define INTSIZE 4
+
+// color pairs
+#define PAIR_ORIGINAL_NUM 2
+#define PAIR_USER_NUM 3
+
+// valid moves
+#define BAD_ROW 1
+#define BAD_COL 2
+#define BAD_BOX 3
 
 // Wrapper for our game's globals
 struct
@@ -41,23 +53,31 @@ struct
 
     // The cursor's current location between (0,0) and (8,8)
     int y, x;
+
+    // distinguish between editable v/ non-editable
+    bool initialBoardEditable[9][9];
+
 } g;
 
 // Prototypes
-void draw_grid(void); // Part 1
-void draw_borders(void); // Part 1
-void draw_logo(void); // Part 1
-void draw_numbers(void); // Part 1
-void hide_banner(void); // Part 2
-bool load_board(void); // Part 2
-void handle_signal(int signum); // Part 2
-void log_move(int ch); // Part 2
-void redraw_all(void); // Part 2
-bool restart_game(void); // Part 2
-void show_banner(char *b); // Part 2
-void show_cursor(void); // Part 2
-void shutdown(void); // Part 2
-bool startup(void); // Part 2
+void draw_grid(void);
+void draw_borders(void);
+void draw_logo(void);
+void draw_numbers(void);
+void hide_banner(void);
+bool load_board(void);
+void handle_signal(int signum);
+void log_move(int ch);
+void redraw_all(void);
+bool restart_game(void);
+void show_banner(char *b);
+void show_cursor(void);
+void shutdown(void);
+bool startup(void);
+// bool checkMove(int row, int col, int num);
+bool checkRow(int row, int num);
+bool checkCol(int col, int num);
+bool checkBox(int row, int col, int num);
 
 int main(int argc, char *argv[])
 {
@@ -128,7 +148,7 @@ int main(int argc, char *argv[])
     }
 
     // Register handler for SIGWINCH (SIGnal WINdow CHanged)
-    signal(SIGWINCH, (void (*)(int)) handle_signal); // Part 2
+    signal(SIGWINCH, (void (*)(int)) handle_signal);
 
     // Start the first game
     if (!restart_game())
@@ -137,7 +157,7 @@ int main(int argc, char *argv[])
         fprintf(stderr, "Could not load board from disk!\n");
         return 6;
     }
-    redraw_all(); // Part 2
+    redraw_all();
 
     // Let the user play
     int ch;
@@ -180,12 +200,75 @@ int main(int argc, char *argv[])
             case CTRL('l'):
                 redraw_all();
                 break;
+
+            // movement cases w wrap
+            case KEY_UP:
+                g.y = (g.y == 0) ? 8 : g.y - 1;
+                break;
+            case KEY_DOWN:
+                g.y = (g.y == 8) ? 0 : g.y + 1;
+                break;
+            case KEY_RIGHT:
+                g.x = (g.x == 8) ? 0 : g.x + 1;
+                break;
+            case KEY_LEFT:
+                g.x = (g.x == 0) ? 8 : g.x - 1;
+                break;
+
+                // replace num
+            case '1' ... '9':
+            int num = ch - '0';
+            g.board[g.y][g.x] = num;
+                hide_banner();
+                // check cell editable
+                if (checkRow(g.y, num)) {
+                    show_banner("bad row");
+                } else if(checkCol(g.x, num)) {
+                    show_banner("bad col");
+                } else if(checkBox(g.y, g.x, num)) {
+                    show_banner("bad box");
+                } else {
+                    g.board[g.y][g.x] = num;
+                }
+                // if (g.initialBoardEditable[g.y][g.x])
+                // {
+                //     int moveResult = checkMove(g.y, g.x, ch - '0');
+                //     switch (moveResult)
+                //     {
+                //         case BAD_ROW:
+                //             show_banner("bad row");
+                //             break;
+                //         case BAD_COL:
+                //             show_banner("bad col");
+                //             break;
+                //         case BAD_BOX:
+                //             show_banner("bad box");
+                //             break;
+                //         default:
+                //         //modify num
+                //         g.board[g.y][g.x] = ch - '0';
+                //         break;
+                //     }
+                // }
+                // break;
+
+            // deletion
+            case '0':
+            case '-':
+            case KEY_BACKSPACE:
+            case KEY_DC:
+                // reset to blank
+                g.board[g.y][g.x] = 0;
+                break;
         }
+        // post processing, redraw board cursor
+        draw_numbers();
+        show_cursor();
 
         // Log input (and board's state) if any was received this iteration
         if (ch != ERR)
         {
-            log_move(ch); // Part 2
+            log_move(ch);
         }
     }
     while (ch != 'Q');
@@ -202,8 +285,59 @@ int main(int argc, char *argv[])
     return 0;
 }
 
+// bool checkMove(int row, int col, int num)
+// {
+//     // check row
+//     for (int i = 0; i < 9; i++)
+//     {
+//         if (g.board[row][i] == num && i != col)
+//             return BAD_ROW;
+//     }
+//     // check col
+//     for (int i = 0; i < 9; i++)
+//     {
+//         if (g.board[i][col] == num && i != row)
+//             return BAD_COL;
+//     }
+//     // check 3x3 box
+//     int startRow = row - row % 3, startCol = col - col % 3;
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             if (g.board[i + startRow][j + startCol] == num)
+//                 return BAD_BOX;
+//         }
+//     }
+//     // no conflict
+//     return true;
+// }
 
-// Draws the game's grid
+bool checkRow(int row, int num) {
+    for (int i = 0; i < 9; i++) {
+        if (g.board[row][i] == num) return true;
+    }
+    return false;
+}
+
+bool checkCol(int col, int num) {
+    for (int j = 0; j < 9; j++) {
+        if (g.board[j][col] == num) return true;
+    }
+    return false;
+}
+
+bool checkBox(int row, int col, int num) {
+    int startRow = row - row % 3, startCol = col - col % 3;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (g.board[i + startRow][j + startCol] == num) return true;
+        }
+    }
+    return false;
+}
+
+// Draw's the game's board
 void draw_grid(void)
 {
     // Get window's dimensions
@@ -211,8 +345,8 @@ void draw_grid(void)
     getmaxyx(stdscr, maxy, maxx);
 
     // Determine where top-left corner of board belongs
-    g.top = maxy / 2 - 7; // Part 1
-    g.left = maxx / 2 - 30; // Part 1
+    g.top = maxy / 2 - 7;
+    g.left = maxx / 2 - 30;
 
     // Enable color if possible
     if (has_colors())
@@ -221,7 +355,7 @@ void draw_grid(void)
     }
 
     // Print grid
-    for (int i = 0 ; i < 3 ; ++i)
+    for (int i = 0; i < 3; ++i)
     {
         mvaddstr(g.top + 0 + 4 * i, g.left, "+-------+-------+-------+");
         mvaddstr(g.top + 1 + 4 * i, g.left, "|       |       |       |");
@@ -242,9 +376,14 @@ void draw_grid(void)
     }
 }
 
-// Draws the game's borders
+// Draws game's borders.
 void draw_borders(void)
 {
+    //turn off existing colors
+    attroff(COLOR_PAIR(PAIR_BANNER));
+    attroff(COLOR_PAIR(PAIR_USER_NUM));
+    attroff(COLOR_PAIR(PAIR_DIGITS));
+
     // Get window's dimensions
     int maxy, maxx;
     getmaxyx(stdscr, maxy, maxx);
@@ -287,13 +426,12 @@ void draw_borders(void)
     }
 }
 
-
-// Draws the game's logo (Must be called after draw_grid has been called at least once)
+// Draws game's logo (Must be called after draw_grid has been called at least once)
 void draw_logo(void)
 {
     // Determine top-left coordinates of logo
-    int top = g.top + 2; // Part 1
-    int left = g.left + 30; // Part 1
+    int top = g.top + 2;
+    int left = g.left + 30;
 
     // Enable color if possible
     if (has_colors())
@@ -321,7 +459,8 @@ void draw_logo(void)
     }
 }
 
-//Draws the game's numbers (Must be called after draw_grid has been called at least once)
+// Draw's game's numbers (Must be called after draw_grid has been called at least once)
+
 void draw_numbers(void)
 {
     // Enable color if possible
@@ -335,10 +474,27 @@ void draw_numbers(void)
     {
         for (int j = 0; j < 9; j++)
         {
+
             // Determine char
             char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
+
+            // choose color based on cell's editablity
+            if (g.initialBoardEditable[i][j])
+            {
+                attron(COLOR_PAIR(PAIR_USER_NUM));
+            }
+            else
+            {
+                attron(COLOR_PAIR(PAIR_DIGITS));
+            }
+
+
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
-            refresh();
+
+            // turn off color after drawing
+            attroff(COLOR_PAIR(PAIR_DIGITS));
+            attroff(COLOR_PAIR(PAIR_USER_NUM));
+
         }
     }
 
@@ -346,12 +502,26 @@ void draw_numbers(void)
     if (has_colors())
     {
         attroff(COLOR_PAIR(PAIR_BANNER));
+        attroff(COLOR_PAIR(PAIR_USER_NUM));
+        attroff(COLOR_PAIR(PAIR_DIGITS));
     }
 }
 
+// Designed to handles signals (e.g., SIGWINCH)
 
+void handle_signal(int signum)
+{
+    // Handle a change in the window (i.e., a resizing)
+    if (signum == SIGWINCH)
+    {
+        redraw_all();
+    }
 
-// Hides the banner
+    // Re-register myself so this signal gets handled in future too
+    signal(signum, (void (*)(int)) handle_signal);
+}
+
+// Hides banner
 void hide_banner(void)
 {
     // Get window's dimensions
@@ -364,7 +534,6 @@ void hide_banner(void)
         mvaddch(g.top + 16, i, ' ');
     }
 }
-
 
 // Loads current board from disk, returning true iff successful
 bool load_board(void)
@@ -402,11 +571,19 @@ bool load_board(void)
         return false;
     }
 
+    // set non-editable parts of board
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
+            g.initialBoardEditable[i][j] = (g.board[i][j] != 0) ? false : true;
+        }
+    }
+
     // w00t
     fclose(fp);
     return true;
 }
-
 
 // Logs input and board's state to log.txt to facilitate automated tests
 void log_move(int ch)
@@ -435,7 +612,6 @@ void log_move(int ch)
     fclose(fp);
 }
 
-
 // (Re)draws everything on the screen
 void redraw_all(void)
 {
@@ -456,8 +632,7 @@ void redraw_all(void)
     show_cursor();
 }
 
-
-// (Re)starts current game, returning true iff successful
+// (Re)starts current game, returning true iff succesful
 bool restart_game(void)
 {
     // Reload current game
@@ -485,7 +660,6 @@ bool restart_game(void)
     return true;
 }
 
-
 // Shows cursor at (g.y, g.x)
 void show_cursor(void)
 {
@@ -493,8 +667,8 @@ void show_cursor(void)
     move(g.top + g.y + 1 + g.y / 3, g.left + 2 + 2 * (g.x + g.x / 3));
 }
 
-
 // Shows a banner (Must be called after show_grid has been called at least once)
+
 void show_banner(char *b)
 {
     // Enable color if possible
@@ -513,13 +687,11 @@ void show_banner(char *b)
     }
 }
 
-
 // Shuts down ncurses
 void shutdown(void)
 {
     endwin();
 }
-
 
 // Starts up ncurses and returns true iff successful
 bool startup(void)
@@ -545,7 +717,8 @@ bool startup(void)
             init_pair(PAIR_GRID, FG_GRID, BG_GRID) == ERR ||
             init_pair(PAIR_BORDER, FG_BORDER, BG_BORDER) == ERR ||
             init_pair(PAIR_LOGO, FG_LOGO, BG_LOGO) == ERR ||
-            init_pair(PAIR_DIGITS, FG_DIGITS, BG_DIGITS) == ERR)
+            init_pair(PAIR_DIGITS, FG_DIGITS, BG_DIGITS) == ERR ||
+            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_USER_NUM) == ERR)
         {
             endwin();
             return false;
