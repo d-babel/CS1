@@ -76,7 +76,9 @@ void show_cursor(void);
 void shutdown(void);
 bool startup(void);
 // bool checkMove(int row, int col, int num);
-
+bool checkRow(int row, int num);
+bool checkCol(int col, int num);
+bool checkBox(int row, int col, int num);
 
 int main(int argc, char *argv[])
 {
@@ -218,27 +220,37 @@ int main(int argc, char *argv[])
             case '1' ... '9':
                 hide_banner();
                 // check cell editable
-                if (g.initialBoardEditable[g.y][g.x])
-                {
-                    int moveResult = checkMove(g.y, g.x, ch - '0');
-                    switch (moveResult)
-                    {
-                        case BAD_ROW:
-                            show_banner("bad row");
-                            break;
-                        case BAD_COL:
-                            show_banner("bad col");
-                            break;
-                        case BAD_BOX:
-                            show_banner("bad box");
-                            break;
-                        default:
-                        //modify num
-                        g.board[g.y][g.x] = ch - '0';
-                        break;
-                    }
+                int num = ch - '0';
+                if (checkRow(g.y, num)) {
+                    show_banner("bad row");
+                } else if(checkCol(g.x, num)) {
+                    show_banner("bad col");
+                } else if(checkBox(g.y, g.x, num)) {
+                    show_banner("bad box");
+                } else {
+                    g.board[g.y][g.x] = num;
                 }
-                break;
+                // if (g.initialBoardEditable[g.y][g.x])
+                // {
+                //     int moveResult = checkMove(g.y, g.x, ch - '0');
+                //     switch (moveResult)
+                //     {
+                //         case BAD_ROW:
+                //             show_banner("bad row");
+                //             break;
+                //         case BAD_COL:
+                //             show_banner("bad col");
+                //             break;
+                //         case BAD_BOX:
+                //             show_banner("bad box");
+                //             break;
+                //         default:
+                //         //modify num
+                //         g.board[g.y][g.x] = ch - '0';
+                //         break;
+                //     }
+                // }
+                // break;
 
             // deletion
             case '0':
