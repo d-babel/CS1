@@ -218,9 +218,10 @@ int main(int argc, char *argv[])
 
                 // replace num
             case '1' ... '9':
+            int num = ch - '0';
+            g.board[g.y][g.x] = num;
                 hide_banner();
                 // check cell editable
-                int num = ch - '0';
                 if (checkRow(g.y, num)) {
                     show_banner("bad row");
                 } else if(checkCol(g.x, num)) {
