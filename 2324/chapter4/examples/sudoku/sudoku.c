@@ -75,10 +75,7 @@ void show_banner(char *b);
 void show_cursor(void);
 void shutdown(void);
 bool startup(void);
-bool checkRow(int row, int col, int num);
-bool checkCol(int row, int col, int num);
-bool checkBox(int row, int col, int num);
-void checks(int row, int col, int num);
+bool checkMove(int row, int col, int num);
 
 int main(int argc, char *argv[])
 {
@@ -222,26 +219,24 @@ int main(int argc, char *argv[])
                 // check cell editable
                 if (g.initialBoardEditable[g.y][g.x])
                 {
-                    checks(g.y, g.x, ch - '0');
+                    int moveResult = checkMove(g.y, g.x, ch - '0');
+                    switch (moveResult)
+                    {
+                        case BAD_ROW:
+                            show_banner("bad row");
+                            break;
+                        case BAD_COL:
+                            show_banner("bad col");
+                            break;
+                        case BAD_BOX:
+                            show_banner("bad box");
+                            break;
+                        default:
+                        //modify num
+                        g.board[g.y][g.x] = ch - '0';
+                        break;
+                    }
                 }
-                    // int moveResult = checkMove(g.y, g.x, ch - '0');
-                //     switch (moveResult)
-                //     {
-                //         case BAD_ROW:
-                //             show_banner("bad row");
-                //             break;
-                //         case BAD_COL:
-                //             show_banner("bad col");
-                //             break;
-                //         case BAD_BOX:
-                //             show_banner("bad box");
-                //             break;
-                //         default:
-                //         //modify num
-                //         g.board[g.y][g.x] = ch - '0';
-                //         break;
-                //     }
-                // }
                 break;
 
             // deletion
@@ -275,55 +270,34 @@ int main(int argc, char *argv[])
     // That's all folks
     printf("\nkthxbai!\n\n");
     return 0;
+}
 
-
-bool checkRow(int row, int col, int num)
+bool checkMove(int row, int col, int num)
 {
     // check row
     for (int i = 0; i < 9; i++)
     {
-        if (g.board[row][i] == num && i != col) return false;
-        }
+        if (g.board[row][i] == num && i != col)
+            return BAD_ROW;
     }
-    return true;
-}
-
-bool checkCol(int row, int col, int num){
     // check col
     for (int i = 0; i < 9; i++)
     {
-        if (g.board[i][col] == num && i != row) return false;
-        }
-    return true;
-}
-bool checkBox(int row, int col, int num)
-{
+        if (g.board[i][col] == num && i != row)
+            return BAD_COL;
+    }
     // check 3x3 box
     int startRow = row - row % 3, startCol = col - col % 3;
     for (int i = 0; i < 3; i++)
     {
         for (int j = 0; j < 3; j++)
         {
-            if (g.board[i + startRow][j + startCol] == num) return false;
+            if (g.board[i + startRow][j + startCol] == num)
+                return BAD_BOX;
         }
     }
+    // no conflict
     return true;
-}
-
-void checks(int row, int col, int num) {
-    if (!checkRow(row, col, num)) {
-        show_banner("bad row");
-        return;
-    }
-    if(!checkCol(row, col, num)) {
-        show_banner("bad col");
-        return;
-    }
-    if(!checkBox(row, col, num)){
-        show_banner("bad box");
-        return;
-    }
-    hide_banner();
 }
 
 // Draw's the game's board
