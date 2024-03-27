@@ -258,6 +258,7 @@ int main(int argc, char *argv[])
             log_move(ch);
         }
     }
+    }
     while (ch != 'Q');
 
     // Shut down ncurses
