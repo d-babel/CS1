@@ -271,7 +271,7 @@ int main(int argc, char *argv[])
     printf("\nkthxbai!\n\n");
     return 0;
 }
-}
+
 int checkMove(int row, int col, int num)
 {
     // check row
