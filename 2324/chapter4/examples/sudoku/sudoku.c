@@ -282,9 +282,8 @@ bool checkRow(int row, int col, int num)
     // check row
     for (int i = 0; i < 9; i++)
     {
-        if (g.board[row][i] == num && i != col)
-             show_banner("bad row");
-             return false;
+        if (g.board[row][i] == num && i != col){ return false;
+        }
     }
     return true;
 }
@@ -293,9 +292,8 @@ bool checkCol(int row, int col, int num){
     // check col
     for (int i = 0; i < 9; i++)
     {
-        if (g.board[i][col] == num && i != row)
-             show_banner("bad col");
-             return false;
+        if (g.board[i][col] == num && i != row) return false;
+        }
     }
     return true;
 }
@@ -307,8 +305,7 @@ bool checkRow(int row, int col, int num)
     {
         for (int j = 0; j < 3; j++)
         {
-            if (g.board[i + startRow][j + startCol] == num)
-                return false;
+            if (g.board[i + startRow][j + startCol] == num) return false;
         }
     }
     return true;
