@@ -320,18 +320,18 @@ bool checkRow(int row, int num) {
     return false;
 }
 
-bool checkRow(int col, int num) {
-    for (int j = 0; j < 9; i++) {
+bool checkCol(int col, int num) {
+    for (int j = 0; j < 9; j++) {
         if (g.board[j][col] == col) return true;
     }
     return false;
 }
 
 bool checkBox(int row, int col, int num) {
-    int startRow = row - row % e, startCol = col - col % 3;
+    int startRow = row - row % 3, startCol = col - col % 3;
     for (int i = 0; i < 3; i++) {
         for (int j = 0; j < 3; j++) {
-            if (g.board[i + startRow][j + startCol] == num) return true:
+            if (g.board[i + startRow][j + startCol] == num) return true;
         }
     }
     return false;
