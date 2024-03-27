@@ -222,7 +222,18 @@ int main(int argc, char *argv[])
                 // check cell editable
                 if (g.initialBoardEditable[g.y][g.x])
                 {
-                    checks(g.y, g.x, ch - '0');
+                    // checks(g.y, g.x, ch - '0');
+                if (!checkRow(row, col, num)) {
+                    show_banner("bad row");
+                    return;
+                }
+                if(!checkCol(row, col, num)) {
+                    show_banner("bad col");
+                    return;
+                }
+                if(!checkBox(row, col, num)){
+                    show_banner("bad box");
+                    return;
                 }
                     // int moveResult = checkMove(g.y, g.x, ch - '0');
                 //     switch (moveResult)
