@@ -223,13 +223,13 @@ int main(int argc, char *argv[])
                     switch (moveResult)
                     {
                         case BAD_ROW:
-                            show_banner("bad row");
+                            // show_banner("bad row");
                             break;
                         case BAD_COL:
-                            show_banner("bad col");
+                            // show_banner("bad col");
                             break;
                         case BAD_BOX:
-                            show_banner("bad box");
+                            // show_banner("bad box");
                             break;
                         default:
                         //modify num
