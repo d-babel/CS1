@@ -75,7 +75,8 @@ void show_banner(char *b);
 void show_cursor(void);
 void shutdown(void);
 bool startup(void);
-bool checkMove(int row, int col, int num);
+// bool checkMove(int row, int col, int num);
+
 
 int main(int argc, char *argv[])
 {
@@ -272,32 +273,56 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-bool checkMove(int row, int col, int num)
-{
-    // check row
-    for (int i = 0; i < 9; i++)
-    {
-        if (g.board[row][i] == num && i != col)
-            return BAD_ROW;
+// bool checkMove(int row, int col, int num)
+// {
+//     // check row
+//     for (int i = 0; i < 9; i++)
+//     {
+//         if (g.board[row][i] == num && i != col)
+//             return BAD_ROW;
+//     }
+//     // check col
+//     for (int i = 0; i < 9; i++)
+//     {
+//         if (g.board[i][col] == num && i != row)
+//             return BAD_COL;
+//     }
+//     // check 3x3 box
+//     int startRow = row - row % 3, startCol = col - col % 3;
+//     for (int i = 0; i < 3; i++)
+//     {
+//         for (int j = 0; j < 3; j++)
+//         {
+//             if (g.board[i + startRow][j + startCol] == num)
+//                 return BAD_BOX;
+//         }
+//     }
+//     // no conflict
+//     return true;
+// }
+
+bool checkRow(int row, int num) {
+    for (int i = 0; i < 9; i++) {
+        if (g.board[row][i] == num) return true;
     }
-    // check col
-    for (int i = 0; i < 9; i++)
-    {
-        if (g.board[i][col] == num && i != row)
-            return BAD_COL;
+    return false;
+}
+
+bool checkRow(int col, int num) {
+    for (int j = 0; j < 9; i++) {
+        if (g.board[j][col] == col) return true;
     }
-    // check 3x3 box
-    int startRow = row - row % 3, startCol = col - col % 3;
-    for (int i = 0; i < 3; i++)
-    {
-        for (int j = 0; j < 3; j++)
-        {
-            if (g.board[i + startRow][j + startCol] == num)
-                return BAD_BOX;
+    return false;
+}
+
+bool checkBox(int row, int col, int num) {
+    int startRow = row - row % e, startCol = col - col % 3;
+    for (int i = 0; i < 3; i++) {
+        for (int j = 0; j < 3; j++) {
+            if (g.board[i + startRow][j + startCol] == num) return true:
         }
     }
-    // no conflict
-    return true;
+    return false;
 }
 
 // Draw's the game's board
