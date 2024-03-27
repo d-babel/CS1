@@ -218,21 +218,10 @@ int main(int argc, char *argv[])
                 // replace num
             case '1' ... '9':
             {
-                // int num = ch - '0';
-                // g.board[g.y][g.x] = num;
-
-                // // check cell editable
-                // if (checkRow(g.y, num) && g.board[g.y][g.x] == num) {
-                //     show_banner("bad row");
-                // } else if(checkCol(g.x, num)) {
-                //     show_banner("bad col");
-                // } else if(checkBox(g.y, g.x, num)) {
-                //     show_banner("bad box");
-                // } else {
-                //     hide_banner();
-                // }
                 if (g.initialBoardEditable[g.y][g.x])
                 {
+                    //modify num
+                        g.board[g.y][g.x] = ch - '0';
                     int moveResult = checkMove(g.y, g.x, ch - '0');
                     switch (moveResult)
                     {
@@ -245,13 +234,10 @@ int main(int argc, char *argv[])
                         case BAD_BOX:
                             show_banner("bad box");
                             break;
-                        default:
-                        //modify num
-                        g.board[g.y][g.x] = ch - '0';
+
                         break;
                     }
                 }
-                break;
 
             // deletion
             case '0':
