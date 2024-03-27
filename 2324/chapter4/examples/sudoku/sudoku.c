@@ -277,7 +277,7 @@ int main(int argc, char *argv[])
     return 0;
 }
 
-bool checkMove(int row, int col, int num)
+bool checkRow(int row, int col, int num)
 {
     // check row
     for (int i = 0; i < 9; i++)
@@ -285,16 +285,22 @@ bool checkMove(int row, int col, int num)
         if (g.board[row][i] == num && i != col)
              show_banner("bad row");
              return false;
-            //return BAD_ROW;
     }
+    return true;
+}
+
+bool checkCol(int row, int col, int num){
     // check col
     for (int i = 0; i < 9; i++)
     {
         if (g.board[i][col] == num && i != row)
              show_banner("bad col");
              return false;
-            //return BAD_COL;
     }
+    return true;
+}
+bool checkRow(int row, int col, int num)
+{
     // check 3x3 box
     int startRow = row - row % 3, startCol = col - col % 3;
     for (int i = 0; i < 3; i++)
@@ -302,14 +308,12 @@ bool checkMove(int row, int col, int num)
         for (int j = 0; j < 3; j++)
         {
             if (g.board[i + startRow][j + startCol] == num)
-                 show_banner("bad box");
-                 return false;
-                //return BAD_BOX;
+                return false;
         }
     }
-    // no conflict
     return true;
 }
+
 
 // Draw's the game's board
 void draw_grid(void)
