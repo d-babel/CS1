@@ -242,6 +242,7 @@ int main(int argc, char *argv[])
                 //         break;
                 //     }
                 // }
+                break;
 
             // deletion
             case '0':
