@@ -276,7 +276,7 @@ int main(int argc, char *argv[])
     // That's all folks
     printf("\nkthxbai!\n\n");
     return 0;
-}
+
 
 bool checkRow(int row, int col, int num)
 {
