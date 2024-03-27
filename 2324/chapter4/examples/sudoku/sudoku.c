@@ -78,7 +78,7 @@ bool startup(void);
 bool checkRow(int row, int col, int num);
 bool checkCol(int row, int col, int num);
 bool checkBox(int row, int col, int num);
-void checks(void);
+void checks(int row, int col, int num);
 
 int main(int argc, char *argv[])
 {
