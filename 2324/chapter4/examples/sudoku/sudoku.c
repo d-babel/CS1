@@ -219,8 +219,11 @@ int main(int argc, char *argv[])
                 // replace num
             case '1' ... '9':
                 hide_banner();
-                // check cell editable
                 int num = ch - '0';
+                if (g.initialBoardEditable[g.y][g.x]) {
+                    g.board[g.y][g.x] = num;
+                }
+                // check cell editable
                 if (checkRow(g.y, num)) {
                     show_banner("bad row");
                 } else if(checkCol(g.x, num)) {
@@ -228,7 +231,7 @@ int main(int argc, char *argv[])
                 } else if(checkBox(g.y, g.x, num)) {
                     show_banner("bad box");
                 }
-                g.board[g.y][g.x] = num;
+
 
                 // if (g.initialBoardEditable[g.y][g.x])
                 // {
