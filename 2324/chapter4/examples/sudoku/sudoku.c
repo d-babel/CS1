@@ -217,6 +217,7 @@ int main(int argc, char *argv[])
 
                 // replace num
             case '1' ... '9':
+            hide_banner();
                 if (g.initialBoardEditable[g.y][g.x])
                 {
                     //modify num
