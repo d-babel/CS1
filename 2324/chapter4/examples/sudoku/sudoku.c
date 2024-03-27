@@ -75,7 +75,9 @@ void show_banner(char *b);
 void show_cursor(void);
 void shutdown(void);
 bool startup(void);
-bool checkMove(int row, int col, int num);
+bool checkRow(int row, int col, int num);
+bool checkCol(int row, int col, int num);
+bool checkBox(int row, int col, int num);
 
 int main(int argc, char *argv[])
 {
@@ -220,8 +222,7 @@ int main(int argc, char *argv[])
                 if (g.initialBoardEditable[g.y][g.x])
                 {
                     int num = ch - '0';
-                    if (checkMove(g.y, g.x, num)){
-                        g.board[g.y][g.x] = num;
+                    
                     }
                 }
                     // int moveResult = checkMove(g.y, g.x, ch - '0');
