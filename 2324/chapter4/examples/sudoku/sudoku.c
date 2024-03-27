@@ -310,19 +310,20 @@ bool checkBox(int row, int col, int num)
     return true;
 }
 
-void checks(void) {
-    if (!checkRow(1)) {
+void checks(int row, int col, int num) {
+    if (!checkRow(row, col, num)) {
         show_banner("bad row");
         return;
     }
-    if(!checkCol(1)) {
+    if(!checkCol(row, col, num)) {
         show_banner("bad col");
         return;
     }
-    if(!checkBox(1)){
+    if(!checkBox(row, col, num)){
         show_banner("bad box");
         return;
     }
+    hide_banner();
 }
 
 // Draw's the game's board
