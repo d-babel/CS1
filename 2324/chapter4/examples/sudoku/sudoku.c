@@ -220,7 +220,7 @@ int main(int argc, char *argv[])
                 if (g.initialBoardEditable[g.y][g.x])
                 {
                     int num = ch - '0';
-                    if (checkMove(g.y, g.x, num){
+                    if (checkMove(g.y, g.x, num)){
                         g.board[g.y][g.x] = num;
                     }
                 }
