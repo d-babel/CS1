@@ -221,8 +221,8 @@ int main(int argc, char *argv[])
                 // check cell editable
                 if (g.initialBoardEditable[g.y][g.x])
                 {
-                    int num = ch - '0';
-                    
+                    if(!checkRow)
+
                     }
                 }
                     // int moveResult = checkMove(g.y, g.x, ch - '0');
