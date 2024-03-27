@@ -222,7 +222,7 @@ int main(int argc, char *argv[])
                 // check cell editable
                 if (g.initialBoardEditable[g.y][g.x])
                 {
-                    checks(g.y, g.x, num);
+                    checks(g.y, g.x, ch - '0');
                 }
                     // int moveResult = checkMove(g.y, g.x, ch - '0');
                 //     switch (moveResult)
