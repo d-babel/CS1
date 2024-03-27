@@ -220,8 +220,8 @@ int main(int argc, char *argv[])
             {
                 if (g.initialBoardEditable[g.y][g.x])
                 {
-                    //modify num
-                        g.board[g.y][g.x] = ch - '0';
+                    // modify num
+                    g.board[g.y][g.x] = ch - '0';
                     int moveResult = checkMove(g.y, g.x, ch - '0');
                     switch (moveResult)
                     {
@@ -235,29 +235,29 @@ int main(int argc, char *argv[])
                             show_banner("bad box");
                             break;
 
-                        break;
+                            break;
                     }
                 }
 
-            // deletion
-            case '0':
-            case '-':
-            case KEY_BACKSPACE:
-            case KEY_DC:
-                // reset to blank
-                g.board[g.y][g.x] = 0;
-                break;
-        }
-        // post processing, redraw board cursor
-        draw_numbers();
-        show_cursor();
+                // deletion
+                case '0':
+                case '-':
+                case KEY_BACKSPACE:
+                case KEY_DC:
+                    // reset to blank
+                    g.board[g.y][g.x] = 0;
+                    break;
+            }
+                // post processing, redraw board cursor
+                draw_numbers();
+                show_cursor();
 
-        // Log input (and board's state) if any was received this iteration
-        if (ch != ERR)
-        {
-            log_move(ch);
+                // Log input (and board's state) if any was received this iteration
+                if (ch != ERR)
+                {
+                    log_move(ch);
+                }
         }
-    }
     }
     while (ch != 'Q');
 
@@ -343,7 +343,7 @@ void draw_grid(void)
 // Draws game's borders.
 void draw_borders(void)
 {
-    //turn off existing colors
+    // turn off existing colors
     attroff(COLOR_PAIR(PAIR_BANNER));
     attroff(COLOR_PAIR(PAIR_USER_NUM));
     attroff(COLOR_PAIR(PAIR_DIGITS));
@@ -452,13 +452,11 @@ void draw_numbers(void)
                 attron(COLOR_PAIR(PAIR_DIGITS));
             }
 
-
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
 
             // turn off color after drawing
             attroff(COLOR_PAIR(PAIR_DIGITS));
             attroff(COLOR_PAIR(PAIR_USER_NUM));
-
         }
     }
 
