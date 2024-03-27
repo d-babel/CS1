@@ -277,14 +277,14 @@ bool checkMove(int row, int col, int num)
     // check row
     for (int i = 0; i < 9; i++)
     {
-        if (g.board[row][i] == num)
+        if (g.board[row][i] == num && i != col)
              show_banner("bad row");
             //return BAD_ROW;
     }
     // check col
     for (int i = 0; i < 9; i++)
     {
-        if (g.board[i][col] == num)
+        if (g.board[i][col] == num && i != row)
              show_banner("bad col");
             //return BAD_COL;
     }
