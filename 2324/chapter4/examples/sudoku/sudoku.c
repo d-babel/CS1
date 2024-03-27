@@ -282,7 +282,7 @@ bool checkRow(int row, int col, int num)
     // check row
     for (int i = 0; i < 9; i++)
     {
-        if (g.board[row][i] == num && i != col){ return false;
+        if (g.board[row][i] == num && i != col) return false;
         }
     }
     return true;
