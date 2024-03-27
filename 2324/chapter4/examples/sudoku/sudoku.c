@@ -294,7 +294,6 @@ bool checkCol(int row, int col, int num){
     {
         if (g.board[i][col] == num && i != row) return false;
         }
-    }
     return true;
 }
 bool checkRow(int row, int col, int num)
