@@ -217,11 +217,10 @@ int main(int argc, char *argv[])
 
                 // replace num
             case '1' ... '9':
-            {
                 if (g.initialBoardEditable[g.y][g.x])
                 {
                     //modify num
-                        g.board[g.y][g.x] = ch - '0';
+                    g.board[g.y][g.x] = ch - '0';
                     int moveResult = checkMove(g.y, g.x, ch - '0');
                     switch (moveResult)
                     {
