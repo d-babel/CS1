@@ -217,18 +217,19 @@ int main(int argc, char *argv[])
 
                 // replace num
             case '1' ... '9':
-            int num = ch - '0';
-            g.board[g.y][g.x] = num;
-                hide_banner();
+            {
+                int num = ch - '0';
+                g.board[g.y][g.x] = num;
+
                 // check cell editable
-                if (checkRow(g.y, num)) {
+                if (checkRow(g.y, num) && g.board[g.y][g.x] == num) {
                     show_banner("bad row");
                 } else if(checkCol(g.x, num)) {
                     show_banner("bad col");
                 } else if(checkBox(g.y, g.x, num)) {
                     show_banner("bad box");
                 } else {
-                    g.board[g.y][g.x] = num;
+                    hide_banner();
                 }
                 // if (g.initialBoardEditable[g.y][g.x])
                 // {
