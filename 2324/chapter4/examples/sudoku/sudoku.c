@@ -223,7 +223,6 @@ int main(int argc, char *argv[])
                 if (g.initialBoardEditable[g.y][g.x])
                 {
                     checks();
-                    }
                 }
                     // int moveResult = checkMove(g.y, g.x, ch - '0');
                 //     switch (moveResult)
