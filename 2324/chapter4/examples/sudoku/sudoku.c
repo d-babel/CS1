@@ -322,7 +322,7 @@ bool checkRow(int row, int num) {
 
 bool checkCol(int col, int num) {
     for (int j = 0; j < 9; j++) {
-        if (g.board[j][col] == col) return true;
+        if (g.board[j][col] == num) return true;
     }
     return false;
 }
