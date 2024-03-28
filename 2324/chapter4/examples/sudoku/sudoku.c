@@ -41,7 +41,7 @@ struct
 } lm;
 
 // invalid starting state
-lm lastMove = {-1, -1, -1};
+// lm lastMove = {-1, -1, -1};
 
 // Wrapper for our game's globals
 struct
@@ -233,6 +233,8 @@ int main(int argc, char *argv[])
                 {
                     // modify num
                     g.board[g.y][g.x] = num;
+                    lm.prevVal = num;
+                    
                     int moveResult = checkMove(g.y, g.x, num);
                     switch (moveResult)
                     {
