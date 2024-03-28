@@ -37,10 +37,10 @@ typedef struct {
     int row;
     int col;
     int prevVal;
-} Last move;
+} lm;
 
 //invalid starting state
-LastMove lastMove = {-1, -1, -1};
+lm lastMove = {-1, -1, -1};
 
 // Wrapper for our game's globals
 struct
@@ -450,7 +450,7 @@ void draw_numbers(void)
     if (has_colors())
     {
         if (gameWon) {
-            attron(COLOR_PAIR(PAIR_WIN))
+            attron(COLOR_PAIR(PAIR_WIN));
         } else {
             attron(COLOR_PAIR(PAIR_DIGITS));
         }
