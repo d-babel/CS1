@@ -29,17 +29,18 @@
 #define BAD_COL 2
 #define BAD_BOX 3
 
-//global flag for if game won
+// global flag for if game won
 bool gameWon = false;
 
-//struct to keep track of last move
-typedef struct {
+// struct to keep track of last move
+typedef struct
+{
     int row;
     int col;
     int prevVal;
 } lm;
 
-//invalid starting state
+// invalid starting state
 lm lastMove = {-1, -1, -1};
 
 // Wrapper for our game's globals
@@ -86,7 +87,6 @@ bool checkCol(int col, int num);
 bool checkBox(int row, int col, int num);
 bool isValidUnit(int unit[9]);
 bool isGameWon(void);
-
 
 int main(int argc, char *argv[])
 {
@@ -250,13 +250,11 @@ int main(int argc, char *argv[])
                 draw_numbers();
                 break;
 
-                if(!gameWon && isGameWon()) {
+                if (!gameWon && isGameWon())
+                {
                     gameWon = true;
                     show_banner("congrats! u won");
                 }
-
-
-
 
             // deletion
             case '0':
@@ -449,12 +447,14 @@ void draw_numbers(void)
     // Enable color if possible
     if (has_colors())
     {
-        if (gameWon) {
+        if (gameWon)
+        {
             attron(COLOR_PAIR(PAIR_WIN));
-        } else {
+        }
+        else
+        {
             attron(COLOR_PAIR(PAIR_DIGITS));
         }
-
     }
 
     // Iterate over board's numbers
@@ -466,7 +466,8 @@ void draw_numbers(void)
             // Determine char
             char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
 
-            if(!gameWon) {
+            if (!gameWon)
+            {
                 if (g.board[i][j] == 0)
                 {
                     attron(COLOR_PAIR(PAIR_PERIODS));
@@ -475,7 +476,8 @@ void draw_numbers(void)
                 {
                     attron(COLOR_PAIR(PAIR_USER_NUM));
                 }
-                else {
+                else
+                {
                     attron(COLOR_PAIR(PAIR_DIGITS));
                 }
                 mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
@@ -483,7 +485,9 @@ void draw_numbers(void)
                 // turn off color after drawing
                 attroff(COLOR_PAIR(PAIR_DIGITS));
                 attroff(COLOR_PAIR(PAIR_USER_NUM));
-            } else {
+            }
+            else
+            {
                 mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
                 attroff(COLOR_PAIR(PAIR_WIN));
             }
@@ -679,39 +683,48 @@ void show_banner(char *b)
     }
 }
 
-bool isValidUnit(int unit[9]) {
-    //index 0 unused
+bool isValidUnit(int unit[9])
+{
+    // index 0 unused
     bool seen[10] = {false};
-    for (int i = 0; i < 9; i++) {
+    for (int i = 0; i < 9; i++)
+    {
         int number = unit[i];
-        //check if within sudoku param.
-        if (number < 1 || number > 9 || seen[number]) return false;
+        // check if within sudoku param.
+        if (number < 1 || number > 9 || seen[number])
+            return false;
         seen[number] = true;
     }
     return true;
 }
 
-bool isGameWon(void) {
+bool isGameWon(void)
+{
     int row[9], col[9], box[9];
 
-    for (int i = 0; i < 9; i++) {
-        for (int j = 0; j < 9; j++) {
+    for (int i = 0; i < 9; i++)
+    {
+        for (int j = 0; j < 9; j++)
+        {
             row[j] = g.board[i][j];
             col[j] = g.board[i][j];
         }
 
-        //check row & col
-        if (!isValidUnit(row) || !isValidUnit(col)) return false;
+        // check row & col
+        if (!isValidUnit(row) || !isValidUnit(col))
+            return false;
 
-        //check boxes
+        // check boxes
         int boxRow = (i / 3) * 3;
         int boxCol = (i % 3) * 3;
-        for (int j = 0; j < 9; j++) {
+        for (int j = 0; j < 9; j++)
+        {
             box[j] = g.board[boxRow + j / 3][boxCol + j % 3];
         }
-        if (!isValidUnit(box)) return false;
+        if (!isValidUnit(box))
+            return false;
     }
-    //no conflict
+    // no conflict
     return true;
 }
 // Shuts down ncurses
