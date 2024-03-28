@@ -33,7 +33,7 @@
 bool gameWon = false;
 
 // struct to keep track of last move
-typedef struct
+struct
 {
     int row;
     int col;
