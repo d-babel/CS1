@@ -43,11 +43,8 @@ struct
     int prevVal;
 } lm;
 
-// invalid starting state
-// lm lastMove = {100, 100, 100};
-int row =100;
-int col =100;
-int prevVal =100;
+
+
 
 // Wrapper for our game's globals
 struct
@@ -97,6 +94,11 @@ void undo_move(void);
 
 int main(int argc, char *argv[])
 {
+    // invalid starting state
+    lm.row = -1;
+    lm.col = -1;
+    lm.prevVal = -1;
+
     // Ensure that number of arguments is as expected
     if (argc != 2 && argc != 3)
     {
@@ -231,10 +233,13 @@ int main(int argc, char *argv[])
                 g.x = (g.x == 0) ? 8 : g.x - 1;
                 break;
 
+            //only if game hasn't been won
+            if (!gameWon) {
                 // replace num
             case '1' ... '9':
                 hide_banner();
                 int num = ch - '0';
+
                 if (g.initialBoardEditable[g.y][g.x])
                 {
                     // modify num
@@ -277,6 +282,8 @@ int main(int argc, char *argv[])
             case CTRL('Z'):
                 undo_move();
         }
+            }
+
 
         if (!gameWon && isGameWon())
                 {
