@@ -446,12 +446,15 @@ void draw_numbers(void)
             char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
 
             // choose color based on cell's editablity
-            if (g.initialBoardEditable[i][j] = 0)
+            if (g.board[i][j] == 0)
+            {
+                attron(COLOR_PAIR(PAIR_PERIODS));
+            }
+            else if (g.initialBoardEditable)
             {
                 attron(COLOR_PAIR(PAIR_USER_NUM));
             }
-            else
-            {
+            else {
                 attron(COLOR_PAIR(PAIR_DIGITS));
             }
 
@@ -683,7 +686,8 @@ bool startup(void)
             init_pair(PAIR_BORDER, FG_BORDER, BG_BORDER) == ERR ||
             init_pair(PAIR_LOGO, FG_LOGO, BG_LOGO) == ERR ||
             init_pair(PAIR_DIGITS, FG_DIGITS, BG_DIGITS) == ERR ||
-            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_USER_NUM) == ERR)
+            init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_USER_NUM) == ERR ||
+            init_pair(PAIR_PERIODS, FG_PERIOD, BG_PERIOD) == ERR)
         {
             endwin();
             return false;
