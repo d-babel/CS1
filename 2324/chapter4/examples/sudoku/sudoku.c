@@ -251,11 +251,7 @@ int main(int argc, char *argv[])
                 draw_numbers();
                 break;
 
-                if (!gameWon && isGameWon())
-                {
-                    gameWon = true;
-                    show_banner("congrats! u won");
-                }
+
 
             // deletion
             case '0':
@@ -272,6 +268,12 @@ int main(int argc, char *argv[])
             case CTRL('Z'):
                 undo_move();
         }
+
+        if (!gameWon && isGameWon())
+                {
+                    gameWon = true;
+                    show_banner("congrats! u won");
+                }
 
         // post processing, redraw board cursor
         show_cursor();
