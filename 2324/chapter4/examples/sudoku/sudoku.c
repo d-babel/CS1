@@ -1,6 +1,3 @@
-// PROBLEMS:
-//- "BAD" ERROR MSGS DONT WORK\ --> bad row constant
-
 /**
  * Sudoku
  *
