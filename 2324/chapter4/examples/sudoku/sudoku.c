@@ -217,12 +217,13 @@ int main(int argc, char *argv[])
 
                 // replace num
             case '1' ... '9':
-            hide_banner();
+                hide_banner();
+                int num = ch - '0';
                 if (g.initialBoardEditable[g.y][g.x])
                 {
-                    //modify num
-                    g.board[g.y][g.x] = ch - '0';
-                    int moveResult = checkMove(g.y, g.x, ch - '0');
+                    // modify num
+                    g.board[g.y][g.x] = num;
+                    int moveResult = checkMove(g.y, g.x, num);
                     switch (moveResult)
                     {
                         case BAD_ROW:
@@ -340,7 +341,7 @@ void draw_grid(void)
 // Draws game's borders.
 void draw_borders(void)
 {
-    //turn off existing colors
+    // turn off existing colors
     attroff(COLOR_PAIR(PAIR_BANNER));
     attroff(COLOR_PAIR(PAIR_USER_NUM));
     attroff(COLOR_PAIR(PAIR_DIGITS));
@@ -449,13 +450,11 @@ void draw_numbers(void)
                 attron(COLOR_PAIR(PAIR_DIGITS));
             }
 
-
             mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
 
             // turn off color after drawing
             attroff(COLOR_PAIR(PAIR_DIGITS));
             attroff(COLOR_PAIR(PAIR_USER_NUM));
-
         }
     }
 
