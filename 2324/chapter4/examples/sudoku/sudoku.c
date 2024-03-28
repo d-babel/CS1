@@ -485,6 +485,7 @@ void draw_numbers(void)
                 attroff(COLOR_PAIR(PAIR_USER_NUM));
             } else {
                 mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
+                attroff(COLOR_PAIR(PAIR_WIN));
             }
 
 
