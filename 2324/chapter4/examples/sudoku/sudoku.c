@@ -238,6 +238,10 @@ int main(int argc, char *argv[])
                     }
                 }
 
+                draw_numbers();
+                break;
+
+
             // deletion
             case '0':
             case '-':
@@ -245,10 +249,11 @@ int main(int argc, char *argv[])
             case KEY_DC:
                 // reset to blank
                 g.board[g.y][g.x] = 0;
+                draw_numbers();
                 break;
         }
+
         // post processing, redraw board cursor
-        draw_numbers();
         show_cursor();
 
         // Log input (and board's state) if any was received this iteration
