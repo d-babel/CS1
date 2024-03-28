@@ -644,8 +644,10 @@ void undo_move(void) {
      //restore prev val @ last move pos
      g.board[lm.row][lm.col] = lm.prevVal;
 
-     //clear last move
-     lm.row = lm.col = lm.prevVal;
+    //reset to invalid state
+    lm.row = -1;
+    lm.col = -1;
+    lm.prevVal = -1;
 
      draw_numbers();
 }
