@@ -24,8 +24,6 @@
 // Size of each int (in bytes) in *.bin files
 #define INTSIZE 4
 
-
-
 // valid moves
 #define BAD_ROW 1
 #define BAD_COL 2
@@ -73,7 +71,9 @@ int checkMove(int row, int col, int num);
 bool checkRow(int row, int num);
 bool checkCol(int col, int num);
 bool checkBox(int row, int col, int num);
+bool isValidUnit(int unit[9]);
 bool isGameWon(void);
+
 
 int main(int argc, char *argv[])
 {
@@ -651,13 +651,40 @@ void show_banner(char *b)
     }
 }
 
-bool isGameWon(void) {
-    for (int row = 0; row < 9; row++) {
-        for (int col = 0; col < 9; col++) {
-            //if any cell empty, game not won
-            if (g.board[row][col] == 0) return false;
-        }
+bool isValidUnit(int unit[9]) {
+    //index 0 unused
+    bool seen[10] = {false};
+    for (int i = 0; i < 9; i++) {
+        int number = unit[i];
+        //check if within sudoku param.
+        if (number < 1 || number > 9 || seen[number]) return false;
+        seen[number] = true;
     }
+    return true;
+}
+
+bool isGameWon(void) {
+    int row[9], col[9], box[9];
+
+    for (int i = 0; i < 9; i++) {
+        for (int j = 0; j < 9; j++) {
+            row[j] = g.board[i][j];
+            col[j] = g.board[i][j];
+        }
+
+        //check row & col
+        if (!isValidUnit(row) || !isValidUnit(col)) return false;
+
+        //check boxes
+        int boxRow = (i / 3) * 3;
+        int boxCol = (i % 3) * 3;
+        for (int j = 0; j < 9; j++) {
+            box[j] = g.board[boxRow + j / 3][boxCol + j % 3];
+        }
+        if (!isValidUnit(box)) return false;
+    }
+    //no conflict
+    return true;
 }
 // Shuts down ncurses
 void shutdown(void)
