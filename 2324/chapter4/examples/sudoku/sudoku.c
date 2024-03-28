@@ -450,7 +450,7 @@ void draw_numbers(void)
             {
                 attron(COLOR_PAIR(PAIR_PERIODS));
             }
-            else if (g.initialBoardEditable)
+            else if (g.initialBoardEditable[i][j])
             {
                 attron(COLOR_PAIR(PAIR_USER_NUM));
             }
