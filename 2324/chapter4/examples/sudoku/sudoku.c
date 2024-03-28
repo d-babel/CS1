@@ -1,3 +1,6 @@
+//notes:
+//find way to use struct for lm or j indep. vars
+
 /**
  * Sudoku
  *
