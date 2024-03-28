@@ -446,7 +446,7 @@ void draw_numbers(void)
             char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
 
             // choose color based on cell's editablity
-            if (g.initialBoardEditable[i][j])
+            if (g.initialBoardEditable[i][j] = 0)
             {
                 attron(COLOR_PAIR(PAIR_USER_NUM));
             }
