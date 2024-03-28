@@ -234,7 +234,8 @@ int main(int argc, char *argv[])
                     // modify num
                     g.board[g.y][g.x] = num;
                     lm.prevVal = num;
-                    
+                    lm.row = g.y;
+                    lm.col = g.x;
                     int moveResult = checkMove(g.y, g.x, num);
                     switch (moveResult)
                     {
