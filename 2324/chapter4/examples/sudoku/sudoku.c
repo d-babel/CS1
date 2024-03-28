@@ -250,10 +250,9 @@ int main(int argc, char *argv[])
                 draw_numbers();
                 break;
 
-                if(isGameWon()) {
+                if(!gameWon && isGameWon()) {
                     gameWon = true;
                     show_banner("congrats! u won");
-                    //change nums to green
                 }
 
 
