@@ -24,9 +24,7 @@
 // Size of each int (in bytes) in *.bin files
 #define INTSIZE 4
 
-// color pairs
-#define PAIR_ORIGINAL_NUM 2
-#define PAIR_USER_NUM 3
+
 
 // valid moves
 #define BAD_ROW 1
@@ -75,6 +73,7 @@ int checkMove(int row, int col, int num);
 bool checkRow(int row, int num);
 bool checkCol(int col, int num);
 bool checkBox(int row, int col, int num);
+bool isGameWon(void);
 
 int main(int argc, char *argv[])
 {
