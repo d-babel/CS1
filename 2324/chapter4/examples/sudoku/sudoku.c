@@ -651,6 +651,9 @@ void show_banner(char *b)
     }
 }
 
+bool isGameWon(void) {
+    for (int row = 0; row < 9; )
+}
 // Shuts down ncurses
 void shutdown(void)
 {
