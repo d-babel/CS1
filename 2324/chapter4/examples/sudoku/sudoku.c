@@ -244,9 +244,13 @@ int main(int argc, char *argv[])
                 {
                     // modify num
                     g.board[g.y][g.x] = num;
+
+                    //update undo func.
                     lm.prevVal = num;
                     lm.row = g.y;
                     lm.col = g.x;
+
+                    //check cases
                     int moveResult = checkMove(g.y, g.x, num);
                     switch (moveResult)
                     {
