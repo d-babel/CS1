@@ -87,6 +87,7 @@ bool checkCol(int col, int num);
 bool checkBox(int row, int col, int num);
 bool isValidUnit(int unit[9]);
 bool isGameWon(void);
+void undo_move(void);
 
 int main(int argc, char *argv[])
 {
@@ -265,6 +266,11 @@ int main(int argc, char *argv[])
                 g.board[g.y][g.x] = 0;
                 draw_numbers();
                 break;
+
+            //undo last move
+            case 'U':
+            case CTRL('Z'):
+                undo_move();
         }
 
         // post processing, redraw board cursor
@@ -606,6 +612,20 @@ void log_move(int ch)
 
     // That's it
     fclose(fp);
+}
+
+void undo_move(void) {
+    //do nothing if last move invalid/game won
+    if (lm.row == -1 || gameWon) {
+        return;
+    }
+     //restore prev val @ last move pos
+     g.board[lm.row][lm.col] = lm.prevVal;
+
+     //clear last move
+     lm.row = lm.col = lm.prevVal;
+
+     draw_numbers();
 }
 
 // (Re)draws everything on the screen
