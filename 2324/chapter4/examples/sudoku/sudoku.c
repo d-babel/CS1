@@ -29,6 +29,19 @@
 #define BAD_COL 2
 #define BAD_BOX 3
 
+//global flag for if game won
+bool gameWon = false;
+
+//struct to keep track of last move
+typedef struct {
+    int row;
+    int col;
+    int prevVal;
+} Last move;
+
+//invalid starting state
+LastMove lastMove = {-1, -1, -1};
+
 // Wrapper for our game's globals
 struct
 {
@@ -243,7 +256,7 @@ int main(int argc, char *argv[])
                     //change nums to green
                 }
 
-    
+
 
 
             // deletion
