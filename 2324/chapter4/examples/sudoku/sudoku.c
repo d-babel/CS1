@@ -652,7 +652,12 @@ void show_banner(char *b)
 }
 
 bool isGameWon(void) {
-    for (int row = 0; row < 9; )
+    for (int row = 0; row < 9; row++) {
+        for (int col = 0; col < 9; col++) {
+            //if any cell empty, game not won
+            if (g.board[row][col] == 0) return false;
+        }
+    }
 }
 // Shuts down ncurses
 void shutdown(void)
