@@ -449,7 +449,12 @@ void draw_numbers(void)
     // Enable color if possible
     if (has_colors())
     {
-        attron(COLOR_PAIR(PAIR_DIGITS));
+        if (gameWon) {
+            attron(COLOR_PAIR(PAIR_WIN))
+        } else {
+            attron(COLOR_PAIR(PAIR_DIGITS));
+        }
+
     }
 
     // Iterate over board's numbers
@@ -738,7 +743,8 @@ bool startup(void)
             init_pair(PAIR_LOGO, FG_LOGO, BG_LOGO) == ERR ||
             init_pair(PAIR_DIGITS, FG_DIGITS, BG_DIGITS) == ERR ||
             init_pair(PAIR_USER_NUM, FG_USER_NUM, BG_USER_NUM) == ERR ||
-            init_pair(PAIR_PERIODS, FG_PERIOD, BG_PERIOD) == ERR)
+            init_pair(PAIR_PERIODS, FG_PERIOD, BG_PERIOD) == ERR ||
+            init_pair(PAIR_WIN, FG_WIN, BG_WIN) == ERR)
         {
             endwin();
             return false;
