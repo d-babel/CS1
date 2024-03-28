@@ -466,24 +466,30 @@ void draw_numbers(void)
             // Determine char
             char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
 
-            // choose color based on cell's editablity
-            if (g.board[i][j] == 0)
-            {
-                attron(COLOR_PAIR(PAIR_PERIODS));
-            }
-            else if (g.initialBoardEditable[i][j])
-            {
-                attron(COLOR_PAIR(PAIR_USER_NUM));
-            }
-            else {
-                attron(COLOR_PAIR(PAIR_DIGITS));
+            if(!gameWon) {
+                if (g.board[i][j] == 0)
+                {
+                    attron(COLOR_PAIR(PAIR_PERIODS));
+                }
+                else if (g.initialBoardEditable[i][j])
+                {
+                    attron(COLOR_PAIR(PAIR_USER_NUM));
+                }
+                else {
+                    attron(COLOR_PAIR(PAIR_DIGITS));
+                }
+                mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
+
+                // turn off color after drawing
+                attroff(COLOR_PAIR(PAIR_DIGITS));
+                attroff(COLOR_PAIR(PAIR_USER_NUM));
+            } else {
+                mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
             }
 
-            mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
 
-            // turn off color after drawing
-            attroff(COLOR_PAIR(PAIR_DIGITS));
-            attroff(COLOR_PAIR(PAIR_USER_NUM));
+
+
         }
     }
 
