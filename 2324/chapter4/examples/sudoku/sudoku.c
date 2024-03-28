@@ -41,7 +41,10 @@ struct
 } lm;
 
 // invalid starting state
-// lm lastMove = {-1, -1, -1};
+// lm lastMove = {100, 100, 100};
+int row =100;
+int col =100;
+int prevVal =100;
 
 // Wrapper for our game's globals
 struct
