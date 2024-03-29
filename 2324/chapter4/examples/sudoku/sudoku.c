@@ -191,6 +191,7 @@ int main(int argc, char *argv[])
         {
             // Start a new game
             case 'N':
+                gameWon = false;
                 g.number = rand() % max + 1;
                 if (!restart_game())
                 {
@@ -711,7 +712,7 @@ bool restart_game(void)
     remove("log.txt");
 
 
-    // restart game 
+    // restart game
     gameWon = false;
 
     // w00t
