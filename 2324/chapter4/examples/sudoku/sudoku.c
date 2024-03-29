@@ -1,6 +1,3 @@
-//notes:
-//find way to use struct for lm or j indep. vars
-
 /**
  * Sudoku
  *
@@ -43,9 +40,6 @@ struct
     int prevVal;
 } lm;
 
-
-
-
 // Wrapper for our game's globals
 struct
 {
@@ -74,6 +68,7 @@ void draw_grid(void);
 void draw_borders(void);
 void draw_logo(void);
 void draw_numbers(void);
+void draw_won_nums(void);
 void hide_banner(void);
 bool load_board(void);
 void handle_signal(int signum);
@@ -233,67 +228,73 @@ int main(int argc, char *argv[])
                 g.x = (g.x == 0) ? 8 : g.x - 1;
                 break;
 
-            //only if game hasn't been won
-            if (!gameWon) {
                 // replace num
             case '1' ... '9':
-                hide_banner();
-                int num = ch - '0';
-
-                if (g.initialBoardEditable[g.y][g.x])
+                if (!gameWon)
                 {
-                    // modify num
-                    g.board[g.y][g.x] = num;
+                    hide_banner();
+                    int num = ch - '0';
 
-                    //update undo func.
-                    lm.prevVal = num;
-                    lm.row = g.y;
-                    lm.col = g.x;
-
-                    //check cases
-                    int moveResult = checkMove(g.y, g.x, num);
-                    switch (moveResult)
+                    if (g.initialBoardEditable[g.y][g.x])
                     {
-                        case BAD_ROW:
-                            show_banner("bad row");
-                            break;
-                        case BAD_COL:
-                            show_banner("bad col");
-                            break;
-                        case BAD_BOX:
-                            show_banner("bad box");
-                            break;
+                        // save num BEFORE modified
+                        lm.prevVal = g.board[g.y][g.x];
+                        // modify num
+                        g.board[g.y][g.x] = num;
+
+                        // update placement of undo func.
+                        lm.row = g.y;
+                        lm.col = g.x;
+
+                        // check cases
+                        int moveResult = checkMove(g.y, g.x, num);
+                        switch (moveResult)
+                        {
+                            case BAD_ROW:
+                                show_banner("bad row");
+                                break;
+                            case BAD_COL:
+                                show_banner("bad col");
+                                break;
+                            case BAD_BOX:
+                                show_banner("bad box");
+                                break;
+                        }
                     }
+
+                    draw_numbers();
+                }
+                else
+                {
+                    draw_won_nums();
                 }
 
-                draw_numbers();
                 break;
-
-
 
             // deletion
             case '0':
             case '-':
             case KEY_BACKSPACE:
             case KEY_DC:
-                // reset to blank
-                g.board[g.y][g.x] = 0;
-                draw_numbers();
+                if (!gameWon)
+                {
+                    // reset to blank
+                    g.board[g.y][g.x] = 0;
+                    draw_numbers();
+                }
                 break;
 
-            //undo last move
+            // undo last move
             case 'U':
             case CTRL('Z'):
                 undo_move();
         }
-            }
-
 
         if (!gameWon && isGameWon())
-                {
-                    gameWon = true;
-                    show_banner("congrats! u won");
-                }
+        {
+            gameWon = true;
+            show_banner("congrats! u won");
+        }
 
         // post processing, redraw board cursor
         show_cursor();
@@ -472,30 +473,22 @@ void draw_logo(void)
 
 void draw_numbers(void)
 {
-    // Enable color if possible
-    if (has_colors())
+
+    if (!gameWon)
     {
-        if (gameWon)
-        {
-            attron(COLOR_PAIR(PAIR_WIN));
-        }
-        else
+        // Enable color if possible
+        if (has_colors())
         {
             attron(COLOR_PAIR(PAIR_DIGITS));
         }
-    }
-
-    // Iterate over board's numbers
-    for (int i = 0; i < 9; i++)
-    {
-        for (int j = 0; j < 9; j++)
+        // Iterate over board's numbers
+        for (int i = 0; i < 9; i++)
         {
-
-            // Determine char
-            char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
-
-            if (!gameWon)
+            for (int j = 0; j < 9; j++)
             {
+
+                // Determine char
+                char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
                 if (g.board[i][j] == 0)
                 {
                     attron(COLOR_PAIR(PAIR_PERIODS));
@@ -509,29 +502,46 @@ void draw_numbers(void)
                     attron(COLOR_PAIR(PAIR_DIGITS));
                 }
                 mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
-
-                // turn off color after drawing
-                attroff(COLOR_PAIR(PAIR_DIGITS));
-                attroff(COLOR_PAIR(PAIR_USER_NUM));
-            }
-            else
-            {
-                mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
-                attroff(COLOR_PAIR(PAIR_WIN));
             }
         }
-    }
 
-    // Disable color if possible
-    if (has_colors())
-    {
-        attroff(COLOR_PAIR(PAIR_BANNER));
-        attroff(COLOR_PAIR(PAIR_USER_NUM));
-        attroff(COLOR_PAIR(PAIR_DIGITS));
+        // Disable color if possible
+        if (has_colors())
+        {
+            attroff(COLOR_PAIR(PAIR_BANNER));
+            attroff(COLOR_PAIR(PAIR_USER_NUM));
+            attroff(COLOR_PAIR(PAIR_DIGITS));
+        }
     }
 }
-
 // Designed to handles signals (e.g., SIGWINCH)
+
+void draw_won_nums(void)
+{
+        // Enable color if possible
+        if (has_colors())
+        {
+            attron(COLOR_PAIR(PAIR_WIN));
+        }
+        // Iterate over board's numbers
+        for (int i = 0; i < 9; i++)
+        {
+            for (int j = 0; j < 9; j++)
+            {
+
+                // Determine char
+                char c = (g.board[i][j] == 0) ? '.' : g.board[i][j] + '0';
+                attron(COLOR_PAIR(PAIR_WIN));
+                mvaddch(g.top + i + 1 + i / 3, g.left + 2 + 2 * (j + j / 3), c);
+            }
+        }
+
+        // Disable color if possible
+        if (has_colors())
+        {
+            attroff(COLOR_PAIR(PAIR_WIN));
+        }
+    }
 
 void handle_signal(int signum)
 {
@@ -636,20 +646,22 @@ void log_move(int ch)
     fclose(fp);
 }
 
-void undo_move(void) {
-    //do nothing if last move invalid/game won
-    if (lm.prevVal == -1 || gameWon) {
+void undo_move(void)
+{
+    // do nothing if last move invalid/game won
+    if (lm.prevVal == -1 || gameWon)
+    {
         return;
     }
-     //restore prev val @ last move pos
-     g.board[lm.row][lm.col] = lm.prevVal;
+    // restore prev val @ last move pos
+    g.board[lm.row][lm.col] = lm.prevVal;
 
-    //reset to invalid state
+    // reset to invalid state
     lm.row = -1;
     lm.col = -1;
     lm.prevVal = -1;
 
-     draw_numbers();
+    draw_numbers();
 }
 
 // (Re)draws everything on the screen
@@ -735,7 +747,7 @@ bool isValidUnit(int unit[9])
     {
         int number = unit[i];
         // check if within sudoku param.
-        if (number < 1 || number > 9 || seen[number])
+        if (number == 0 || seen[number])
             return false;
         seen[number] = true;
     }
