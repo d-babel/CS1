@@ -25,6 +25,7 @@
 #define INTSIZE 4
 
 // valid moves
+#define VALID_MOVE 0
 #define BAD_ROW 1
 #define BAD_COL 2
 #define BAD_BOX 3
@@ -345,7 +346,7 @@ int checkMove(int row, int col, int num)
         }
     }
     // no conflict
-    return true;
+    return 0;
 }
 
 // Draw's the game's board
