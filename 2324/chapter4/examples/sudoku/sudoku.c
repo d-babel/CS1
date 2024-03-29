@@ -260,7 +260,7 @@ int main(int argc, char *argv[])
                                 show_banner("bad box");
                                 break;
                         }
-                    }
+                    } 
 
                     draw_numbers();
                 }
