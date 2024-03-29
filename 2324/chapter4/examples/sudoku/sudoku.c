@@ -191,6 +191,7 @@ int main(int argc, char *argv[])
         {
             // Start a new game
             case 'N':
+                hide_banner();
                 gameWon = false;
                 g.number = rand() % max + 1;
                 if (!restart_game())
@@ -203,6 +204,8 @@ int main(int argc, char *argv[])
 
             // Restart current game
             case 'R':
+                hide_banner();
+                gameWon = false;
                 if (!restart_game())
                 {
                     shutdown();
