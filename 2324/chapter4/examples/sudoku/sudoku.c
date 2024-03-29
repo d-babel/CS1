@@ -710,6 +710,10 @@ bool restart_game(void)
     // Remove log, if any
     remove("log.txt");
 
+
+    // restart game 
+    gameWon = false;
+
     // w00t
     return true;
 }
