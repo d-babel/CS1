@@ -260,7 +260,7 @@ int main(int argc, char *argv[])
                                 show_banner("bad box");
                                 break;
                         }
-                    } 
+                    }
 
                     draw_numbers();
                 }
@@ -293,6 +293,7 @@ int main(int argc, char *argv[])
         if (!gameWon && isGameWon())
         {
             gameWon = true;
+            draw_won_nums();
             show_banner("congrats! u won");
         }
 
