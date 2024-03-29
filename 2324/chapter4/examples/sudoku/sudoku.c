@@ -638,7 +638,7 @@ void log_move(int ch)
 
 void undo_move(void) {
     //do nothing if last move invalid/game won
-    if (gameWon) {
+    if (lm.prevVal == -1 || gameWon) {
         return;
     }
      //restore prev val @ last move pos
