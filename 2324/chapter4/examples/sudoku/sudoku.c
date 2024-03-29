@@ -341,7 +341,7 @@ int checkMove(int row, int col, int num)
     {
         for (int j = 0; j < 3; j++)
         {
-            if (g.board[i + startRow][j + startCol] == num && (i+j) != (row+col))
+            if (g.board[i + startRow][j + startCol] == num)
                 return BAD_BOX;
         }
     }
