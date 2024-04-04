@@ -13,4 +13,5 @@ while True:
 for i in range(1, height + 1):
     spaces = ' ' * (height - i)
     hashes = '#' * i
-    print(f)
+    #f-string allows string literals "{}"
+    print(f"{spaces}{hashes}  {hashes}")
