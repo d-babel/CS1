@@ -6,7 +6,7 @@ def count_letters(text):
 def count_words(text):
     return len(text.split())
 
-#count num of sentences by punctuation
+# count num of sentences by punctuation
 def count_sentences(text):
     #occurrences of end of sentence punctuation
     return sum(text.count(end) for end in ['.', '?', '!'])
