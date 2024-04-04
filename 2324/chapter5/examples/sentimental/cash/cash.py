@@ -1,6 +1,11 @@
-def main():
+# Cash by Drew Babel
+
+def get_positive_float(prompt):
     while True:
-        change_owed = input("change owed: ")
-        
-
-
+        user_input = input(prompt)
+        try:
+            value = float(user_input)
+            if value > 0:
+                return value
+            else:
+                
