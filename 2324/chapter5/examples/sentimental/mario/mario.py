@@ -3,8 +3,10 @@
 #recieving user unput
 while True:
     try:
-        height = int(input("height: "))
-        if 1 <= height <= 8:
+        height = input("height: ")
+        #check for non-valid inputs
+        if height.isdigit() and 1 <= int(height) <= 8:
+            height = int(height)
             break
         else:
             print("height must be between 1 and 8")
