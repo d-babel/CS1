@@ -10,7 +10,7 @@ while True:
             #handle non pos input
             print("enter valid num")
     except ValueError:
-        #handle non-numeric & empty
+        #handle non-numeric & empty input
         print("enter valid num")
 
 #convert dollar to cent
