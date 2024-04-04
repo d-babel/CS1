@@ -12,12 +12,12 @@ def count_sentences(text):
     return sum(text.count(end) for end in ['.', '?', '!'])
 
 # compute Coleman-Liau index
-def compute_index(letters, words, sentences)"
+def compute_index(letters, words, sentences):
     L = (letters / words) * 100
     S = (sentences / words) * 100
     return round(0.0588 * L - 0.296 * S - 15.8)
 
-def main()
+def main():
     text = input("Text: ")
 
     letters = count_letters(text)
