@@ -1,14 +1,19 @@
 # Cash by Drew Babel
 
 while True:
-    # check if valid input
-    cash = input("change owed: ")
-    if cash.isdigit():
-        cash = float(cash)
+    cash_input = input("change owed: ")
+    try:
+        cash = float(cash_input)
         if cash > 0:
             break
-    print("enter a valid num")
+        else:
+            #handle non pos input
+            print("enter valid num")
+    except ValueError:
+        #handle non-numeric & empty
+        print("enter valid num")
 
+#convert dollar to cent
 coins = int(cash * 100)
 
 # list of coin values
