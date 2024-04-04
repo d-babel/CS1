@@ -1,7 +1,6 @@
 def main():
     while True:
+        change_owed = input("change owed: ")
         try:
-            change_owed = float(input("change owed: "))
-            if change_owed >= 0:
-                break
             
+
