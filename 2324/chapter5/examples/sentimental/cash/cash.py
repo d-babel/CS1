@@ -9,6 +9,7 @@ while True:
         else:
             #handle non pos input
             print("enter valid num")
+    #used as exception to correct type but invalid value, can do the same thing with a while loop
     except ValueError:
         #handle non-numeric & empty input
         print("enter valid num")
