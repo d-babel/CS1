@@ -3,7 +3,7 @@ def count_letters(text):
     return sum(c.isalpha() for c in text)
 
 # return length of split by word sentences
-def coun_words(text):
+def count_words(text):
     return len(text.split())
 
 #count num of sentences by punctuation
