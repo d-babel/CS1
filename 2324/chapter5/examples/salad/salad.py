@@ -15,7 +15,7 @@ salad.append("spinach")
 salad.append("cucumbers")
 salad.append("peppers")
 
-print(salad)
+
 # Print the ingredients in your salad.
 
 # Now, use a Python list method to remove ALL carrots from your salad. #nocarrots
