@@ -32,6 +32,13 @@ def remove_carrots(salad):
 
 # Create a function that removes any given ingredient from a salad.
 
+def remove_ingredient(salad):
+    ingredient = input("What ingredient do you want to remove from your salad? ")
+    return [item for item in salad if item != ingredient]
+
 # Create a function that builds a new salad by doing the following:
 #   Prompt the user for the number of ingredients
 #   Prompt the user for each ingredient and edd it to salad
+def build_salad(salad):
+    ingredients_amount = input("How many ingredients would you like?")
+    
