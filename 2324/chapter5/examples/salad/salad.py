@@ -19,13 +19,11 @@ salad.extend(["spinach", "cucumbers", "peppers"])
 #     print(ingredient)
 
 # Now, use a Python list method to remove ALL carrots from your salad. #nocarrots
-for ingredient in salad:
-    if ingredient == "carrot":
-        salad.pop()
+salad = [ingredient for ingredient in salad if ingredient != "carrot"]
 
 for ingredient in salad:
      print(ingredient)
-     
+
 # Create a separate function that removes carrots from a salad.
 
 # Create a function that removes any given ingredient from a salad.
