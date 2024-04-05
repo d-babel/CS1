@@ -8,23 +8,27 @@
 salad = ["carrot", "lettuce", "tomato", "chicken", "ranch"]
 
 # Print the ingredients in your salad.
-# for ingredient in salad:
-#     print(ingredient)
+for ingredient in salad:
+    print(ingredient)
 
 # Add three new ingredients to your salad. One of them must be a carrot.
 salad.extend(["spinach", "cucumbers", "peppers"])
 
 # Print the ingredients in your salad.
-# for ingredient in salad:
-#     print(ingredient)
+for ingredient in salad:
+    print(ingredient)
 
 # Now, use a Python list method to remove ALL carrots from your salad. #nocarrots
+
 salad = [ingredient for ingredient in salad if ingredient != "carrot"]
 
 for ingredient in salad:
      print(ingredient)
 
 # Create a separate function that removes carrots from a salad.
+
+def remove_carrots(salad):
+    return [ingredient for ingredient in salad if ingredient != "carrot"]
 
 # Create a function that removes any given ingredient from a salad.
 
