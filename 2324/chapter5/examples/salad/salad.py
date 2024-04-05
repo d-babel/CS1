@@ -25,6 +25,7 @@ for ingredient in salad:
 
 for ingredient in salad:
      print(ingredient)
+     
 # Create a separate function that removes carrots from a salad.
 
 # Create a function that removes any given ingredient from a salad.
