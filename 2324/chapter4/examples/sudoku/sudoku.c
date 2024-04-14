@@ -1,4 +1,12 @@
-// Sudoku by Drew Babel
+/**
+ * Sudoku
+ *
+ * More Spicy version for CS1 @ Menlo School
+ * Based on the CS50 Problem Set
+ * Written by Zach Blick
+ * With help from Douglas Kiang
+ * on Monday, Aug. 14 2023
+ */
 
 #include "sudoku.h"
 #include <ctype.h>
