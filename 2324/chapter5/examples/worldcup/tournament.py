@@ -22,8 +22,11 @@ def main():
         # load teams w integer ratings
         teams.append({"team":row["team"] , "rating" : int(row["rating"])})
 
+    #dict to count wins for teams
     counts = {team["team"]: 0 for team in teams}
-    # TODO: Simulate N tournaments and keep track of win counts
+
+    # Simulate N tournaments and keep track of win counts
+    for _ 
 
     # Print each team's chances of winning, according to simulation
     for team in sorted(counts, key=lambda team: counts[team], reverse=True):
