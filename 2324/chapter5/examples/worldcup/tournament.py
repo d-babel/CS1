@@ -1,3 +1,5 @@
+#Tournament by Drew Babel
+
 # Simulate a sports tournament
 
 import csv
@@ -20,9 +22,9 @@ def main():
         reader = csv.DictReader(file)
         for row in reader
         # load teams w integer ratings
-        teams.append({"team":row["team"] , "rating" : int(row["rating"])})
+        teams.append({"team": row["team"], "rating": int(row["rating"])})
 
-    #dict to count wins for teams
+    # dict to count wins for teams
     counts = {team["team"]: 0 for team in teams}
 
     # Simulate N tournaments
@@ -61,7 +63,7 @@ def simulate_tournament(teams):
     """Simulate a tournament. Return name of winning team."""
     while len(teams) > 1:
         teams = simulate_round(teams)
-    #return last remaining team name
+    # return last remaining team name
     return teams[0]['team']
 
 
