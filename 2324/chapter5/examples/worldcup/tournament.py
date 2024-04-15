@@ -11,7 +11,6 @@ N = 1000
 
 
 def main():
-
     # Ensure correct usage
     if len(sys.argv) != 2:
         sys.exit("Usage: python tournament.py FILENAME")
@@ -20,9 +19,9 @@ def main():
     filename = sys.argv[1]
     with open(filename) as file:
         reader = csv.DictReader(file)
-        for row in reader
-        # load teams w integer ratings
-        teams.append({"team": row["team"], "rating": int(row["rating"])})
+        for row in reader:
+            # load teams w integer ratings
+            teams.append({"team": row["team"], "rating": int(row["rating"])})
 
     # dict to count wins for teams
     counts = {team["team"]: 0 for team in teams}
