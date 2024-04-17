@@ -55,7 +55,6 @@ def longest_run(sequence, str_key):
     return max_count
 
 
-
 # function findLongestSTRRun(DNA_Sequence, STR)
     #max_run = 0
     #current run = 0
