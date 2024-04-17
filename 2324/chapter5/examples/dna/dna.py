@@ -56,20 +56,18 @@ def longest_run(sequence, str_key):
 
 
 # function findLongestSTRRun(DNA_Sequence, STR)
-    #max_run = 0
-    #current run = 0
-    #i = 0
+    # max_run = 0
+    # current run = 0
+    # i = 0
 
-    #while i <= length of DNA_Sequence - length_of_STR
-        #if DNA_sequence[i : i+Length_of_STR] == STR
-            #current_run = 1
-            # j = i + Length of STR
+    # while i <= length of DNA_Sequence - length_of_STR
+    # if DNA_sequence[i : i+Length_of_STR] == STR
+    # current_run = 1
+    # j = i + Length of STR
 
-            # while j <= (length of DNA_sequence - length of STR) and DNA_sequence[j:j+length of STR] == STR:
-            #current_run += 1
-            #j += length of STR
-
-
+    # while j <= (length of DNA_sequence - length of STR) and DNA_sequence[j:j+length of STR] == STR:
+    # current_run += 1
+    # j += length of STR
 
 
 def match_person(person, str_counts):
