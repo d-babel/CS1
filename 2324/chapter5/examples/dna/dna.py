@@ -28,7 +28,8 @@ def main():
 
 
 def read_files(database_path, sequence_path):
-
+    #load database from CSV file
+    with open(database_path, newline='')
 
 
 def longest_run(sequence, str_key):
