@@ -29,15 +29,34 @@ def main():
 
 def read_files(database_path, sequence_path):
     #load database from CSV file
-    with open(database_path, newline='')
+    with open(database_path, newline='') as file:
+        reader = csv.DictReader(file)
+        database = list(reader)
+
+    #load DNA sequence from text file
+    with open(sequence_path, 'r') as file"
+        dna_sequence = file.read().strip()
+
+    return databse, dna_sequence
 
 
 def longest_run(sequence, str_key):
+    #find max num that STR appears consecutively in the sequence
+    max_count = 0
+    n = len(str_key)
+    for i in range(len(sequence)):
+        count = 0
+        while sequence[i + n*count: i + n*(count + 1)] == str.key:
+            count += 1
+        if count > max_count:
+        max_count = count
 
+    return max_count
 
 
 def match_person(person, str_counts):
-
+    #check if STR couts match in person's STR counts in database
+    return all(int(person[str_key]) == str_counts[str_key]
 
 
 if __name__ == "__main__":
