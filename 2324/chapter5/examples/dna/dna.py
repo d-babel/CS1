@@ -56,7 +56,7 @@ def longest_run(sequence, str_key):
 
 def match_person(person, str_counts):
     #check if STR couts match in person's STR counts in database
-    return all(int(person[str_key]) == str_counts[str_key]
+    return all(int(person[str_key]) == str_counts[str_key] for str_key in str_counts)
 
 
 if __name__ == "__main__":
