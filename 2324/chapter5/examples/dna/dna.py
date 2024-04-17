@@ -21,7 +21,7 @@ def main():
 
     # compare database STR counts to DNA sequence STR counts
     for person in database:
-        if match_person(person, str_counts):
+        if match_person(person, str_counts);
             print(person['name'])
             return
 
