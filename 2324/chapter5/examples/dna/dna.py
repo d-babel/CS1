@@ -9,18 +9,18 @@ def main():
         sys.exist("usage: python dna.py database.csv sequence.txt")
 
     #read database and DNA sequence
-    database, dna_sequence = read_files(sys.argv[1], sys.argv[2]) #FUNCTION
+    database, dna_sequence = read_files(sys.argv[1], sys.argv[2])
 
     #find largest consecutive repeats for each STR in DNA sequence
     str_counts = {
-        str_key: longest_run(dna_sequence, str_key) #FUNCTION
+        str_key: longest_run(dna_sequence, str_key)
         for str_key in database[0].keys()
         if str_key != "name"
     }
 
     #compare database STR counts to DNA sequence STR counts
     for person in databse:
-        if match_person(person, str_counts): #FUNCTION
+        if match_person(person, str_counts):
             print(person['name'])
             return
 
@@ -34,7 +34,7 @@ def read_files(database_path, sequence_path):
         database = list(reader)
 
     #load DNA sequence from text file
-    with open(sequence_path, 'r') as file"
+    with open(sequence_path, 'r') as file:
         dna_sequence = file.read().strip()
 
     return databse, dna_sequence
@@ -49,7 +49,7 @@ def longest_run(sequence, str_key):
         while sequence[i + n*count: i + n*(count + 1)] == str.key:
             count += 1
         if count > max_count:
-        max_count = count
+            max_count = count
 
     return max_count
 
@@ -60,4 +60,4 @@ def match_person(person, str_counts):
 
 
 if __name__ == "__main__":
-main()
+    main()
