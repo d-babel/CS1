@@ -1,6 +1,11 @@
 import csv
 import time
 
+def read_database(database_path):
+    with open(database_path, newline='') as file:
+        reader = csv.DictReader(file)
+        return next(reader)  # Returns the first row assuming it contains the STR names
+
 def read_sequence(sequence_path):
     with open(sequence_path, 'r') as file:
         return file.read().strip()
@@ -51,27 +56,32 @@ def harvard_longest_run(sequence, subsequence):
     return longest_run
 
 def main():
-    str_key = "AGATC"  # You might want to modify this based on the CSV you use
-    print("File,Original Method Time (s),Sliding Window Method Time (s),Harvard Solution Time (s)")
+    # Read STRs from the database
+    database_path = "databases/large.csv"
+    str_data = read_database(database_path)
+    str_keys = [key for key in str_data.keys() if key != 'name']  # Exclude the 'name' field
+
+    print("File,STR,Original Method Time (s),Sliding Window Method Time (s),Harvard Solution Time (s)")
 
     sequence_base_path = "sequences/"
     for i in range(1, 21):
         sequence_file = f"{sequence_base_path}{i}.txt"
         dna_sequence = read_sequence(sequence_file)
 
-        start_time = time.perf_counter()
-        original_longest_run(dna_sequence, str_key)
-        original_time = time.perf_counter() - start_time
+        for str_key in str_keys:
+            start_time = time.perf_counter()
+            original_longest_run(dna_sequence, str_key)
+            original_time = time.perf_counter() - start_time
 
-        start_time = time.perf_counter()
-        sliding_window_longest_run(dna_sequence, str_key)
-        sliding_time = time.perf_counter() - start_time
+            start_time = time.perf_counter()
+            sliding_window_longest_run(dna_sequence, str_key)
+            sliding_time = time.perf_counter() - start_time
 
-        start_time = time.perf_counter()
-        harvard_longest_run(dna_sequence, str_key)
-        harvard_time = time.perf_counter() - start_time
+            start_time = time.perf_counter()
+            harvard_longest_run(dna_sequence, str_key)
+            harvard_time = time.perf_counter() - start_time
 
-        print(f"{i}.txt,{original_time},{sliding_time},{harvard_time}")
+            print(f"{i}.txt,{str_key},{original_time},{sliding_time},{harvard_time}")
 
 if __name__ == "__main__":
     main()
