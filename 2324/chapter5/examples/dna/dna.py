@@ -54,7 +54,7 @@ def longest_run(sequence, str_key):
 
     return max_count
 
-
+#ALTHOUGH THIS (PSEUDOCODE) ALGO. CONSISTS OF LESS STEPS, THE TIME TO EXECUTE IS LONGER
 # function findLongestSTRRun(DNA_Sequence, STR)
     # max_run = 0
     # current run = 0
