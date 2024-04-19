@@ -1,6 +1,3 @@
-import re
-
-# Data input
 data = """
 1.txt,AGATC,7.099999993442907e-05,2.0199999653414125e-05,5.330000021785963e-05
 1.txt,TTTTTTCT,5.03999999637017e-05,1.8700000055105193e-05,4.94000000799133e-05
@@ -165,29 +162,29 @@ data = """
 
 """
 
-# Process the data
+# Parse and process data
 results = {}
 lines = data.strip().split("\n")
 for line in lines:
     parts = line.split(",")
-    file, str_marker = parts[0], parts[1]
+    file = parts[0]
     times = list(map(float, parts[2:]))
 
-    if str_marker not in results:
-        results[str_marker] = {'Original Method': [], 'Sliding Window Method': [], 'Harvard Solution': []}
+    if file not in results:
+        results[file] = {'Original Method': [], 'Sliding Window Method': [], 'Harvard Solution': []}
 
-    results[str_marker]['Original Method'].append(times[0])
-    results[str_marker]['Sliding Window Method'].append(times[1])
-    results[str_marker]['Harvard Solution'].append(times[2])
+    results[file]['Original Method'].append(times[0])
+    results[file]['Sliding Window Method'].append(times[1])
+    results[file]['Harvard Solution'].append(times[2])
 
-# Calculate averages
+# Calculate averages for each method per file
 averages = {}
-for str_marker, methods in results.items():
-    averages[str_marker] = {}
+for file, methods in results.items():
+    averages[file] = {}
     for method, times in methods.items():
-        averages[str_marker][method] = sum(times) / len(times)
+        averages[file][method] = sum(times) / len(times)
 
 # Print results in a table
-print(f"{'STR':<10} {'Original Method Time (s)':<25} {'Sliding Window Time (s)':<25} {'Harvard Solution Time (s)':<25}")
-for str_marker, method_times in averages.items():
-    print(f"{str_marker:<10} {method_times['Original Method']:<25} {method_times['Sliding Window Method']:<25} {method_times['Harvard Solution']:<25}")
+print(f"{'File':<10} {'Original Method Time (s)':<25} {'Sliding Window Time (s)':<25} {'Harvard Solution Time (s)':<25}")
+for file, method_times in averages.items():
+    print(f"{file:<10} {method_times['Original Method']:<25} {method_times['Sliding Window Method']:<25} {method_times['Harvard Solution']:<25}")
