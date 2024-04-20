@@ -16,17 +16,17 @@ def find_repeated_strings(source, substring):
     if index < 0:
         return -1  # Return -1 if the substring is not found at all
 
-    while index != -1:  # Change the condition to check 'index' instead of finding substring again
+    while index != -1:  # Continue while there are still occurrences of the substring
         count = 0
         while True:
             source = source[index + len(substring):]  # Move the start beyond the current match
             count += 1
             index = source.find(substring)  # Update index based on the new source position
-            if index != 0:  # Check if the new substring is not at the start
+            if index != 0:  # Check if the new substring is not at the start of the new source
                 break
         if count > max_count:
             max_count = count
-        index = source.find(substring)  # Refresh the index for the while loop condition
+        index = source.find(substring)  # Refresh the index for the next loop condition
 
     return max_count
 
@@ -35,7 +35,7 @@ def main():
     str_data = read_database(database_path)
     str_keys = [key for key in str_data.keys() if key != 'name']  # Extract STR names
 
-    print("File, STR, New Method Time (s)")
+    print("File,STR,New Method Time (s)")
 
     sequence_base_path = "sequences/"  # Base path to the directory with DNA sequence files
     for i in range(1, 21):  # Loop over each file from 1.txt to 20.txt
@@ -47,7 +47,7 @@ def main():
             find_repeated_strings(dna_sequence, str_key)
             elapsed_time = time.perf_counter() - start_time
 
-            print(f"{i}.txt, {str_key}, {elapsed_time}")
+            print(f"{i}.txt,{str_key},{elapsed_time}")
 
 if __name__ == "__main__":
     main()
