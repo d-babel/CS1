@@ -168,16 +168,17 @@ results = {}
 lines = data.strip().split("\n")[1:]  # Skip the header line
 for line in lines:
     parts = line.split(",")
-    file = parts[0]
-    times = list(map(float, parts[2:]))  # Convert time strings to floats
+    if "txt" in parts[0]:  # Check if the line likely contains valid data
+        file = parts[0]
+        times = list(map(float, parts[2:]))  # Convert time strings to floats
 
-    if file not in results:
-        results[file] = {'Original Method': [], 'Sliding Window Method': [], 'Harvard Solution': [], 'Kiang\'s Method': []}
+        if file not in results:
+            results[file] = {'Original Method': [], 'Sliding Window Method': [], 'Harvard Solution': [], 'Kiang\'s Method': []}
 
-    results[file]['Original Method'].append(times[0])
-    results[file]['Sliding Window Method'].append(times[1])
-    results[file]['Harvard Solution'].append(times[2])
-    results[file]['Kiang\'s Method'].append(times[3])
+        results[file]['Original Method'].append(times[0])
+        results[file]['Sliding Window Method'].append(times[1])
+        results[file]['Harvard Solution'].append(times[2])
+        results[file]['Kiang\'s Method'].append(times[3])
 
 # Calculate averages for each method per file
 averages = {}
