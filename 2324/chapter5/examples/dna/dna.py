@@ -190,8 +190,8 @@ for file, methods in results.items():
 def file_sort_key(filename):
     return int(filename.split('.')[0])  # Assumes file names are like "1.txt"
 
-# Print results in a formatted table
-header = "File       Original Method Time (s)  Sliding Window Time (s)   Harvard Solution Time (s)  Kiang's Method Time (s)"
+# Print results in a formatted table without spaces and just commas
+header = "File,Original Method Time (s),Sliding Window Time (s),Harvard Solution Time (s),Kiang's Method Time (s)"
 print(header)
 for file, method_times in sorted(averages.items(), key=lambda x: file_sort_key(x[0])):
-    print(f"{file:<10} {method_times['Original Method']:<25} {method_times['Sliding Window Method']:<25} {method_times['Harvard Solution']:<25} {method_times['Kiang\'s Method']:<25}")
+    print(f"{file},{method_times['Original Method']},{method_times['Sliding Window Method']},{method_times['Harvard Solution']},{method_times['Kiang\'s Method']}")
