@@ -187,8 +187,12 @@ for file, methods in results.items():
     for method, times in methods.items():
         averages[file][method] = sum(times) / len(times)
 
+# Function to extract numeric value for sorting filenames numerically
+def file_sort_key(filename):
+    return int(filename.split('.')[0])  # Assumes file names are like "1.txt"
+
 # Print results in a formatted table
 header = "File       Original Method Time (s)  Sliding Window Time (s)   Harvard Solution Time (s)  Kiang's Method Time (s)"
 print(header)
-for file, method_times in sorted(averages.items()):
+for file, method_times in sorted(averages.items(), key=lambda x: file_sort_key(x[0])):
     print(f"{file:<10} {method_times['Original Method']:<25} {method_times['Sliding Window Method']:<25} {method_times['Harvard Solution']:<25} {method_times['Kiang\'s Method']:<25}")
