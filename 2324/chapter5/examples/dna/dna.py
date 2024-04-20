@@ -163,20 +163,22 @@ File, STR, Original Method Time (s), Sliding Window Method Time (s), Harvard Sol
 
 """
 
+
 # Parse and process data
 results = {}
-lines = data.strip().split("\n")
+lines = data.strip().split("\n")[1:]  # skip header line
 for line in lines:
     parts = line.split(",")
     file = parts[0]
-    times = list(map(float, parts[2:]))
+    times = list(map(float, parts[2:]))  # convert time strings to floats
 
     if file not in results:
-        results[file] = {'Original Method': [], 'Sliding Window Method': [], 'Harvard Solution': []}
+        results[file] = {'Original Method': [], 'Sliding Window Method': [], 'Harvard Solution': [], 'New Method': []}
 
     results[file]['Original Method'].append(times[0])
     results[file]['Sliding Window Method'].append(times[1])
     results[file]['Harvard Solution'].append(times[2])
+    results[file]['New Method'].append(times[3])
 
 # Calculate averages for each method per file
 averages = {}
@@ -185,7 +187,7 @@ for file, methods in results.items():
     for method, times in methods.items():
         averages[file][method] = sum(times) / len(times)
 
-# Print results in a table
-print(f"{'File':<10} {'Original Method Time (s)':<25} {'Sliding Window Time (s)':<25} {'Harvard Solution Time (s)':<25}")
+# Print results in a formatted table
+print(f"{'File':<10} {'Original Method Time (s)':<25} {'Sliding Window Time (s)':<25} {'Harvard Solution Time (s)':<25} {'New Method Time (s)':<25}")
 for file, method_times in averages.items():
-    print(f"{file:<10} {method_times['Original Method']:<25} {method_times['Sliding Window Method']:<25} {method_times['Harvard Solution']:<25}")
+    print(f"{file:<10} {method_times['Original Method']:<25.6f} {method_times['Sliding Window Method']:<25.6f} {method_times['Harvard Solution']:<25.6f} {method_times['New Method']:<25.6f}")
