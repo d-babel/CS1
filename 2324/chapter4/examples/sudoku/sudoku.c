@@ -3,8 +3,9 @@
  *
  * More Spicy version for CS1 @ Menlo School
  * Based on the CS50 Problem Set
- * Written by Zach Blick
+ * Starter code written by Zach Blick
  * With help from Douglas Kiang
+ * Rest of code written by Drew Babel
  * on Monday, Aug. 14 2023
  */
 
